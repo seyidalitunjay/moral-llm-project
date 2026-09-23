@@ -1,0 +1,443 @@
+{
+  "config_hash": "c677534c951c9525b4bd36035248e7534cc1601d697453132a97f65e151c56e3",
+  "responses_sha256": "1fc47fd2cd19d4edb6b687e462c25273d0eb113c3b1c0998afe3b305c84117c1",
+  "parser_version": "final_marker_cosmetic_v2",
+  "note": "Post-hoc format-only reinterpretation of final labels. Original records remain unchanged. No labels inferred from rationales or human judgments.",
+  "coverage": {
+    "baseline": {
+      "recorded": {
+        "valid": 9,
+        "invalid_or_truncated": 1
+      },
+      "reparsed": {
+        "valid": 9,
+        "invalid_label_format": 1
+      }
+    },
+    "generic": {
+      "recorded": {
+        "invalid_or_truncated": 4,
+        "valid": 6
+      },
+      "reparsed": {
+        "valid": 9,
+        "invalid_label_format": 1
+      }
+    },
+    "original": {
+      "recorded": {
+        "invalid_or_truncated": 4,
+        "valid": 6
+      },
+      "reparsed": {
+        "valid": 8,
+        "truncated": 2
+      }
+    }
+  },
+  "providers": {
+    "Darkbloom": 3,
+    "AkashML": 7,
+    "DekaLLM": 6,
+    "SiliconFlow": 3,
+    "Google": 1,
+    "Phala": 1,
+    "Parasail": 7,
+    "Novita": 1,
+    "DeepInfra": 1
+  },
+  "recovered_format_only": 5,
+  "total_valid": 26,
+  "records": [
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "original",
+      "sample": 1,
+      "recorded_status": "invalid_or_truncated",
+      "recorded_label": null,
+      "derived_status": "valid",
+      "derived_label": "EVERYBODY",
+      "provider": "Darkbloom",
+      "finish_reason": "stop",
+      "completion_tokens": 684,
+      "last_content_line": "**FINAL_LABEL: EVERYBODY**"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "original",
+      "sample": 0,
+      "recorded_status": "invalid_or_truncated",
+      "recorded_label": null,
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "AkashML",
+      "finish_reason": "stop",
+      "completion_tokens": 640,
+      "last_content_line": "**FINAL_LABEL: OTHER**"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "generic",
+      "sample": 1,
+      "recorded_status": "invalid_or_truncated",
+      "recorded_label": null,
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "DekaLLM",
+      "finish_reason": "stop",
+      "completion_tokens": 548,
+      "last_content_line": "**FINAL_LABEL: OTHER**"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "original",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "SiliconFlow",
+      "finish_reason": "stop",
+      "completion_tokens": 682,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "baseline",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "NOBODY",
+      "derived_status": "valid",
+      "derived_label": "NOBODY",
+      "provider": "Google",
+      "finish_reason": "stop",
+      "completion_tokens": 417,
+      "last_content_line": "FINAL_LABEL: NOBODY"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "baseline",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Darkbloom",
+      "finish_reason": "stop",
+      "completion_tokens": 316,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "generic",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "AkashML",
+      "finish_reason": "stop",
+      "completion_tokens": 461,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "baseline",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "AkashML",
+      "finish_reason": "stop",
+      "completion_tokens": 126,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "original",
+      "sample": 0,
+      "recorded_status": "invalid_or_truncated",
+      "recorded_label": null,
+      "derived_status": "truncated",
+      "derived_label": null,
+      "provider": "Phala",
+      "finish_reason": "length",
+      "completion_tokens": 2048,
+      "last_content_line": "2. Other: He felt irritated by swimmers who slowed him down and wanted a fast, unobstructed lane. He believed he could impose his speed and was unaware that his zigzagging and frequent knocks were disruptive. He thought"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "original",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "AkashML",
+      "finish_reason": "stop",
+      "completion_tokens": 485,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "original",
+      "sample": 0,
+      "recorded_status": "invalid_or_truncated",
+      "recorded_label": null,
+      "derived_status": "truncated",
+      "derived_label": null,
+      "provider": "DekaLLM",
+      "finish_reason": "length",
+      "completion_tokens": 2048,
+      "last_content_line": "Both: Author\u2019s refusal stems from practical concerns; the other\u2019s desire stems from social identity. Neither feels their goal is aggressively harmful. The girlfriend might feel let down, but her expectation of"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "baseline",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "AkashML",
+      "finish_reason": "stop",
+      "completion_tokens": 207,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "baseline",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "EVERYBODY",
+      "derived_status": "valid",
+      "derived_label": "EVERYBODY",
+      "provider": "AkashML",
+      "finish_reason": "stop",
+      "completion_tokens": 739,
+      "last_content_line": "FINAL_LABEL: EVERYBODY"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "baseline",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "NOBODY",
+      "derived_status": "valid",
+      "derived_label": "NOBODY",
+      "provider": "SiliconFlow",
+      "finish_reason": "stop",
+      "completion_tokens": 467,
+      "last_content_line": "FINAL_LABEL: NOBODY"
+    },
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "generic",
+      "sample": 1,
+      "recorded_status": "invalid_or_truncated",
+      "recorded_label": null,
+      "derived_status": "valid",
+      "derived_label": "AUTHOR",
+      "provider": "AkashML",
+      "finish_reason": "stop",
+      "completion_tokens": 1429,
+      "last_content_line": "**FINAL_LABEL: AUTHOR**"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "original",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "AUTHOR",
+      "derived_status": "valid",
+      "derived_label": "AUTHOR",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 1015,
+      "last_content_line": "FINAL_LABEL: AUTHOR"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "generic",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "NOBODY",
+      "derived_status": "valid",
+      "derived_label": "NOBODY",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 607,
+      "last_content_line": "FINAL_LABEL: NOBODY"
+    },
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "original",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "AUTHOR",
+      "derived_status": "valid",
+      "derived_label": "AUTHOR",
+      "provider": "Novita",
+      "finish_reason": "stop",
+      "completion_tokens": 1011,
+      "last_content_line": "FINAL_LABEL: AUTHOR"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "original",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "DekaLLM",
+      "finish_reason": "stop",
+      "completion_tokens": 449,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "baseline",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "AUTHOR",
+      "derived_status": "valid",
+      "derived_label": "AUTHOR",
+      "provider": "SiliconFlow",
+      "finish_reason": "stop",
+      "completion_tokens": 719,
+      "last_content_line": "FINAL_LABEL: AUTHOR"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "generic",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "NOBODY",
+      "derived_status": "valid",
+      "derived_label": "NOBODY",
+      "provider": "DekaLLM",
+      "finish_reason": "stop",
+      "completion_tokens": 1438,
+      "last_content_line": "FINAL_LABEL: NOBODY"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "generic",
+      "sample": 1,
+      "recorded_status": "invalid_or_truncated",
+      "recorded_label": null,
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 726,
+      "last_content_line": "**FINAL_LABEL: OTHER**"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "generic",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "AUTHOR",
+      "derived_status": "valid",
+      "derived_label": "AUTHOR",
+      "provider": "DekaLLM",
+      "finish_reason": "stop",
+      "completion_tokens": 579,
+      "last_content_line": "FINAL_LABEL: AUTHOR"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "baseline",
+      "sample": 0,
+      "recorded_status": "invalid_or_truncated",
+      "recorded_label": null,
+      "derived_status": "invalid_label_format",
+      "derived_label": null,
+      "provider": "DekaLLM",
+      "finish_reason": "stop",
+      "completion_tokens": 222,
+      "last_content_line": "FINAL_LABEL: NO"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "original",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 522,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "generic",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 661,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "baseline",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 154,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "generic",
+      "sample": 0,
+      "recorded_status": "invalid_or_truncated",
+      "recorded_label": null,
+      "derived_status": "invalid_label_format",
+      "derived_label": null,
+      "provider": "DeepInfra",
+      "finish_reason": "stop",
+      "completion_tokens": 1073,
+      "last_content_line": "**FINAL_LABEL:** ASSHOLE"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "generic",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 910,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "baseline",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "NOBODY",
+      "derived_status": "valid",
+      "derived_label": "NOBODY",
+      "provider": "Darkbloom",
+      "finish_reason": "stop",
+      "completion_tokens": 399,
+      "last_content_line": "FINAL_LABEL: NOBODY"
+    }
+  ]
+}

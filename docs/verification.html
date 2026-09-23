@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refactor Equivalence Audit</title>
+<meta name="description" content="Byte-level evidence that the refactored analysis code reproduces the original outputs exactly.">
+<style>
+  :root {
+    --paper:        #f6f7f9;
+    --surface:      #ffffff;
+    --surface-sunk: #eef1f4;
+    --ink:          #16202b;
+    --ink-soft:     #45535f;
+    --ink-faint:    #74828d;
+    --rule:         #d8dee4;
+    --rule-strong:  #b9c3cc;
+    --accent:       #2f5d7c;
+    --accent-soft:  #e4edf3;
+    --ok:           #1a6b4c;
+    --ok-soft:      #e2f0e9;
+    --prior:        #8a5c18;
+    --prior-soft:   #f6ecdb;
+    --gap:          #5e5570;
+    --gap-soft:     #ece8f1;
+
+    --measure: 68ch;
+    --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --sans:  system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:        #11171d;
+      --surface:      #171f26;
+      --surface-sunk: #1d262e;
+      --ink:          #e4eaef;
+      --ink-soft:     #a9b6c1;
+      --ink-faint:    #7b8892;
+      --rule:         #2a343d;
+      --rule-strong:  #3c4954;
+      --accent:       #7fb3d3;
+      --accent-soft:  #1b2a35;
+      --ok:           #6dc39b;
+      --ok-soft:      #17271f;
+      --prior:        #d8a85c;
+      --prior-soft:   #2a2216;
+      --gap:          #a598bb;
+      --gap-soft:     #221e2a;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:        #11171d;
+    --surface:      #171f26;
+    --surface-sunk: #1d262e;
+    --ink:          #e4eaef;
+    --ink-soft:     #a9b6c1;
+    --ink-faint:    #7b8892;
+    --rule:         #2a343d;
+    --rule-strong:  #3c4954;
+    --accent:       #7fb3d3;
+    --accent-soft:  #1b2a35;
+    --ok:           #6dc39b;
+    --ok-soft:      #17271f;
+    --prior:        #d8a85c;
+    --prior-soft:   #2a2216;
+    --gap:          #a598bb;
+    --gap-soft:     #221e2a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+  img { max-width: 100%; height: auto; }
+  [hidden] { display: none !important; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0 28px 96px;
+  }
+
+  .col { max-width: var(--measure); }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    border-bottom: 2px solid var(--ink);
+    padding: 56px 0 22px;
+    margin-bottom: 8px;
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(34px, 5vw, 50px);
+    line-height: 1.08;
+    letter-spacing: -.017em;
+    margin: 14px 0 0;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin: 16px 0 0;
+    max-width: var(--measure);
+  }
+
+  .colophon {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 28px;
+    margin-top: 26px;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--ink-faint);
+  }
+  .colophon b {
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .colophon code { font-size: 12px; }
+
+  /* ---------- tally band ---------- */
+
+  .tally {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--rule);
+    margin: 0 0 56px;
+  }
+  .tally > div {
+    padding: 20px 20px 22px 0;
+    border-right: 1px solid var(--rule);
+  }
+  .tally > div:last-child { border-right: 0; }
+  .tally > div + div { padding-left: 22px; }
+
+  .tally .n {
+    font-family: var(--sans);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .tally .k {
+    font-family: var(--sans);
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--ink-faint);
+    margin-top: 8px;
+  }
+
+  /* ---------- sections ---------- */
+
+  section { margin-bottom: 58px; }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 27px;
+    letter-spacing: -.011em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  h2 + .lede { margin-top: 0; }
+
+  h3 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14.5px;
+    letter-spacing: -.003em;
+    margin: 34px 0 10px;
+  }
+
+  p { margin: 0 0 15px; max-width: var(--measure); }
+  .lede { color: var(--ink-soft); }
+  p:last-child { margin-bottom: 0; }
+
+  .rule-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    border-top: 1px solid var(--rule-strong);
+    padding-top: 12px;
+    margin-bottom: 18px;
+  }
+  .rule-head .eyebrow { flex: none; }
+
+  code {
+    font-family: var(--mono);
+    font-size: .86em;
+    background: var(--surface-sunk);
+    padding: .12em .34em;
+    border-radius: 2px;
+  }
+
+  a { color: var(--accent); text-underline-offset: 2px; }
+
+  /* ---------- evidence ledger ---------- */
+
+  .ledger {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--rule);
+  }
+
+  .check {
+    display: grid;
+    grid-template-columns: minmax(230px, 1.1fr) minmax(0, 2fr) auto;
+    gap: 8px 26px;
+    align-items: start;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .check-what { min-width: 0; }
+  .check-what .name {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    word-break: break-word;
+  }
+  .check-what .desc {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    line-height: 1.45;
+    margin-top: 4px;
+  }
+
+  .digests {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+  }
+  .digest {
+    display: grid;
+    grid-template-columns: 15px 1fr;
+    gap: 9px;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+  .digest .eq {
+    color: var(--ok);
+    font-size: 13px;
+    text-align: center;
+  }
+  .digest .src {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    margin-left: 10px;
+  }
+
+  .verdict {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 4px 9px;
+    border-radius: 3px;
+    background: var(--ok-soft);
+    color: var(--ok);
+  }
+  .verdict.prior { background: var(--prior-soft); color: var(--prior); }
+  .verdict.gap   { background: var(--gap-soft);   color: var(--gap); }
+
+  /* ---------- plain tables ---------- */
+
+  .tablewrap { overflow-x: auto; margin: 4px 0 0; }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 13.5px;
+  }
+  th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-bottom: 1px solid var(--rule-strong);
+    padding: 0 18px 7px 0;
+    white-space: nowrap;
+  }
+  td {
+    padding: 9px 18px 9px 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  td.num { font-variant-numeric: tabular-nums; }
+  td.mono, th.mono { font-family: var(--mono); font-size: 12.5px; }
+  tr:last-child td { border-bottom: 0; }
+
+  /* ---------- annotated notes ---------- */
+
+  .notes {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-top: 1px solid var(--rule);
+  }
+  .note {
+    display: grid;
+    grid-template-columns: 4px 1fr;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .note .stripe { background: var(--prior); border-radius: 2px; }
+  .note.gap .stripe { background: var(--gap); }
+  .note .body { min-width: 0; }
+  .note h4 {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 7px;
+  }
+  .note p {
+    font-size: 15.5px;
+    margin: 0 0 10px;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+  .note p:last-child { margin-bottom: 0; }
+
+  .diffbox {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.55;
+    background: var(--surface-sunk);
+    border-left: 2px solid var(--rule-strong);
+    padding: 11px 14px;
+    margin: 10px 0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .diffbox .minus { color: var(--prior); }
+  .diffbox .plus  { color: var(--ok); }
+
+  pre.cmd {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.7;
+    background: var(--surface-sunk);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    margin: 0;
+  }
+  pre.cmd .hash { color: var(--ink-faint); }
+
+  footer {
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    max-width: var(--measure);
+  }
+
+  @media (max-width: 720px) {
+    .tally { grid-template-columns: repeat(2, 1fr); }
+    .tally > div { border-right: 0; padding-left: 0 !important; padding-right: 16px; }
+    .check { grid-template-columns: 1fr; gap: 12px; }
+    .verdict { justify-self: start; }
+  }
+
+  a:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      transition-duration: .01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  @media print {
+    :root { --paper: #fff; --surface: #fff; --surface-sunk: #f2f2f2; }
+    body { font-size: 11pt; }
+    .sheet { max-width: none; padding: 0; }
+    section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="eyebrow">Appendix &middot; Reproducibility</div>
+    <h1>Refactor Equivalence Audit</h1>
+    <p class="standfirst">
+      The analysis code for this project was restructured without any intent to change
+      its results. This record is the evidence that it did not: every output the
+      original scripts produced was regenerated by the refactored code and compared
+      byte for byte.
+    </p>
+    <div class="colophon">
+      <span><b>Repository</b> moral-llm-project</span>
+      <span><b>Date</b> 24 September 2026</span>
+      <span><b>Python</b> 3.14, <code>openai</code> 3.6.0</span>
+      <span><b>Checks</b> 18 of 18 passed</span>
+    </div>
+  </header>
+
+  <div class="tally">
+    <div>
+      <div class="n">5</div>
+      <div class="k">generated files and streams compared, all byte-identical</div>
+    </div>
+    <div>
+      <div class="n">660</div>
+      <div class="k">saved responses reparsed, identical label and status on every one</div>
+    </div>
+    <div>
+      <div class="n">90</div>
+      <div class="k">stored prompts rebuilt, zero character of difference</div>
+    </div>
+    <div>
+      <div class="n">15</div>
+      <div class="k">offline tests passing, including all 6 original assertions</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="rule-head"><span class="eyebrow">Method</span></div>
+    <h2>How equivalence was established</h2>
+    <p class="lede">
+      Before a single line was edited, each of the four runnable entry points was
+      executed against the existing data and its output stored. Those stored outputs
+      are the baseline. After the refactor, the same commands were run again and the
+      results diffed against both the baseline and the reports already committed to
+      the repository.
+    </p>
+    <p>
+      Byte-identical is the standard used throughout, not numerical closeness. The
+      reports are JSON written with a fixed indent, so an identical file means every
+      value agrees to the last digit of its floating-point representation and every
+      key appears in the same order. Preserving key insertion order was a genuine
+      constraint on the rewrite rather than a happy accident, and two places in the
+      code carry comments saying so.
+    </p>
+    <p>
+      Digests below are the first 16 hex characters of the SHA-256 of each file or
+      captured stream. Three sources are compared where all three exist: the output
+      the refactored code produces now, the report committed in the repository, and
+      the baseline captured from the original code before editing began.
+    </p>
+  </section>
+
+  <section>
+    <div class="rule-head"><span class="eyebrow">Evidence</span></div>
+    <h2>Regenerated outputs</h2>
+    <p class="lede">
+      Each row states what was regenerated, the digests being compared, and the
+      verdict. The identity glyph marks digests that agree.
+    </p>
+
+    <div class="ledger" style="margin-top:22px">
+
+      <div class="check">
+        <div class="check-what">
+          <div class="name">results/reports/audit_report.json</div>
+          <div class="desc">Full legacy audit over 60 items, cross-checked against the Scruples dev split. Contains every item-level divergence and the bootstrap intervals.</div>
+        </div>
+        <div class="digests">
+          <div class="digest"><span></span><span>7a76536b5028ec2a <span class="src">regenerated now</span></span></div>
+          <div class="digest"><span class="eq">&equiv;</span><span>7a76536b5028ec2a <span class="src">committed report</span></span></div>
+          <div class="digest"><span class="eq">&equiv;</span><span>7a76536b5028ec2a <span class="src">pre-refactor baseline</span></span></div>
+        </div>
+        <div class="verdict">Identical</div>
+      </div>
+
+      <div class="check">
+        <div class="check-what">
+          <div class="name">compute_metric.py &rarr; stdout</div>
+          <div class="desc">The headline legacy figures. Compared as a captured stream, so the irregular column spacing in the original print statements is part of what matched.</div>
+        </div>
+        <div class="digests">
+          <div class="digest"><span></span><span>7f922b7f53bf0d5f <span class="src">regenerated now</span></span></div>
+          <div class="digest"><span class="eq">&equiv;</span><span>7f922b7f53bf0d5f <span class="src">pre-refactor baseline</span></span></div>
+        </div>
+        <div class="verdict">Identical</div>
+      </div>
+
+      <div class="check">
+        <div class="check-what">
+          <div class="name">smoke_v4_analysis_reparsed.json</div>
+          <div class="desc">Three-arm analysis of the v4 smoke run under the post-hoc parser correction, produced by <code>analyze_control_pilot.py --reparse</code>.</div>
+        </div>
+        <div class="digests">
+          <div class="digest"><span></span><span>c8046baa43d51f1a <span class="src">regenerated now</span></span></div>
+          <div class="digest"><span class="eq">&equiv;</span><span>c8046baa43d51f1a <span class="src">committed report</span></span></div>
+          <div class="digest"><span class="eq">&equiv;</span><span>c8046baa43d51f1a <span class="src">pre-refactor baseline</span></span></div>
+        </div>
+        <div class="verdict">Identical</div>
+      </div>
+
+      <div class="check">
+        <div class="check-what">
+          <div class="name">smoke_v4_diagnostics.json</div>
+          <div class="desc">Response-level parser diagnosis: recorded against derived status for every response, plus provider and finish-reason provenance.</div>
+        </div>
+        <div class="digests">
+          <div class="digest"><span></span><span>9f884a9347097885 <span class="src">regenerated now</span></span></div>
+          <div class="digest"><span class="eq">&equiv;</span><span>9f884a9347097885 <span class="src">committed report</span></span></div>
+        </div>
+        <div class="verdict">Identical</div>
+      </div>
+
+      <div class="check">
+        <div class="check-what">
+          <div class="name">pilot_v4/32fa0ec867b00d0c/manifest.json</div>
+          <div class="desc">The manifest of the completed 600-call run, regenerated from a dry run with the same arguments. Contains all 60 rendered prompts and the selected items.</div>
+        </div>
+        <div class="digests">
+          <div class="digest"><span></span><span>6aaa8e3950f83f5f <span class="src">regenerated by dry run</span></span></div>
+          <div class="digest"><span class="eq">&equiv;</span><span>6aaa8e3950f83f5f <span class="src">manifest stored in the run</span></span></div>
+        </div>
+        <div class="verdict">Identical</div>
+      </div>
+
+    </div>
+
+    <h3>Configuration hash reproduction</h3>
+    <p>
+      A run is addressed by the SHA-256 of its own configuration, which includes the
+      model, sampling parameters, label set, the selected items and every rendered
+      prompt. Reproducing that hash therefore tests far more than the manifest file
+      alone: seeded item selection, prompt construction and parameter defaults all
+      have to agree exactly or the digest diverges.
+    </p>
+    <pre class="cmd">$ python3 scripts/run_control_pilot.py --data data/anecdotes.tar \
+      --items 20 --samples 10 --max-tokens 4096 --provider parasail
+
+Protocol: <span class="hash">32fa0ec867b00d0c</span>d9dcb5a3d06417609284ea67021acab7258b5ac03b0856e8
+Scheduled calls: 600
+DRY RUN: no API calls. Review manifest and cost before adding --execute.</pre>
+    <p style="margin-top:14px">
+      The leading 16 characters name the existing run directory
+      <code>results/pilot_v4/32fa0ec867b00d0c</code>, which holds the 600 responses
+      already collected. The refactored code reaches the same address.
+    </p>
+  </section>
+
+  <section>
+    <div class="rule-head"><span class="eyebrow">Equivalence</span></div>
+    <h2>Prompts and parsers, compared directly</h2>
+    <p class="lede">
+      The generated reports are strong evidence, but they exercise the prompt builder
+      and the parsers only through whatever paths the data happens to reach. Both were
+      therefore also compared against the original implementations directly.
+    </p>
+
+    <div class="tablewrap" style="margin-top:20px">
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Comparison</th>
+            <th class="num">Cases</th>
+            <th class="num">Differences</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Current prompt builder</td>
+            <td>Rebuilt against every prompt stored in the three run manifests, and against the original function on the same inputs</td>
+            <td class="num">90</td>
+            <td class="num">0</td>
+          </tr>
+          <tr>
+            <td>Current prompt builder, five-label variant</td>
+            <td>The <code>--include-info</code> configuration appears in no saved run, so it was compared against the original function directly, across all three conditions</td>
+            <td class="num">3</td>
+            <td class="num">0</td>
+          </tr>
+          <tr>
+            <td>Strict parser, <code>parse_label</code></td>
+            <td>Hand-built cases covering every accepted form, every refusal, and the wrapper-stripping edge cases</td>
+            <td class="num">20</td>
+            <td class="num">0</td>
+          </tr>
+          <tr>
+            <td>Strict parser, full pipeline</td>
+            <td>Every saved response across all three runs, reparsed and compared on derived label, derived status, finish reason and closing content line</td>
+            <td class="num">660</td>
+            <td class="num">0</td>
+          </tr>
+          <tr>
+            <td>Legacy parser, <code>extract_label</code></td>
+            <td>Cases covering substring matching, last-occurrence selection, and empty or label-free input</td>
+            <td class="num">14</td>
+            <td class="num">0</td>
+          </tr>
+          <tr>
+            <td>Legacy prompt builders</td>
+            <td>Both templates compared character for character against the originals, and against the duplicate copies that had been living in the deleted <code>test_prompt.py</code></td>
+            <td class="num">2</td>
+            <td class="num">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Why the two parsers were not merged</h3>
+    <p>
+      The legacy parser returns the last label appearing anywhere in a response, so it
+      cannot distinguish a stated verdict from one merely discussed. The current parser
+      refuses such responses outright. That difference is a documented finding about
+      the earlier results rather than a bug to be tidied away, so the two live in
+      separate modules, and two tests now assert that they continue to disagree on the
+      cases where the distinction matters.
+    </p>
+  </section>
+
+  <section>
+    <div class="rule-head"><span class="eyebrow">Pre-existing</span></div>
+    <h2>Two mismatches that predate the refactor</h2>
+    <p class="lede">
+      Two stored artifacts cannot be reproduced by the current code. Both were checked
+      by running the original, pre-refactor scripts, which produce exactly the same
+      mismatch. Neither is caused by the restructuring, and both reflect real
+      revisions made during the project.
+    </p>
+
+    <div class="notes" style="margin-top:22px">
+
+      <div class="note">
+        <div class="stripe"></div>
+        <div class="body">
+          <h4>pilot_v3 prompts: superseded instruction wording</h4>
+          <p>
+            All 15 prompts stored in the v3 manifest differ from what the current code
+            builds. The anecdote text, the option list and the condition bodies are
+            unchanged; the final-label instruction was rewritten after that run.
+          </p>
+          <div class="diffbox"><span class="minus">- End with exactly one line FINAL_LABEL: &lt;LABEL&gt;, using one allowed
+  label. Do not repeat this marker elsewhere.</span>
+<span class="plus">+ On the last line write FINAL_LABEL: followed by exactly one of
+  AUTHOR, OTHER, EVERYBODY, NOBODY. Use the label spelling exactly;
+  no synonyms, Markdown, or punctuation. Do not repeat this marker
+  elsewhere.</span></div>
+          <p>
+            The original builder mismatches these same 15 prompts, and the refactored
+            builder agrees with the original on all 90 cases. The v3 run is therefore
+            not regenerable from current code, which is the expected consequence of a
+            prompt revision and is why its responses are kept in their own directory.
+          </p>
+        </div>
+      </div>
+
+      <div class="note">
+        <div class="stripe"></div>
+        <div class="body">
+          <h4>v4 smoke run: configuration hash reflects an older parser version</h4>
+          <p>
+            A dry run reproducing the 5-item, 2-sample smoke test yields configuration
+            hash <code>eb1ad6a18e379b31</code>, not the stored
+            <code>2968f02acc8e2d59</code>. The cause is a single field: the manifest
+            records <code>parser_version: final_marker_cosmetic_v2</code>, while the
+            current parser is <code>exact_label_or_final_marker_v3</code>. The parser
+            version is part of the hashed configuration by design, so revising the
+            parser necessarily re-addresses the run.
+          </p>
+          <p>
+            Everything else agrees. The same five items are selected, and the manifest
+            produced by the original code is byte-identical to the one produced by the
+            refactored code. The stored run remains fully analysable; reparsing it
+            under the current parser reproduces the committed analysis exactly, as the
+            evidence ledger above shows.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="rule-head"><span class="eyebrow">Disclosed changes</span></div>
+    <h2>Three deliberate differences in behaviour</h2>
+    <p class="lede">
+      The refactor was not purely mechanical. Three changes alter behaviour in ways
+      that do not affect any reported figure but are recorded here rather than left
+      for a reader to discover.
+    </p>
+
+    <div class="tablewrap" style="margin-top:20px">
+      <table>
+        <thead>
+          <tr>
+            <th>Change</th>
+            <th>Effect</th>
+            <th>Bearing on results</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>The legacy metric script now shares the audit's distribution function</td>
+            <td>Negative or non-finite counts raise <code>ValueError</code> where they were previously accepted and normalised</td>
+            <td>None. Every count in the data is a non-negative integer, and the stdout comparison is byte-identical</td>
+          </tr>
+          <tr>
+            <td><code>compute_metric.py</code> and <code>run_batch.py</code> gained argument parsing</td>
+            <td>Input and output paths are now arguments with defaults. <code>compute_metric.py</code> previously hardcoded <code>results_v2.jsonl</code> in the working directory</td>
+            <td>None to the computation. The invocation changed, and the documented commands were updated to match</td>
+          </tr>
+          <tr>
+            <td><code>run_batch.py</code> checks for the API key at call time rather than import time</td>
+            <td>The module can be imported without a key present, which is what allows it to be inspected and tested offline</td>
+            <td>None. With a key absent the script still exits immediately with an explanatory message</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:18px">
+      One unused local variable was also removed from the pilot runner. Separately, two
+      hardcoded API keys were replaced with environment variable reads; the affected
+      keys were reported for revocation and the repository has no commit history in
+      which they could persist.
+    </p>
+  </section>
+
+  <section>
+    <div class="rule-head"><span class="eyebrow">Limits</span></div>
+    <h2>What this evidence does not cover</h2>
+
+    <div class="notes" style="margin-top:20px">
+      <div class="note gap">
+        <div class="stripe"></div>
+        <div class="body">
+          <h4>The two paid execution paths are unexercised</h4>
+          <p>
+            Running either path costs money at a provider, so neither was executed
+            during verification. In <code>run_control_pilot.py</code> the request loop
+            was extracted from <code>main</code> into its own function, and in
+            <code>run_batch.py</code> module-level code was wrapped in a
+            <code>main</code>. In both cases the statements inside are unchanged and
+            in the same order, but no test covers them.
+          </p>
+          <p>
+            What was verified around them: the dry run reproduces the configuration
+            hash and manifest exactly; the resume logic reads the correct 60 completed
+            identifiers from the legacy results file; the written record schema matches
+            the existing files key for key; the model, temperature, sample count and
+            pool size constants are unchanged; and the missing-key path exits with the
+            expected message. The resume set, the file lock, the per-record fsync, the
+            consecutive-failure counter and the fatal HTTP status list were reviewed by
+            reading rather than by execution.
+          </p>
+        </div>
+      </div>
+
+      <div class="note gap">
+        <div class="stripe"></div>
+        <div class="body">
+          <h4>Equivalence is not correctness</h4>
+          <p>
+            Everything here establishes that the refactored code computes what the
+            original computed. It says nothing about whether the original was right.
+            The open methodological problems with the study, in particular the uneven
+            parse-failure rate across conditions in the 600-call run, are unaffected by
+            any of this and are recorded separately in the repository's open issues.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rule-head"><span class="eyebrow">Reproduce</span></div>
+    <h2>Rerunning these checks</h2>
+    <p class="lede">
+      None of the following makes a network call or modifies its inputs. The corpus
+      must be present at <code>data/anecdotes.tar</code>; everything else ships with
+      the repository, and the analysis path needs only the standard library.
+    </p>
+    <pre class="cmd" style="margin-top:18px">python3 scripts/audit_results.py results/legacy/results_v2.jsonl \
+    --archive data/anecdotes.tar --out /tmp/audit.json
+shasum -a 256 /tmp/audit.json results/reports/audit_report.json
+
+python3 scripts/compute_metric.py
+
+python3 scripts/analyze_control_pilot.py \
+    results/pilot_v4/2968f02acc8e2d59 --reparse
+
+python3 scripts/diagnose_responses.py \
+    results/pilot_v4/2968f02acc8e2d59/manifest.json \
+    results/pilot_v4/2968f02acc8e2d59/responses.jsonl \
+    --out /tmp/diagnostics.json
+
+python3 scripts/run_control_pilot.py --data data/anecdotes.tar \
+    --items 20 --samples 10 --max-tokens 4096 --provider parasail
+
+python3 -m unittest discover -s tests -v</pre>
+  </section>
+
+  <footer>
+    Verification performed 24 September 2026 against the working tree prior to its
+    first commit. Digests are SHA-256, truncated to 16 hex characters for display.
+    Full-length digests can be recomputed with the commands above.
+  </footer>
+
+</div>
+</body>
+</html>

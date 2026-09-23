@@ -1,0 +1,4 @@
+# The analysis and test paths need nothing beyond the standard library, so a
+# reader can recompute every reported figure without installing this.
+# Only the two runners, and only with --execute, require the client below.
+openai>=1.0

@@ -1,0 +1,158 @@
+{
+  "note": "Exploratory development results; available-valid distributions may be biased by missingness.",
+  "coverage": {
+    "baseline": {
+      "planned": 10,
+      "recorded": 10,
+      "valid": 10,
+      "statuses": {
+        "valid": 10
+      }
+    },
+    "generic": {
+      "planned": 10,
+      "recorded": 10,
+      "valid": 10,
+      "statuses": {
+        "valid": 10
+      }
+    },
+    "original": {
+      "planned": 10,
+      "recorded": 10,
+      "valid": 10,
+      "statuses": {
+        "valid": 10
+      }
+    }
+  },
+  "comparisons": {
+    "original_minus_baseline_available_pairs": {
+      "n": 5,
+      "baseline_js": 0.23572101391888342,
+      "intervention_js": 0.1630162411412669,
+      "difference": -0.07270477277761653,
+      "closer": 2,
+      "farther": 1,
+      "tied": 2,
+      "exploratory_paired_item_bootstrap_95_percent": [
+        -0.3067783985076556,
+        0.14734985986455246
+      ]
+    },
+    "original_minus_baseline_complete_all_arms": {
+      "n": 5,
+      "baseline_js": 0.23572101391888342,
+      "intervention_js": 0.1630162411412669,
+      "difference": -0.07270477277761653,
+      "closer": 2,
+      "farther": 1,
+      "tied": 2,
+      "exploratory_paired_item_bootstrap_95_percent": [
+        -0.3067783985076556,
+        0.14734985986455246
+      ]
+    },
+    "generic_minus_baseline_available_pairs": {
+      "n": 5,
+      "baseline_js": 0.23572101391888342,
+      "intervention_js": 0.11209040956289067,
+      "difference": -0.12363060435599274,
+      "closer": 3,
+      "farther": 0,
+      "tied": 2,
+      "exploratory_paired_item_bootstrap_95_percent": [
+        -0.3015133741654652,
+        -0.0073642145588564524
+      ]
+    },
+    "generic_minus_baseline_complete_all_arms": {
+      "n": 5,
+      "baseline_js": 0.23572101391888342,
+      "intervention_js": 0.11209040956289067,
+      "difference": -0.12363060435599274,
+      "closer": 3,
+      "farther": 0,
+      "tied": 2,
+      "exploratory_paired_item_bootstrap_95_percent": [
+        -0.3015133741654652,
+        -0.0073642145588564524
+      ]
+    },
+    "original_minus_generic_available_pairs": {
+      "n": 5,
+      "baseline_js": 0.11209040956289067,
+      "intervention_js": 0.1630162411412669,
+      "difference": 0.05092583157837621,
+      "closer": 1,
+      "farther": 1,
+      "tied": 3,
+      "exploratory_paired_item_bootstrap_95_percent": [
+        -0.10929790879079365,
+        0.2620754035259223
+      ]
+    },
+    "original_minus_generic_complete_all_arms": {
+      "n": 5,
+      "baseline_js": 0.11209040956289067,
+      "intervention_js": 0.1630162411412669,
+      "difference": 0.05092583157837621,
+      "closer": 1,
+      "farther": 1,
+      "tied": 3,
+      "exploratory_paired_item_bootstrap_95_percent": [
+        -0.10929790879079365,
+        0.2620754035259223
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "js": {
+        "baseline": 0.49342260576014463,
+        "generic": 0.030305144839322347,
+        "original": 0.030305144839322347
+      },
+      "complete_all_conditions": true
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "js": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      },
+      "complete_all_conditions": true
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "js": {
+        "baseline": 0.2942732479324205,
+        "generic": 0.25745217513813823,
+        "original": 0.07528899382014882
+      },
+      "complete_all_conditions": true
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "js": {
+        "baseline": 0.1379253809700299,
+        "generic": 0.1379253809700299,
+        "original": 0.1379253809700299
+      },
+      "complete_all_conditions": true
+    },
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "js": {
+        "baseline": 0.252983834931822,
+        "generic": 0.13476934686696287,
+        "original": 0.5715616860768333
+      },
+      "complete_all_conditions": true
+    }
+  ],
+  "parser_used": "exact_label_or_final_marker_v3",
+  "posthoc_reparse": true
+}

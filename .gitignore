@@ -1,0 +1,17 @@
+# Secrets. Only .env.example is tracked.
+.env
+
+# Local interpreter and caches
+venv/
+__pycache__/
+*.py[cod]
+
+# macOS metadata
+.DS_Store
+
+# Scruples corpus. Obtained separately, see README for the download step.
+anecdotes.tar
+*.scruples-anecdotes.jsonl
+
+# Runner mutex files, recreated on each run
+*.lock

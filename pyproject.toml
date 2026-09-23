@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "moral-judgment-eval"
+version = "0.1.0"
+description = "Evaluation of LLM moral judgment distributions against human annotation spreads on Scruples"
+requires-python = ">=3.9"
+dependencies = ["openai>=1.0"]
+
+[tool.setuptools]
+packages = ["moral_judgment"]

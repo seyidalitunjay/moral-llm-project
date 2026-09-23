@@ -1,0 +1,430 @@
+{
+  "config_hash": "2968f02acc8e2d59c8d60f498fdfc9b1734f8c1120e5cd51593d1ec80dac69bc",
+  "responses_sha256": "67935202dfead9788a43b549229da26ea04d3feb49f11e3828d7d65fca164f98",
+  "parser_version": "exact_label_or_final_marker_v3",
+  "note": "Post-hoc format-only reinterpretation of final labels. Original records remain unchanged. No labels inferred from rationales or human judgments.",
+  "coverage": {
+    "baseline": {
+      "recorded": {
+        "invalid_label_format": 6,
+        "valid": 4
+      },
+      "reparsed": {
+        "valid": 10
+      }
+    },
+    "generic": {
+      "recorded": {
+        "valid": 10
+      },
+      "reparsed": {
+        "valid": 10
+      }
+    },
+    "original": {
+      "recorded": {
+        "valid": 10
+      },
+      "reparsed": {
+        "valid": 10
+      }
+    }
+  },
+  "providers": {
+    "Parasail": 30
+  },
+  "recovered_format_only": 6,
+  "total_valid": 30,
+  "records": [
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "original",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "EVERYBODY",
+      "derived_status": "valid",
+      "derived_label": "EVERYBODY",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 690,
+      "last_content_line": "FINAL_LABEL: EVERYBODY"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "original",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 577,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "generic",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 633,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "original",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 901,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "baseline",
+      "sample": 1,
+      "recorded_status": "invalid_label_format",
+      "recorded_label": null,
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 347,
+      "last_content_line": "OTHER"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "baseline",
+      "sample": 1,
+      "recorded_status": "invalid_label_format",
+      "recorded_label": null,
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 361,
+      "last_content_line": "OTHER"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "generic",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 623,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "baseline",
+      "sample": 1,
+      "recorded_status": "invalid_label_format",
+      "recorded_label": null,
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 274,
+      "last_content_line": "OTHER"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "original",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 498,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "original",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "AUTHOR",
+      "derived_status": "valid",
+      "derived_label": "AUTHOR",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 689,
+      "last_content_line": "FINAL_LABEL: AUTHOR"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "original",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "AUTHOR",
+      "derived_status": "valid",
+      "derived_label": "AUTHOR",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 2853,
+      "last_content_line": "FINAL_LABEL: AUTHOR"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "baseline",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 338,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "baseline",
+      "sample": 1,
+      "recorded_status": "invalid_label_format",
+      "recorded_label": null,
+      "derived_status": "valid",
+      "derived_label": "AUTHOR",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 537,
+      "last_content_line": "AUTHOR"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "baseline",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "NOBODY",
+      "derived_status": "valid",
+      "derived_label": "NOBODY",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 297,
+      "last_content_line": "FINAL_LABEL: NOBODY"
+    },
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "generic",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "AUTHOR",
+      "derived_status": "valid",
+      "derived_label": "AUTHOR",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 1402,
+      "last_content_line": "FINAL_LABEL: AUTHOR"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "original",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "NOBODY",
+      "derived_status": "valid",
+      "derived_label": "NOBODY",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 766,
+      "last_content_line": "FINAL_LABEL: NOBODY"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "generic",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "AUTHOR",
+      "derived_status": "valid",
+      "derived_label": "AUTHOR",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 733,
+      "last_content_line": "FINAL_LABEL: AUTHOR"
+    },
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "original",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "EVERYBODY",
+      "derived_status": "valid",
+      "derived_label": "EVERYBODY",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 1032,
+      "last_content_line": "FINAL_LABEL: EVERYBODY"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "original",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 573,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "baseline",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "AUTHOR",
+      "derived_status": "valid",
+      "derived_label": "AUTHOR",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 786,
+      "last_content_line": "FINAL_LABEL: AUTHOR"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "generic",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "NOBODY",
+      "derived_status": "valid",
+      "derived_label": "NOBODY",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 725,
+      "last_content_line": "FINAL_LABEL: NOBODY"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "generic",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 2072,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "generic",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "NOBODY",
+      "derived_status": "valid",
+      "derived_label": "NOBODY",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 841,
+      "last_content_line": "FINAL_LABEL: NOBODY"
+    },
+    {
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "condition": "baseline",
+      "sample": 0,
+      "recorded_status": "invalid_label_format",
+      "recorded_label": null,
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 191,
+      "last_content_line": "OTHER"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "original",
+      "sample": 1,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 432,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "generic",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 588,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "condition": "baseline",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 505,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "condition": "generic",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "EVERYBODY",
+      "derived_status": "valid",
+      "derived_label": "EVERYBODY",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 1370,
+      "last_content_line": "FINAL_LABEL: EVERYBODY"
+    },
+    {
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "condition": "generic",
+      "sample": 0,
+      "recorded_status": "valid",
+      "recorded_label": "OTHER",
+      "derived_status": "valid",
+      "derived_label": "OTHER",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 874,
+      "last_content_line": "FINAL_LABEL: OTHER"
+    },
+    {
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "condition": "baseline",
+      "sample": 1,
+      "recorded_status": "invalid_label_format",
+      "recorded_label": null,
+      "derived_status": "valid",
+      "derived_label": "NOBODY",
+      "provider": "Parasail",
+      "finish_reason": "stop",
+      "completion_tokens": 217,
+      "last_content_line": "NOBODY"
+    }
+  ]
+}

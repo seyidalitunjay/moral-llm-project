@@ -1,0 +1,2109 @@
+{
+  "input_sha256": "ca287ebedf77373d20fb17198d5cb6309362af0785855cbf5a0f4a9ce5a857ea",
+  "metric": "Mean base-2 Jensen-Shannon divergence; human labels conditional on non-INFO; model labels conditional on valid parse",
+  "bootstrap_note": "Exploratory percentile bootstrap over paired items, seed 20260913, 10000 resamples. Convenience sample; not a confirmatory population interval and not a separate estimate of model-sampling or human-annotation uncertainty.",
+  "groups": {
+    "all_60_rows_as_uploaded": {
+      "n": 60,
+      "baseline_js": 0.2728636170566872,
+      "intervention_js": 0.360447389286713,
+      "difference": 0.08758377223002582,
+      "closer": 8,
+      "farther": 25,
+      "tied": 27,
+      "exploratory_paired_item_bootstrap_95_percent": [
+        0.03892033135536598,
+        0.13911958050189988
+      ]
+    },
+    "ten_attempt_rows": {
+      "n": 5,
+      "baseline_js": 0.3707771963933269,
+      "intervention_js": 0.34904600875369857,
+      "difference": -0.02173118763962833,
+      "closer": 1,
+      "farther": 2,
+      "tied": 2,
+      "exploratory_paired_item_bootstrap_95_percent": [
+        -0.11272736612795925,
+        0.04252798209274798
+      ]
+    },
+    "five_attempt_rows": {
+      "n": 55,
+      "baseline_js": 0.26396238257153815,
+      "intervention_js": 0.361483878426078,
+      "difference": 0.09752149585453983,
+      "closer": 7,
+      "farther": 23,
+      "tied": 25,
+      "exploratory_paired_item_bootstrap_95_percent": [
+        0.04420759827745441,
+        0.15188893625980382
+      ]
+    },
+    "five_valid_each": {
+      "n": 53,
+      "baseline_js": 0.27309197908483496,
+      "intervention_js": 0.3742935313867159,
+      "difference": 0.10120155230188096,
+      "closer": 7,
+      "farther": 23,
+      "tied": 23,
+      "exploratory_paired_item_bootstrap_95_percent": [
+        0.046439695552400795,
+        0.15856693370206876
+      ]
+    }
+  },
+  "attempts": {
+    "baseline": 325,
+    "intervention": 325
+  },
+  "valid": {
+    "baseline": 324,
+    "intervention": 322
+  },
+  "incomplete_rows": [
+    {
+      "row": 2,
+      "id": "P96wm6qNDeGdaHy25VrNmYPWbtyTAxDN",
+      "human_scores": {
+        "AUTHOR": 1,
+        "OTHER": 8,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.1111111111111111,
+        "OTHER": 0.8888888888888888,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 9,
+        "NOBODY": 1
+      },
+      "intervention_counts": {
+        "OTHER": 7,
+        "NOBODY": 1
+      },
+      "baseline_js": 0.10558044693439039,
+      "intervention_js": 0.11809499972520607,
+      "baseline_attempts": 10,
+      "baseline_valid": 10,
+      "intervention_attempts": 10,
+      "intervention_valid": 8,
+      "difference": 0.012514552790815675,
+      "title": "Aita here? Two parents, two different reactions"
+    },
+    {
+      "row": 17,
+      "id": "trQhUewlqGqFHuILFrCk6g8cLlTfCP6g",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 3,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 4
+      },
+      "baseline_js": 0.0,
+      "intervention_js": 0.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 4,
+      "difference": 0.0,
+      "title": "WIBTA if I got mad at my friend for constantly flaking out on plans?"
+    },
+    {
+      "row": 21,
+      "id": "wsHKrTPSiBGttaJiPpoJlgJ5nsF4h7Og",
+      "human_scores": {
+        "AUTHOR": 5,
+        "OTHER": 75,
+        "EVERYBODY": 2,
+        "NOBODY": 0,
+        "INFO": 1
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.06097560975609756,
+        "OTHER": 0.9146341463414634,
+        "EVERYBODY": 0.024390243902439025,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 4
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.044056149938344516,
+      "intervention_js": 0.044056149938344516,
+      "baseline_attempts": 5,
+      "baseline_valid": 4,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA For Calling the Police on my Sister?"
+    }
+  ],
+  "human_info_items": 20,
+  "human_info_count": 34,
+  "human_count": 1264,
+  "human_count_median": 10.0,
+  "split_sizes": {
+    "train": 27766,
+    "dev": 2500,
+    "test": 2500
+  },
+  "first_dev_rows_exact_match": true,
+  "items": [
+    {
+      "row": 1,
+      "id": "ySQlJw4BNwbaNiHcdS6Hdf3ZHnBrAg9d",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 3,
+        "EVERYBODY": 1,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 0.75,
+        "EVERYBODY": 0.25,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "NOBODY": 5,
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 4,
+        "AUTHOR": 4,
+        "NOBODY": 2
+      },
+      "baseline_js": 0.3931558784658321,
+      "intervention_js": 0.4640358486204121,
+      "baseline_attempts": 10,
+      "baseline_valid": 10,
+      "intervention_attempts": 10,
+      "intervention_valid": 10,
+      "difference": 0.07087997015457997,
+      "title": "AITA for wanting to wear a shirt?"
+    },
+    {
+      "row": 2,
+      "id": "P96wm6qNDeGdaHy25VrNmYPWbtyTAxDN",
+      "human_scores": {
+        "AUTHOR": 1,
+        "OTHER": 8,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.1111111111111111,
+        "OTHER": 0.8888888888888888,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 9,
+        "NOBODY": 1
+      },
+      "intervention_counts": {
+        "OTHER": 7,
+        "NOBODY": 1
+      },
+      "baseline_js": 0.10558044693439039,
+      "intervention_js": 0.11809499972520607,
+      "baseline_attempts": 10,
+      "baseline_valid": 10,
+      "intervention_attempts": 10,
+      "intervention_valid": 8,
+      "difference": 0.012514552790815675,
+      "title": "Aita here? Two parents, two different reactions"
+    },
+    {
+      "row": 3,
+      "id": "QYwk7bbUf8VOiCDKRSoarulHfeZ3Rf6c",
+      "human_scores": {
+        "AUTHOR": 1,
+        "OTHER": 10,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.09090909090909091,
+        "OTHER": 0.9090909090909091,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 10
+      },
+      "intervention_counts": {
+        "OTHER": 10
+      },
+      "baseline_js": 0.04701649434226942,
+      "intervention_js": 0.04701649434226942,
+      "baseline_attempts": 10,
+      "baseline_valid": 10,
+      "intervention_attempts": 10,
+      "intervention_valid": 10,
+      "difference": 0.0,
+      "title": "AITA for not wanting to be told to save money?"
+    },
+    {
+      "row": 4,
+      "id": "Wn1d74VAGKsZEdpDr2E5gt3dRsY4iFRx",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 1,
+        "EVERYBODY": 0,
+        "NOBODY": 5,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 0.16666666666666666,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.8333333333333334
+      },
+      "baseline_counts": {
+        "OTHER": 3,
+        "NOBODY": 3,
+        "AUTHOR": 4
+      },
+      "intervention_counts": {
+        "NOBODY": 5,
+        "OTHER": 4,
+        "EVERYBODY": 1
+      },
+      "baseline_js": 0.30813316222414255,
+      "intervention_js": 0.11608270108060527,
+      "baseline_attempts": 10,
+      "baseline_valid": 10,
+      "intervention_attempts": 10,
+      "intervention_valid": 10,
+      "difference": -0.1920504611435373,
+      "title": "AITA for being disappointed that my friend is bringing someone with them to visit me"
+    },
+    {
+      "row": 5,
+      "id": "ETj3fuuyAqtOeVIMFhbZzToJM3Lkfpqf",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 5,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "NOBODY": 7,
+        "AUTHOR": 3
+      },
+      "intervention_counts": {
+        "NOBODY": 10
+      },
+      "baseline_js": 1.0,
+      "intervention_js": 1.0,
+      "baseline_attempts": 10,
+      "baseline_valid": 10,
+      "intervention_attempts": 10,
+      "intervention_valid": 10,
+      "difference": 0.0,
+      "title": "AITA for being late for work due to a power outage?"
+    },
+    {
+      "row": 6,
+      "id": "0RpE03gHX7k3usIjWIZMHbZsufJhBj0e",
+      "human_scores": {
+        "AUTHOR": 6,
+        "OTHER": 0,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 1.0,
+        "OTHER": 0.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 1,
+        "AUTHOR": 4
+      },
+      "intervention_counts": {
+        "AUTHOR": 4,
+        "EVERYBODY": 1
+      },
+      "baseline_js": 0.10803154614560012,
+      "intervention_js": 0.10803154614560012,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for going off on a friend for making a comment about my sports team?"
+    },
+    {
+      "row": 7,
+      "id": "tb6yl5VDFA23aGW7zvXjMy3e2i13CLdf",
+      "human_scores": {
+        "AUTHOR": 7,
+        "OTHER": 0,
+        "EVERYBODY": 0,
+        "NOBODY": 3,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.7,
+        "OTHER": 0.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.3
+      },
+      "baseline_counts": {
+        "NOBODY": 5
+      },
+      "intervention_counts": {
+        "NOBODY": 5
+      },
+      "baseline_js": 0.49342260576014463,
+      "intervention_js": 0.49342260576014463,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for not wanting to go to prom?"
+    },
+    {
+      "row": 8,
+      "id": "LMm10e7QluyuZFyhnN0NHsO8yVVFQg95",
+      "human_scores": {
+        "AUTHOR": 5,
+        "OTHER": 32,
+        "EVERYBODY": 5,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.11904761904761904,
+        "OTHER": 0.7619047619047619,
+        "EVERYBODY": 0.11904761904761904,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "AUTHOR": 5
+      },
+      "intervention_counts": {
+        "AUTHOR": 5
+      },
+      "baseline_js": 0.7264440024082832,
+      "intervention_js": 0.7264440024082832,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for breaking up with my long distance Gf for the 4th time which supposedly led her to kill herself?"
+    },
+    {
+      "row": 9,
+      "id": "AL5hgBGX02eG3FrnwRgCPmMMEeXwq1w1",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 2,
+        "EVERYBODY": 0,
+        "NOBODY": 1,
+        "INFO": 3
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 0.6666666666666666,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.3333333333333333
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.1908745046211096,
+      "intervention_js": 0.1908745046211096,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "Aita for asking my SO to wait and follow our new Mint budget?"
+    },
+    {
+      "row": 10,
+      "id": "X2Quj6gnZqM3fwqSiZGTBic2ARBPc6dm",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 1,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "NOBODY": 4,
+        "OTHER": 1
+      },
+      "intervention_counts": {
+        "NOBODY": 4,
+        "OTHER": 1
+      },
+      "baseline_js": 0.6099865470109875,
+      "intervention_js": 0.6099865470109875,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for not wanting to move to France with my dad?"
+    },
+    {
+      "row": 11,
+      "id": "UqzHovc5IG6sWyO8iU0qcvTZsAGazgUC",
+      "human_scores": {
+        "AUTHOR": 5,
+        "OTHER": 31,
+        "EVERYBODY": 12,
+        "NOBODY": 1,
+        "INFO": 1
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.10204081632653061,
+        "OTHER": 0.6326530612244898,
+        "EVERYBODY": 0.24489795918367346,
+        "NOBODY": 0.02040816326530612
+      },
+      "baseline_counts": {
+        "AUTHOR": 4,
+        "NOBODY": 1
+      },
+      "intervention_counts": {
+        "AUTHOR": 5
+      },
+      "baseline_js": 0.7212644209891781,
+      "intervention_js": 0.7547601808087216,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.03349575981954356,
+      "title": "AITA for not forgiving my MIL?"
+    },
+    {
+      "row": 12,
+      "id": "PoIZ8cZ1EFhkwQ1l1e1SjeNs37tw7Sjk",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 6,
+        "EVERYBODY": 3,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 0.6666666666666666,
+        "EVERYBODY": 0.3333333333333333,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.1908745046211096,
+      "intervention_js": 0.1908745046211096,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for making MIL leave our home while my fiance is away?"
+    },
+    {
+      "row": 13,
+      "id": "qAdcTR8YMFlkpS6KAzfbFG99cJ7x48FT",
+      "human_scores": {
+        "AUTHOR": 15,
+        "OTHER": 4,
+        "EVERYBODY": 6,
+        "NOBODY": 1,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.5769230769230769,
+        "OTHER": 0.15384615384615385,
+        "EVERYBODY": 0.23076923076923078,
+        "NOBODY": 0.038461538461538464
+      },
+      "baseline_counts": {
+        "AUTHOR": 4,
+        "NOBODY": 1
+      },
+      "intervention_counts": {
+        "NOBODY": 3,
+        "AUTHOR": 2
+      },
+      "baseline_js": 0.2486349841064417,
+      "intervention_js": 0.41832327943984704,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.16968829533340535,
+      "title": "AITA for getting mad at my girlfriend for having pitty sex"
+    },
+    {
+      "row": 14,
+      "id": "LyUHAJSBDXCWR39iz4txpskfKVQV9Q10",
+      "human_scores": {
+        "AUTHOR": 9,
+        "OTHER": 20,
+        "EVERYBODY": 2,
+        "NOBODY": 2,
+        "INFO": 2
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.2727272727272727,
+        "OTHER": 0.6060606060606061,
+        "EVERYBODY": 0.06060606060606061,
+        "NOBODY": 0.06060606060606061
+      },
+      "baseline_counts": {
+        "OTHER": 2,
+        "AUTHOR": 2,
+        "NOBODY": 1
+      },
+      "intervention_counts": {
+        "OTHER": 3,
+        "NOBODY": 2
+      },
+      "baseline_js": 0.08271887192328722,
+      "intervention_js": 0.2676073535817781,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.1848884816584909,
+      "title": "AITA because I don\u2019t want randoms at my wedding?"
+    },
+    {
+      "row": 15,
+      "id": "LYmAPIp3kLvjYdGdkRurRtgH2G87KDRt",
+      "human_scores": {
+        "AUTHOR": 13,
+        "OTHER": 18,
+        "EVERYBODY": 3,
+        "NOBODY": 1,
+        "INFO": 1
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.37142857142857144,
+        "OTHER": 0.5142857142857142,
+        "EVERYBODY": 0.08571428571428572,
+        "NOBODY": 0.02857142857142857
+      },
+      "baseline_counts": {
+        "AUTHOR": 4,
+        "OTHER": 1
+      },
+      "intervention_counts": {
+        "AUTHOR": 3,
+        "NOBODY": 2
+      },
+      "baseline_js": 0.16665359571574884,
+      "intervention_js": 0.4581465083765044,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.29149291266075555,
+      "title": "AITA - cutting off good female friend due to booty call...."
+    },
+    {
+      "row": 16,
+      "id": "8kc0BReuMylcjZ2yCjrJ6PsyVc6AsBLE",
+      "human_scores": {
+        "AUTHOR": 8,
+        "OTHER": 7,
+        "EVERYBODY": 1,
+        "NOBODY": 0,
+        "INFO": 1
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.5,
+        "OTHER": 0.4375,
+        "EVERYBODY": 0.0625,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "AUTHOR": 5
+      },
+      "intervention_counts": {
+        "AUTHOR": 5
+      },
+      "baseline_js": 0.31127812445913283,
+      "intervention_js": 0.31127812445913283,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA? Crying everyday normal?"
+    },
+    {
+      "row": 17,
+      "id": "trQhUewlqGqFHuILFrCk6g8cLlTfCP6g",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 3,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 4
+      },
+      "baseline_js": 0.0,
+      "intervention_js": 0.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 4,
+      "difference": 0.0,
+      "title": "WIBTA if I got mad at my friend for constantly flaking out on plans?"
+    },
+    {
+      "row": 18,
+      "id": "asNElCSzHfRQxvZW8w2i4caKnZOoyvvl",
+      "human_scores": {
+        "AUTHOR": 6,
+        "OTHER": 0,
+        "EVERYBODY": 2,
+        "NOBODY": 0,
+        "INFO": 2
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.75,
+        "OTHER": 0.0,
+        "EVERYBODY": 0.25,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "AUTHOR": 5
+      },
+      "intervention_counts": {
+        "AUTHOR": 4,
+        "EVERYBODY": 1
+      },
+      "baseline_js": 0.1379253809700299,
+      "intervention_js": 0.002589719339766129,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": -0.13533566163026378,
+      "title": "AITA for blocking my girlfriend for not respecting my feelings?"
+    },
+    {
+      "row": 19,
+      "id": "9poF9IZtjt8kZcuNhen4KxK0BOlRoXxQ",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 8,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 1,
+        "NOBODY": 2,
+        "AUTHOR": 2
+      },
+      "baseline_js": 0.0,
+      "intervention_js": 0.6099865470109875,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.6099865470109875,
+      "title": "AITA, for panic kicking a dog."
+    },
+    {
+      "row": 20,
+      "id": "XtA8hBy4SNbyxJE4XFFCsZvAUWuEPlzv",
+      "human_scores": {
+        "AUTHOR": 1,
+        "OTHER": 21,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.045454545454545456,
+        "OTHER": 0.9545454545454546,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "AUTHOR": 1,
+        "NOBODY": 1,
+        "OTHER": 3
+      },
+      "baseline_js": 0.023108569004188582,
+      "intervention_js": 0.16730993051434534,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.14420136151015675,
+      "title": "AITA for giving my boss an ultimatum that willcost him thousands?"
+    },
+    {
+      "row": 21,
+      "id": "wsHKrTPSiBGttaJiPpoJlgJ5nsF4h7Og",
+      "human_scores": {
+        "AUTHOR": 5,
+        "OTHER": 75,
+        "EVERYBODY": 2,
+        "NOBODY": 0,
+        "INFO": 1
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.06097560975609756,
+        "OTHER": 0.9146341463414634,
+        "EVERYBODY": 0.024390243902439025,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 4
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.044056149938344516,
+      "intervention_js": 0.044056149938344516,
+      "baseline_attempts": 5,
+      "baseline_valid": 4,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA For Calling the Police on my Sister?"
+    },
+    {
+      "row": 22,
+      "id": "P1t4Zgz6poJCIqZnsULNryXEC8iychnY",
+      "human_scores": {
+        "AUTHOR": 1,
+        "OTHER": 2,
+        "EVERYBODY": 0,
+        "NOBODY": 3,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.16666666666666666,
+        "OTHER": 0.3333333333333333,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.5
+      },
+      "baseline_counts": {
+        "NOBODY": 5
+      },
+      "intervention_counts": {
+        "NOBODY": 5
+      },
+      "baseline_js": 0.3112781244591328,
+      "intervention_js": 0.3112781244591328,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for wanting to back out of my best friend\u2019s bachelorette weekend?"
+    },
+    {
+      "row": 23,
+      "id": "J2bBmpfOxqxdZ1ILdEUe0II22cnrBgIx",
+      "human_scores": {
+        "AUTHOR": 1,
+        "OTHER": 13,
+        "EVERYBODY": 0,
+        "NOBODY": 1,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.06666666666666667,
+        "OTHER": 0.8666666666666667,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.06666666666666667
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "NOBODY": 1,
+        "AUTHOR": 3,
+        "OTHER": 1
+      },
+      "baseline_js": 0.0701045817449687,
+      "intervention_js": 0.36418451347561076,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.29407993173064206,
+      "title": "AITA for telling an old lady to shut up and keep quiet?"
+    },
+    {
+      "row": 24,
+      "id": "5OQ22DTkpNrFqIkAUinBMfXFdh272JcF",
+      "human_scores": {
+        "AUTHOR": 6,
+        "OTHER": 1,
+        "EVERYBODY": 1,
+        "NOBODY": 5,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.46153846153846156,
+        "OTHER": 0.07692307692307693,
+        "EVERYBODY": 0.07692307692307693,
+        "NOBODY": 0.38461538461538464
+      },
+      "baseline_counts": {
+        "NOBODY": 5
+      },
+      "intervention_counts": {
+        "NOBODY": 5
+      },
+      "baseline_js": 0.40987333785805335,
+      "intervention_js": 0.40987333785805335,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for being upset about my ex dating others while living with me?"
+    },
+    {
+      "row": 25,
+      "id": "HMBDRqVZT39TpfNsB08Dx9BmS5u9vUgj",
+      "human_scores": {
+        "AUTHOR": 3,
+        "OTHER": 1,
+        "EVERYBODY": 1,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.6,
+        "OTHER": 0.2,
+        "EVERYBODY": 0.2,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "AUTHOR": 4,
+        "NOBODY": 1
+      },
+      "intervention_counts": {
+        "NOBODY": 4,
+        "AUTHOR": 1
+      },
+      "baseline_js": 0.31034030477602415,
+      "intervention_js": 0.6754887502163468,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.36514844544032266,
+      "title": "WIBTA If I asked my SIL to repay vet costs that I helped her with?"
+    },
+    {
+      "row": 26,
+      "id": "UbJRtvSmBGn8eLywyrfl0y0hwsD02FmA",
+      "human_scores": {
+        "AUTHOR": 1,
+        "OTHER": 1,
+        "EVERYBODY": 0,
+        "NOBODY": 3,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.2,
+        "OTHER": 0.2,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.6
+      },
+      "baseline_counts": {
+        "AUTHOR": 5
+      },
+      "intervention_counts": {
+        "EVERYBODY": 2,
+        "AUTHOR": 2,
+        "OTHER": 1
+      },
+      "baseline_js": 0.6099865470109875,
+      "intervention_js": 0.5245112497836532,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": -0.08547529722733438,
+      "title": "AITA for joking about a subreddit's imminent brigading?"
+    },
+    {
+      "row": 27,
+      "id": "bGVuBZPWP7Pj8eDFzCdEU8mR4GIKRMdl",
+      "human_scores": {
+        "AUTHOR": 38,
+        "OTHER": 3,
+        "EVERYBODY": 1,
+        "NOBODY": 3,
+        "INFO": 2
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.8444444444444444,
+        "OTHER": 0.06666666666666667,
+        "EVERYBODY": 0.022222222222222223,
+        "NOBODY": 0.06666666666666667
+      },
+      "baseline_counts": {
+        "AUTHOR": 5
+      },
+      "intervention_counts": {
+        "EVERYBODY": 3,
+        "AUTHOR": 2
+      },
+      "baseline_js": 0.08251513382107611,
+      "intervention_js": 0.36715605158214193,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.2846409177610658,
+      "title": "AITA for making a \"hook up pact\" whilst having a girlfriend."
+    },
+    {
+      "row": 28,
+      "id": "oYbDs1ULzLTCQq8LnsfLgIRDj6twzLtN",
+      "human_scores": {
+        "AUTHOR": 1,
+        "OTHER": 27,
+        "EVERYBODY": 2,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.03333333333333333,
+        "OTHER": 0.9,
+        "EVERYBODY": 0.06666666666666667,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 3,
+        "AUTHOR": 2
+      },
+      "intervention_counts": {
+        "OTHER": 2,
+        "AUTHOR": 2,
+        "NOBODY": 1
+      },
+      "baseline_js": 0.18701761537265976,
+      "intervention_js": 0.3364109950709919,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.14939337969833216,
+      "title": "AITA: My brothers boyfriend is a pathological liar but I might have crossed a line to prove it"
+    },
+    {
+      "row": 29,
+      "id": "xXuFn3WHVRj11t3hyKM6EEGT3E3WtF2z",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 5,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 2
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.0,
+      "intervention_js": 0.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "WIBTA for not wishing my brother a happy B-day tomorrow after he punched me in the face earlier this month?"
+    },
+    {
+      "row": 30,
+      "id": "6Plfui1qpf4L2pUgYhymQ6BMoW6N1f6m",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 7,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 3,
+        "NOBODY": 2
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.23645279766002797,
+      "intervention_js": 0.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": -0.23645279766002797,
+      "title": "AITA for not inviting my husbands extended family to our wedding?"
+    },
+    {
+      "row": 31,
+      "id": "SM2XNceoreoWPZhzPMj3BGdl3yKT4uyw",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 1,
+        "EVERYBODY": 0,
+        "NOBODY": 4,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 0.2,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.8
+      },
+      "baseline_counts": {
+        "AUTHOR": 2,
+        "NOBODY": 1,
+        "OTHER": 2
+      },
+      "intervention_counts": {
+        "NOBODY": 3,
+        "AUTHOR": 2
+      },
+      "baseline_js": 0.363547202339972,
+      "intervention_js": 0.31034030477602415,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": -0.053206897563947864,
+      "title": "AITA for telling my boyfriend to stop asking me for advice"
+    },
+    {
+      "row": 32,
+      "id": "ontkQ7z7ec8LpLM2blHDNPU2o9ldS7oB",
+      "human_scores": {
+        "AUTHOR": 5,
+        "OTHER": 3,
+        "EVERYBODY": 6,
+        "NOBODY": 1,
+        "INFO": 1
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.3333333333333333,
+        "OTHER": 0.2,
+        "EVERYBODY": 0.4,
+        "NOBODY": 0.06666666666666667
+      },
+      "baseline_counts": {
+        "AUTHOR": 5
+      },
+      "intervention_counts": {
+        "AUTHOR": 5
+      },
+      "baseline_js": 0.4591479170272448,
+      "intervention_js": 0.4591479170272448,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA- Pranked my best uni friend with disastrous consequences"
+    },
+    {
+      "row": 33,
+      "id": "IYDI7lasFts4cqaZK7qzECQjSs76pOm6",
+      "human_scores": {
+        "AUTHOR": 5,
+        "OTHER": 8,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.38461538461538464,
+        "OTHER": 0.6153846153846154,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "NOBODY": 1,
+        "OTHER": 4
+      },
+      "intervention_counts": {
+        "NOBODY": 5
+      },
+      "baseline_js": 0.3010176090891238,
+      "intervention_js": 1.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.6989823909108762,
+      "title": "AITA for not tipping when picking up a carry out order from a sit down restaurant?"
+    },
+    {
+      "row": 34,
+      "id": "ZTQKCugBaQ4FqNeScnA2CYGK8ucRdbCv",
+      "human_scores": {
+        "AUTHOR": 1,
+        "OTHER": 11,
+        "EVERYBODY": 0,
+        "NOBODY": 1,
+        "INFO": 2
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.07692307692307693,
+        "OTHER": 0.8461538461538461,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.07692307692307693
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.08155246628987375,
+      "intervention_js": 0.08155246628987375,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for barely tipping my extremely rude waiter?"
+    },
+    {
+      "row": 35,
+      "id": "NOwaTFWW7Q7IIa3ifS3RJ8Zb5JpaXB3C",
+      "human_scores": {
+        "AUTHOR": 13,
+        "OTHER": 0,
+        "EVERYBODY": 1,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.9285714285714286,
+        "OTHER": 0.0,
+        "EVERYBODY": 0.07142857142857142,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 2,
+        "NOBODY": 3
+      },
+      "baseline_js": 1.0,
+      "intervention_js": 1.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for putting parsley on my roommates scrambled eggs?"
+    },
+    {
+      "row": 36,
+      "id": "DwEphytqIHeazkLfFtsuMh5qm9yval90",
+      "human_scores": {
+        "AUTHOR": 8,
+        "OTHER": 70,
+        "EVERYBODY": 9,
+        "NOBODY": 2,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0898876404494382,
+        "OTHER": 0.7865168539325843,
+        "EVERYBODY": 0.10112359550561797,
+        "NOBODY": 0.02247191011235955
+      },
+      "baseline_counts": {
+        "OTHER": 4,
+        "AUTHOR": 1
+      },
+      "intervention_counts": {
+        "AUTHOR": 3,
+        "NOBODY": 1,
+        "OTHER": 1
+      },
+      "baseline_js": 0.07730996206494783,
+      "intervention_js": 0.39613637705138227,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.31882641498643444,
+      "title": "AITA For Leaving A Very Confused Deli Girl Holding A Pile Of Meat Without Saying A Word?"
+    },
+    {
+      "row": 37,
+      "id": "kREI7sVnVWab7amIcrcOlGwuJhW80nWR",
+      "human_scores": {
+        "AUTHOR": 15,
+        "OTHER": 10,
+        "EVERYBODY": 0,
+        "NOBODY": 11,
+        "INFO": 2
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.4166666666666667,
+        "OTHER": 0.2777777777777778,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.3055555555555556
+      },
+      "baseline_counts": {
+        "AUTHOR": 4,
+        "NOBODY": 1
+      },
+      "intervention_counts": {
+        "AUTHOR": 5
+      },
+      "baseline_js": 0.19120835549979232,
+      "intervention_js": 0.38093009090978813,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.18972173540999582,
+      "title": "AITA for doing porn?"
+    },
+    {
+      "row": 38,
+      "id": "z0FtNZaoO86zAFbUgHtgHCvePraE7T1s",
+      "human_scores": {
+        "AUTHOR": 4,
+        "OTHER": 31,
+        "EVERYBODY": 0,
+        "NOBODY": 6,
+        "INFO": 2
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0975609756097561,
+        "OTHER": 0.7560975609756098,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.14634146341463414
+      },
+      "baseline_counts": {
+        "AUTHOR": 5
+      },
+      "intervention_counts": {
+        "AUTHOR": 4,
+        "NOBODY": 1
+      },
+      "baseline_js": 0.7625151567622692,
+      "intervention_js": 0.607258525154603,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": -0.15525663160766623,
+      "title": "AITA for asking a Mexican woman where to find empanada dough?"
+    },
+    {
+      "row": 39,
+      "id": "Eu8sYWgqbNoC00eGd2zna9V8BBaY9KCt",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 215,
+        "EVERYBODY": 6,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 0.9728506787330317,
+        "EVERYBODY": 0.027149321266968326,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "EVERYBODY": 2,
+        "OTHER": 3
+      },
+      "baseline_js": 0.013709417838236303,
+      "intervention_js": 0.17284098935035377,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.15913157151211746,
+      "title": "AITA For Not Paying A Domme After She Ignored My Safe word?"
+    },
+    {
+      "row": 40,
+      "id": "ploydNBA186WdUUWOHXJTzYUqo60HAjg",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 3,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "NOBODY": 2,
+        "OTHER": 3
+      },
+      "baseline_js": 0.0,
+      "intervention_js": 0.23645279766002797,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.23645279766002797,
+      "title": "AITA when I give up on trying to follow the rules in my house?"
+    },
+    {
+      "row": 41,
+      "id": "jXOzUwp5M8GU3JjVClEniyHntNyNCMxj",
+      "human_scores": {
+        "AUTHOR": 31,
+        "OTHER": 11,
+        "EVERYBODY": 0,
+        "NOBODY": 16,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.5344827586206896,
+        "OTHER": 0.1896551724137931,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.27586206896551724
+      },
+      "baseline_counts": {
+        "NOBODY": 4,
+        "AUTHOR": 1
+      },
+      "intervention_counts": {
+        "NOBODY": 5
+      },
+      "baseline_js": 0.24798168552132197,
+      "intervention_js": 0.5195116263866973,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.2715299408653754,
+      "title": "AITA for ghosting my friend after she turned me down?"
+    },
+    {
+      "row": 42,
+      "id": "MWeoBXAZ8yo4RbsTh4xzEaVrHrnAWKZv",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 4,
+        "EVERYBODY": 1,
+        "NOBODY": 0,
+        "INFO": 1
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 0.8,
+        "EVERYBODY": 0.2,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "NOBODY": 1,
+        "OTHER": 4
+      },
+      "intervention_counts": {
+        "OTHER": 3,
+        "NOBODY": 2
+      },
+      "baseline_js": 0.2,
+      "intervention_js": 0.31034030477602415,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.11034030477602413,
+      "title": "Wibta if I refused to help my brother who\u2019s struggling at the moment?"
+    },
+    {
+      "row": 43,
+      "id": "4fAbH4wC4cuj3rV4PdxCavWJAp6LvNR6",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 0,
+        "EVERYBODY": 0,
+        "NOBODY": 4,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 0.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 1.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 1.0,
+      "intervention_js": 1.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for wanting my friend to break up with her boyfriend"
+    },
+    {
+      "row": 44,
+      "id": "6y0CaRJws8TjQVUmtTb6BvmdmJZt0Wb0",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 3,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "AUTHOR": 2,
+        "OTHER": 2,
+        "EVERYBODY": 1
+      },
+      "baseline_js": 0.0,
+      "intervention_js": 0.3958156020033583,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.3958156020033583,
+      "title": "AITA for moving out and snapping on my roommate?"
+    },
+    {
+      "row": 45,
+      "id": "nY3AO1s7zpbgEHxn0JQ0isNOVvA0tIkR",
+      "human_scores": {
+        "AUTHOR": 1,
+        "OTHER": 5,
+        "EVERYBODY": 1,
+        "NOBODY": 3,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.1,
+        "OTHER": 0.5,
+        "EVERYBODY": 0.1,
+        "NOBODY": 0.3
+      },
+      "baseline_counts": {
+        "NOBODY": 4,
+        "OTHER": 1
+      },
+      "intervention_counts": {
+        "NOBODY": 4,
+        "OTHER": 1
+      },
+      "baseline_js": 0.2329647858593391,
+      "intervention_js": 0.2329647858593391,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for not tipping the delivery guy?"
+    },
+    {
+      "row": 46,
+      "id": "PBkrUcET0eR0oWmPkXcjl1SjfEHtEuhk",
+      "human_scores": {
+        "AUTHOR": 5,
+        "OTHER": 1,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.8333333333333334,
+        "OTHER": 0.16666666666666666,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 2,
+        "AUTHOR": 3
+      },
+      "intervention_counts": {
+        "OTHER": 3,
+        "NOBODY": 2
+      },
+      "baseline_js": 0.04946654166624079,
+      "intervention_js": 0.7104394251847856,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.6609728835185449,
+      "title": "AITA for not wanting me spend time with my prendre friends kid?"
+    },
+    {
+      "row": 47,
+      "id": "OPPjaeRwL3oPTzHhZjF6XVZC6hZeUTVO",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 9,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "AUTHOR": 3,
+        "OTHER": 2
+      },
+      "intervention_counts": {
+        "NOBODY": 3,
+        "OTHER": 2
+      },
+      "baseline_js": 0.3958156020033583,
+      "intervention_js": 0.3958156020033583,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for being angry at a friend for bailing?"
+    },
+    {
+      "row": 48,
+      "id": "ukCsdSUNxqXot0pyYkU9shoABX7wpq4A",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 3,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.0,
+      "intervention_js": 0.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for not caring about a sick 'friend' any more?"
+    },
+    {
+      "row": 49,
+      "id": "JnYALCWM3df0fbwGdetqXBi4DkgCK7Go",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 7,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.0,
+      "intervention_js": 0.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for considering confronting a regular customer at a store I work for?"
+    },
+    {
+      "row": 50,
+      "id": "AbaJpsmOmDSgoBrmJpByqOqkIGdfyRh9",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 8,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.0,
+      "intervention_js": 0.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for cutting people out of my life?"
+    },
+    {
+      "row": 51,
+      "id": "JCP6VvuxHO6mP5fdHQ39z705KMAPiE5x",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 3,
+        "EVERYBODY": 0,
+        "NOBODY": 1,
+        "INFO": 1
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 0.75,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.25
+      },
+      "baseline_counts": {
+        "AUTHOR": 1,
+        "OTHER": 4
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.2255818328033661,
+      "intervention_js": 0.1379253809700299,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": -0.0876564518333362,
+      "title": "AITA for not taking the extra long way around to travel with my friend to a workshop"
+    },
+    {
+      "row": 52,
+      "id": "MeyMlbm3ZAoFDS397sZahaBcALLnKe3Y",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 2,
+        "EVERYBODY": 0,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 1.0,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.0,
+      "intervention_js": 0.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "WIBTA if i told my parents to stop being overprotective?"
+    },
+    {
+      "row": 53,
+      "id": "ZSQEkHW5jj3b1OZRxEHGRUluFuCrXE9G",
+      "human_scores": {
+        "AUTHOR": 6,
+        "OTHER": 2,
+        "EVERYBODY": 0,
+        "NOBODY": 1,
+        "INFO": 2
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.6666666666666666,
+        "OTHER": 0.2222222222222222,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.1111111111111111
+      },
+      "baseline_counts": {
+        "AUTHOR": 5
+      },
+      "intervention_counts": {
+        "NOBODY": 4,
+        "AUTHOR": 1
+      },
+      "baseline_js": 0.1908745046211096,
+      "intervention_js": 0.4185851631403034,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.2277106585191938,
+      "title": "AITA for thinking my girlfriend is crazy?"
+    },
+    {
+      "row": 54,
+      "id": "wLl9oqEL920dJwjn2ZsDrCTTDrTdSvit",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 2,
+        "EVERYBODY": 0,
+        "NOBODY": 3,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 0.4,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.6
+      },
+      "baseline_counts": {
+        "NOBODY": 1,
+        "AUTHOR": 4
+      },
+      "intervention_counts": {
+        "NOBODY": 5
+      },
+      "baseline_js": 0.6754887502163468,
+      "intervention_js": 0.23645279766002797,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": -0.43903595255631883,
+      "title": "AITA for not wanting to cancel a weekend trip with my friends to go to sister's court case?"
+    },
+    {
+      "row": 55,
+      "id": "xhNOD6u3Iq3HIuHsTL7CWC6ckxIbztsv",
+      "human_scores": {
+        "AUTHOR": 14,
+        "OTHER": 3,
+        "EVERYBODY": 1,
+        "NOBODY": 1,
+        "INFO": 2
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.7368421052631579,
+        "OTHER": 0.15789473684210525,
+        "EVERYBODY": 0.05263157894736842,
+        "NOBODY": 0.05263157894736842
+      },
+      "baseline_counts": {
+        "OTHER": 4,
+        "NOBODY": 1
+      },
+      "intervention_counts": {
+        "NOBODY": 1,
+        "OTHER": 4
+      },
+      "baseline_js": 0.5974615837385057,
+      "intervention_js": 0.5974615837385057,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for not wanting my bf to come on a trip I\u2019m going on with my ex?"
+    },
+    {
+      "row": 56,
+      "id": "q0BgEMvVdxtDxkD0lumQ1XDdS1bRIut8",
+      "human_scores": {
+        "AUTHOR": 2,
+        "OTHER": 49,
+        "EVERYBODY": 2,
+        "NOBODY": 0,
+        "INFO": 1
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.03773584905660377,
+        "OTHER": 0.9245283018867925,
+        "EVERYBODY": 0.03773584905660377,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "OTHER": 5
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.038803599739643556,
+      "intervention_js": 0.038803599739643556,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for not babysitting my brothers kids?"
+    },
+    {
+      "row": 57,
+      "id": "Hj2HuMZ6YdjkD0wrMa583yFQRSrLcxYW",
+      "human_scores": {
+        "AUTHOR": 4,
+        "OTHER": 5,
+        "EVERYBODY": 0,
+        "NOBODY": 3,
+        "INFO": 2
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.3333333333333333,
+        "OTHER": 0.4166666666666667,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.25
+      },
+      "baseline_counts": {
+        "NOBODY": 2,
+        "AUTHOR": 1,
+        "OTHER": 2
+      },
+      "intervention_counts": {
+        "AUTHOR": 1,
+        "NOBODY": 4
+      },
+      "baseline_js": 0.024871722685330236,
+      "intervention_js": 0.3297586307887471,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.3048869081034169,
+      "title": "AITA for telling my downstairs neighbor \"No Promises\" about fixing \"loud walking\" sounds?"
+    },
+    {
+      "row": 58,
+      "id": "T1AWeggUEhXgwaNgY5OWIWcYFdNJLQYF",
+      "human_scores": {
+        "AUTHOR": 8,
+        "OTHER": 12,
+        "EVERYBODY": 0,
+        "NOBODY": 3,
+        "INFO": 3
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.34782608695652173,
+        "OTHER": 0.5217391304347826,
+        "EVERYBODY": 0.0,
+        "NOBODY": 0.13043478260869565
+      },
+      "baseline_counts": {
+        "OTHER": 4,
+        "NOBODY": 1
+      },
+      "intervention_counts": {
+        "OTHER": 5
+      },
+      "baseline_js": 0.20052257418658329,
+      "intervention_js": 0.2942732479324205,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0937506737458372,
+      "title": "AITA for not changing lanes at the swimming pool?"
+    },
+    {
+      "row": 59,
+      "id": "Kqy9RzhoA9Y1tCFcJGBw9rXqyi9YEgrV",
+      "human_scores": {
+        "AUTHOR": 6,
+        "OTHER": 3,
+        "EVERYBODY": 2,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.5454545454545454,
+        "OTHER": 0.2727272727272727,
+        "EVERYBODY": 0.18181818181818182,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "AUTHOR": 5
+      },
+      "intervention_counts": {
+        "AUTHOR": 5
+      },
+      "baseline_js": 0.27621156854915624,
+      "intervention_js": 0.27621156854915624,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.0,
+      "title": "AITA for cutting through red carpets, film sets and fashion shoots on the streets of New York City when I'm late and they are on public streets/sidewalks/parks?"
+    },
+    {
+      "row": 60,
+      "id": "yiJmvJQV02NGjHjzRHKNRnua3i8nSBGS",
+      "human_scores": {
+        "AUTHOR": 0,
+        "OTHER": 8,
+        "EVERYBODY": 2,
+        "NOBODY": 0,
+        "INFO": 0
+      },
+      "human_non_info_distribution": {
+        "AUTHOR": 0.0,
+        "OTHER": 0.8,
+        "EVERYBODY": 0.2,
+        "NOBODY": 0.0
+      },
+      "baseline_counts": {
+        "AUTHOR": 3,
+        "NOBODY": 1,
+        "OTHER": 1
+      },
+      "intervention_counts": {
+        "NOBODY": 4,
+        "AUTHOR": 1
+      },
+      "baseline_js": 0.6390359525563188,
+      "intervention_js": 1.0,
+      "baseline_attempts": 5,
+      "baseline_valid": 5,
+      "intervention_attempts": 5,
+      "intervention_valid": 5,
+      "difference": 0.36096404744368116,
+      "title": "AITA for accusing my bf of hurting my dog after he chewed his son's shoe?"
+    }
+  ]
+}
