@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from moral_judgment.legacy import extract_label
 from moral_judgment.metrics import LABELS, distribution, js
-from moral_judgment.parsing import classify_response, parse_label
+from moral_judgment.parsing import classify_response, parse_label, parse_label_tolerant
 from moral_judgment.prompts import CONDITIONS, prompt
 
 L = list(LABELS)
@@ -76,6 +76,35 @@ class StrictParserTests(unittest.TestCase):
         for text in ['OTHER.', 'I think OTHER', 'OTHER\nAUTHOR',
                      'The author is right.\nOTHER', 'NO', 'ASSHOLE', 'other']:
             self.assertIsNone(parse_label(text, L))
+
+
+class TolerantParserTests(unittest.TestCase):
+    def test_development_failure_shapes_are_read(self):
+        # The three shapes behind every format failure in the 20-item run. The
+        # strict parser refuses each, which is what the separate version records.
+        for s in ['The author overreacted. FINAL_LABEL: AUTHOR',
+                  'The author overreacted.\n\nFINAL_LABEL AUTHOR',
+                  'The author overreacted.\n\n**FINAL_LABEL**: AUTHOR']:
+            self.assertIsNone(parse_label(s, L))
+            self.assertEqual(parse_label_tolerant(s, L), 'AUTHOR')
+
+    def test_agrees_with_strict_parser_where_that_succeeds(self):
+        for s in ['OTHER is discussed.\nFINAL_LABEL: AUTHOR', '**FINAL_LABEL: OTHER**',
+                  '**FINAL_LABEL:** OTHER', 'FINAL_LABEL: **OTHER**', '`FINAL_LABEL: OTHER`', ' NOBODY\n']:
+            self.assertEqual(parse_label_tolerant(s, L), parse_label(s, L))
+
+    def test_label_is_still_never_inferred(self):
+        # Only position and punctuation are relaxed. Spelling, uniqueness of the
+        # marker and the requirement that the label close the response are not.
+        for s in ['FINAL_LABEL: AUTHOR\nMore text', 'FINAL_LABEL: OTHER\nFINAL_LABEL: AUTHOR',
+                  'FINAL_LABEL OTHER. FINAL_LABEL: AUTHOR', 'FINAL_LABEL: NO', 'FINAL_LABEL: other',
+                  'FINAL_LABEL: OTHER or AUTHOR', 'FINAL_LABEL: AU**THOR', 'FINAL_LABEL: OTHER.',
+                  'FINAL_LABELS: OTHER', 'I think OTHER', 'FINAL_LABEL: INFO', '']:
+            self.assertIsNone(parse_label_tolerant(s, L))
+
+    def test_truncation_still_outranks_a_present_label(self):
+        response = {'choices': [{'finish_reason': 'length', 'message': {'content': 'x FINAL_LABEL: OTHER'}}]}
+        self.assertEqual(classify_response(response, L, parse_label_tolerant), (None, 'truncated'))
 
 
 class ResponseStatusTests(unittest.TestCase):

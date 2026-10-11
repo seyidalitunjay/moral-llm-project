@@ -23,7 +23,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from moral_judgment.io import read_jsonl
 from moral_judgment.metrics import distribution, js, summarize
-from moral_judgment.parsing import PARSER_VERSION, classify_response
+from moral_judgment.parsing import (PARSER_VERSION, TOLERANT_PARSER_VERSION, classify_response,
+                                    parse_label, parse_label_tolerant)
+
+PARSERS = {PARSER_VERSION: parse_label, TOLERANT_PARSER_VERSION: parse_label_tolerant}
 
 # Left against right, where right plays the baseline role in each summary. The
 # third pair is the one the design exists to answer: whether the empathy content
@@ -32,9 +35,11 @@ COMPARISONS = (('original', 'baseline'), ('generic', 'baseline'), ('original', '
 
 MISSINGNESS_NOTE = ('Exploratory development results; available-valid distributions may be '
                     'biased by missingness.')
+HELDOUT_NOTE = ('Held-out evaluation under docs/preregistration.md; available-valid distributions '
+                'may be biased by missingness.')
 
 
-def load_cells(root, cfg, reparse):
+def load_cells(root, cfg, reparse, parser=PARSER_VERSION):
     """Group responses by (item, condition), validating each record's identity.
 
     The manifest is rehashed and every record checked against it, so a directory
@@ -56,7 +61,7 @@ def load_cells(root, cfg, reparse):
             # report. The record on disk is never rewritten, so the originally
             # recorded status of each response stays recoverable.
             r = dict(r)
-            r['label'], r['status'] = classify_response(r['response'], cfg['labels'])
+            r['label'], r['status'] = classify_response(r['response'], cfg['labels'], PARSERS[parser])
         cells[key[:2]].append(r)
     return cells
 
@@ -111,22 +116,26 @@ def main():
     p.add_argument('run_directory')
     p.add_argument('--reparse', action='store_true',
                    help='Reparse saved raw content into a separate derived analysis; never overwrite responses')
+    p.add_argument('--parser', choices=sorted(PARSERS), default=PARSER_VERSION,
+                   help='Parser used by --reparse')
     args = p.parse_args()
 
     root = Path(args.run_directory)
     cfg = json.loads((root / 'manifest.json').read_text())
-    cells = load_cells(root, cfg, args.reparse)
+    cells = load_cells(root, cfg, args.reparse, args.parser)
 
-    report = {'note': MISSINGNESS_NOTE, 'coverage': {}, 'comparisons': {}, 'items': []}
+    note = HELDOUT_NOTE if cfg['protocol'].startswith('heldout') else MISSINGNESS_NOTE
+    report = {'note': note, 'coverage': {}, 'comparisons': {}, 'items': []}
     report['coverage'] = coverage(cells, cfg)
     report['items'] = item_rows(cells, cfg)
     report['comparisons'] = comparisons(report['items'])
     # Records which parser produced the labels being summarised, so a reparsed
     # analysis can never be mistaken for the run's original measurement.
-    report['parser_used'] = PARSER_VERSION if args.reparse else 'labels and statuses as recorded'
+    report['parser_used'] = args.parser if args.reparse else 'labels and statuses as recorded'
     report['posthoc_reparse'] = args.reparse
 
-    out = root / ('analysis_reparsed.json' if args.reparse else 'analysis.json')
+    out = root / (f'analysis_reparsed_{args.parser}.json' if args.reparse and args.parser != PARSER_VERSION
+                  else 'analysis_reparsed.json' if args.reparse else 'analysis.json')
     out.write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps({k: v for k, v in report.items() if k != 'items'}, indent=2))
 
