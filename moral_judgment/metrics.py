@@ -10,12 +10,10 @@ import math
 import random
 import statistics
 
-# INFO is left out of the support on purpose. An annotator choosing it is saying
-# the account is too thin to rule on, which is a claim about the account rather
-# than a verdict against either party, and the model is never offered the option
-# in the four-label configuration. Normalising over these four alone keeps both
-# sides defined on the same support; leaving INFO in would compare a five-outcome
-# human distribution against a four-outcome model one.
+# INFO is left out of the support on purpose. An annotator choosing it says the
+# account is too thin to rule on, not that either party is at fault, and the model
+# is never offered it in the four-label configuration. Leaving it in would compare
+# a five-outcome human distribution with a four-outcome model one.
 LABELS = ('AUTHOR', 'OTHER', 'EVERYBODY', 'NOBODY')
 
 # Fixed so that the interval reported for a given results file is reproducible

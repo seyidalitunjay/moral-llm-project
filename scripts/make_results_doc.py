@@ -216,7 +216,6 @@ def main():
       'in the human labels.')
     w('')
 
-    # Study 1
     w('## Study 1: held-out three-condition evaluation')
     w('')
     w(f'Run `{S1.relative_to(ROOT)}`, protocol `{m1["protocol"]}`, pre-registered in '
@@ -276,7 +275,6 @@ def main():
       'the development run).')
     w('')
 
-    # Exploratory
     w('## Exploratory analyses (post hoc, not pre-registered)')
     w('')
     w(f'Defined after the Study 1 results had been seen, on the same run; see '
@@ -386,7 +384,6 @@ def main():
     w(paired_table(ma['paired_differences'], list(ma['paired_differences']), pair_name))
     w('')
 
-    # Study 2
     w('## Study 2: trait-varied vs irrelevant-varied persona mixtures')
     w('')
     w(f'Run `{S2.relative_to(ROOT)}`, protocol `{m2["protocol"]}`, pre-registered in '
@@ -448,7 +445,6 @@ def main():
     w('Figure: [figures/fig4_study2.png](../figures/fig4_study2.png).')
     w('')
 
-    # Disagreements
     w('## Pre-registered disagreements')
     w('')
     w('Both pre-registrations require that a primary result and a sensitivity analysis be reported as '
@@ -475,7 +471,6 @@ def main():
       f'pre-registered.')
     w('')
 
-    # Development
     dc = dev['coverage']
     fmt = sum(c['statuses'].get('invalid_label_format', 0) for c in dc.values())
     trunc = sum(c['statuses'].get('truncated', 0) for c in dc.values())
@@ -493,7 +488,6 @@ def main():
       f'[preregistration.md](preregistration.md), section 4.')
     w('')
 
-    # Provenance
     w('## Provenance')
     w('')
     w('Commits in this repository, from `git log`. In each study the pre-registration was committed before '

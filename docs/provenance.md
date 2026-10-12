@@ -60,9 +60,9 @@ condition. `audit_results.py` lists them under `incomplete_rows`.
 ## A limit worth stating plainly
 
 The raw response text from these runs was never saved. Labels were extracted at
-request time by the permissive search now isolated in `moral_judgment/legacy.py`,
-which returns the last label appearing anywhere in the response and therefore
-cannot distinguish a stated verdict from one merely discussed. Because the text is
+request time by the permissive search now isolated in `moral_judgment/legacy.py`.
+It returns the last label appearing anywhere in the response, so it cannot
+distinguish a stated verdict from one merely discussed. Because the text is
 gone, those extractions cannot be rechecked or reparsed. This is the specific
 defect the current pipeline was built to avoid, and it is why `run_control_pilot.py`
 stores the complete response body for every call.

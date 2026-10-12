@@ -143,7 +143,6 @@ def main():
         raise ValueError('Output cannot overwrite input')
     report = audit(args.results, args.archive)
     dest.write_text(json.dumps(report, indent=2) + '\n')
-    # Item-level detail goes to the file; the console shows only the summary.
     print(json.dumps({k: v for k, v in report.items() if k not in ('items', 'incomplete_rows')}, indent=2))
     print('Full audit saved to', dest)
 

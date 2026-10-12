@@ -1,3 +1,5 @@
+> Written during development and kept as a record. Current results: [results.md](results.md).
+
 # Research audit and development tools
 
 The historical audit reproduced the uploaded 60-item results. The user subsequently completed a 30-call v3 smoke test. The user has also completed the provider-restricted v4 smoke test. Its 30 responses are usable after the documented post-hoc parsing correction below. The final parser revision has been tested against the saved responses and offline tests. Keep all original scripts and results unchanged.
@@ -28,7 +30,7 @@ The script reads your originals and writes only the named new report. It needs n
 
 ## What the completed 30-call smoke test showed
 
-There were **9 rejected responses, not 10**: five had correct labels wrapped in Markdown bold, two were truncated at the 2,048-token cap, and two used unsupported labels (`NO` and `ASSHOLE`). The old parser was too strict about presentation formatting.
+There were 9 rejected responses, not 10. Five had correct labels wrapped in Markdown bold, two were truncated at the 2,048-token cap, and two used unsupported labels (`NO` and `ASSHOLE`). The old parser was too strict about presentation formatting.
 
 The revised parser accepts paired bold/underline/backtick wrappers around an otherwise exact final field. It never derives a label from the rationale or translates unsupported labels. Truncated responses remain invalid even if a label appears in their text. One response's rationale conflicts with its final label; the explicitly emitted label remains the recorded judgment.
 
@@ -125,7 +127,7 @@ python3 scripts/run_control_pilot.py --data data/anecdotes.tar --execute
 
 This makes real API calls and incurs provider charges. The user generated both supplied smoke tests. Parsing and analysis revisions were checked against their saved raw responses without new API calls here. Choose your own item/sample count after reviewing the cost; the runner prints the exact planned call count.
 
-The runner logs each response and configuration, accepts an exact whole-response label or a unique final marker with exact label spelling and permitted presentation wrappers, rejects truncated outputs as valid labels, and retains failures. It stops on authentication/balance errors or three consecutive request errors. It does not retry failed slots or regenerate invalid labels until success. Re-running resumes unattempted slots; failed attempts remain part of the record. Actual provider identity is retained if returned. Use `--provider` to restrict routing; without it routing remains automatic. Optional `--reasoning-effort low|medium|high` is recorded in the configuration and requires provider support. The recommended immediate command leaves reasoning effort unspecified. Freeze these settings before a confirmatory run.
+The runner logs each response and the configuration, and retains failures. It accepts an exact whole-response label, or a unique final marker with exact label spelling and permitted presentation wrappers. It never accepts a truncated output as a valid label. It stops on authentication/balance errors or three consecutive request errors. It does not retry failed slots or regenerate invalid labels until success. Re-running resumes unattempted slots; failed attempts remain part of the record. Actual provider identity is retained if returned. Use `--provider` to restrict routing; without it routing remains automatic. Optional `--reasoning-effort low|medium|high` is recorded in the configuration and requires provider support. The recommended immediate command leaves reasoning effort unspecified. Freeze these settings before a confirmatory run.
 
 Do not run two copies on the same output directory. A file lock guards against this on macOS/Linux. A malformed partial final JSON line raises an error for manual inspection rather than being silently dropped. A changed configuration gets a different output directory.
 
@@ -145,6 +147,6 @@ Replace `CONFIGURATION_HASH` with the actual printed directory name. Inspect cov
 python3 -m unittest discover -s tests -v
 ```
 
-Tests cover metric identities, explicit conditioning, cosmetic-wrapper handling, unsupported labels, and truncation even when a final label is present. The supplied v4 run verifies that the provider-restricted request path returned 30 completed responses; this does not guarantee future availability or label compliance. The runner is for development and control diagnosis, not a claim of completed research. Preserve untouched data for the later frozen study. No additional dataset is needed to perform this immediate step.
+Tests cover metric identities, explicit conditioning, cosmetic-wrapper handling, unsupported labels, and truncation even when a final label is present. The supplied v4 run verifies that the provider-restricted request path returned 30 completed responses. This does not guarantee future availability or label compliance. The runner is for development and control diagnosis, not a claim of completed research. Preserve untouched data for the later frozen study. No additional dataset is needed to perform this immediate step.
 
 Provider routing reference: [OpenRouter documentation](https://openrouter.ai/docs/guides/routing/provider-selection).
