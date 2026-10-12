@@ -1,0 +1,4840 @@
+{
+  "status": "EXPLORATORY",
+  "note": "EXPLORATORY: defined after the primary results were seen, not pre-registered. Descriptive only; not a test of the pre-registered comparisons.",
+  "run": "heldout_frozen_v1",
+  "run_directory": "/Users/user/Desktop/moral-llm-project/results/heldout/7edf899cb4bf44f4",
+  "seed": 20261012,
+  "seed_note": "All resampling uses this seed. Paired differences use moral_judgment.metrics.summarize unchanged, with its module seed temporarily set to this value (main analysis used 20260913); each summarize call restarts from it. The overlapping panel draws and the Spearman bootstraps share one Random(seed) stream, in that order; the disjoint panel draws use a separate Random(seed).",
+  "labels_used": "valid labels and statuses as recorded; no reparse",
+  "human_support": "INFO excluded, renormalised over AUTHOR/OTHER/EVERYBODY/NOBODY",
+  "dispersion": {
+    "note": "EXPLORATORY: defined after the primary results were seen, not pre-registered. Descriptive only; not a test of the pre-registered comparisons.",
+    "status": "EXPLORATORY",
+    "units": "entropy in bits (max 2 over four labels)",
+    "entropy": {
+      "means": {
+        "baseline": {
+          "n": 60,
+          "mean": 0.6908098956521387
+        },
+        "generic": {
+          "n": 60,
+          "mean": 0.6380365290224733
+        },
+        "original": {
+          "n": 60,
+          "mean": 0.8516964788665713
+        },
+        "human": {
+          "n": 60,
+          "mean": 0.7789375640179459
+        }
+      },
+      "paired_differences": {
+        "generic_minus_baseline": {
+          "n": 60,
+          "mean_generic": 0.6380365290224733,
+          "mean_baseline": 0.6908098956521387,
+          "mean_difference": -0.0527733666296654,
+          "generic_lower": 29,
+          "generic_higher": 15,
+          "tied": 16,
+          "paired_item_bootstrap_95_percent": [
+            -0.1497606843377754,
+            0.050905925333507705
+          ]
+        },
+        "original_minus_generic": {
+          "n": 60,
+          "mean_original": 0.8516964788665713,
+          "mean_generic": 0.6380365290224733,
+          "mean_difference": 0.21365994984409792,
+          "original_lower": 15,
+          "original_higher": 38,
+          "tied": 7,
+          "paired_item_bootstrap_95_percent": [
+            0.08290560099184269,
+            0.33795606593117916
+          ]
+        },
+        "baseline_minus_human": {
+          "n": 60,
+          "mean_baseline": 0.6908098956521387,
+          "mean_human": 0.7789375640179459,
+          "mean_difference": -0.08812766836580717,
+          "baseline_lower": 29,
+          "baseline_higher": 23,
+          "tied": 8,
+          "paired_item_bootstrap_95_percent": [
+            -0.2901658034391046,
+            0.1088748477689139
+          ]
+        }
+      }
+    },
+    "modal_share": {
+      "means": {
+        "baseline": {
+          "n": 60,
+          "mean": 0.794074074074074
+        },
+        "generic": {
+          "n": 60,
+          "mean": 0.7987301587301587
+        },
+        "original": {
+          "n": 60,
+          "mean": 0.742175925925926
+        },
+        "human": {
+          "n": 60,
+          "mean": 0.7705188789950608
+        }
+      },
+      "paired_differences": {
+        "generic_minus_baseline": {
+          "n": 60,
+          "mean_generic": 0.7987301587301587,
+          "mean_baseline": 0.794074074074074,
+          "mean_difference": 0.004656084656084655,
+          "generic_lower": 15,
+          "generic_higher": 24,
+          "tied": 21,
+          "paired_item_bootstrap_95_percent": [
+            -0.0321957671957672,
+            0.041534391534391535
+          ]
+        },
+        "original_minus_generic": {
+          "n": 60,
+          "mean_original": 0.742175925925926,
+          "mean_generic": 0.7987301587301587,
+          "mean_difference": -0.056554232804232794,
+          "original_lower": 37,
+          "original_higher": 16,
+          "tied": 7,
+          "paired_item_bootstrap_95_percent": [
+            -0.10401603835978834,
+            -0.007671130952380951
+          ]
+        },
+        "baseline_minus_human": {
+          "n": 60,
+          "mean_baseline": 0.794074074074074,
+          "mean_human": 0.7705188789950608,
+          "mean_difference": 0.023555195079013345,
+          "baseline_lower": 21,
+          "baseline_higher": 30,
+          "tied": 9,
+          "paired_item_bootstrap_95_percent": [
+            -0.04332238720594456,
+            0.0916728545398171
+          ]
+        }
+      }
+    }
+  },
+  "panel_ceiling": {
+    "note": "EXPLORATORY: defined after the primary results were seen, not pre-registered. Descriptive only; not a test of the pre-registered comparisons.",
+    "status": "EXPLORATORY",
+    "definition": "per item, mean over 1000 draws of base-2 JSD between 10 non-INFO votes drawn without replacement and the remaining non-INFO votes of that item (disjoint); items with at least 20 non-INFO votes",
+    "items_total": 60,
+    "items_qualifying": 14,
+    "qualifying_vote_count_range": [
+      23,
+      186
+    ],
+    "qualifying_vote_count_median": 41.0,
+    "mean_panel_ceiling_js": 0.06807914502190045,
+    "overlapping_biased_low": {
+      "definition": "first-pass version: panel scored against the full distribution, which includes the panel itself, so the divergence is biased low; superseded, kept for the record",
+      "mean_panel_js": 0.039910142674144646
+    },
+    "model_mean_js_same_items": {
+      "baseline": {
+        "n": 14,
+        "mean": 0.22094789395922523
+      },
+      "generic": {
+        "n": 14,
+        "mean": 0.26889953852930015
+      },
+      "original": {
+        "n": 14,
+        "mean": 0.2489903954084284
+      }
+    }
+  },
+  "contested_vs_consensus": {
+    "note": "EXPLORATORY: defined after the primary results were seen, not pre-registered. Descriptive only; not a test of the pre-registered comparisons.",
+    "status": "EXPLORATORY",
+    "median_human_entropy": 0.8258847629661572,
+    "split_rule": "low: human entropy <= median; high: human entropy > median",
+    "generic_minus_baseline": {
+      "spearman_human_entropy_vs_delta_js": {
+        "n": 60,
+        "spearman_rho": 0.1303160648094174,
+        "item_bootstrap_95_percent": [
+          -0.12381070821680487,
+          0.3732334835616241
+        ],
+        "bootstrap_resamples": 10000,
+        "degenerate_resamples_dropped": 0
+      },
+      "low_entropy_half": {
+        "n": 30,
+        "mean_delta_js": 0.03416415946340488
+      },
+      "high_entropy_half": {
+        "n": 30,
+        "mean_delta_js": 0.05399725163066762
+      }
+    },
+    "original_minus_generic": {
+      "spearman_human_entropy_vs_delta_js": {
+        "n": 60,
+        "spearman_rho": -0.23325569927489223,
+        "item_bootstrap_95_percent": [
+          -0.45376744520553197,
+          0.008686451461072534
+        ],
+        "bootstrap_resamples": 10000,
+        "degenerate_resamples_dropped": 0
+      },
+      "low_entropy_half": {
+        "n": 30,
+        "mean_delta_js": 0.0031000059480862856
+      },
+      "high_entropy_half": {
+        "n": 30,
+        "mean_delta_js": -0.014997626868177473
+      }
+    }
+  },
+  "verdict_shift": {
+    "note": "EXPLORATORY: defined after the primary results were seen, not pre-registered. Descriptive only; not a test of the pre-registered comparisons.",
+    "status": "EXPLORATORY",
+    "definition": "per label, mean over items of each per-item distribution (model: valid labels; human: non-INFO renormalised); paired differences are per label, over items where both sides are defined",
+    "mean_distribution": {
+      "baseline": {
+        "n": 60,
+        "AUTHOR": 0.2846296296296296,
+        "OTHER": 0.5562962962962963,
+        "EVERYBODY": 0.03740740740740741,
+        "NOBODY": 0.12166666666666666
+      },
+      "generic": {
+        "n": 60,
+        "AUTHOR": 0.2775925925925926,
+        "OTHER": 0.5096560846560847,
+        "EVERYBODY": 0.025555555555555557,
+        "NOBODY": 0.1871957671957672
+      },
+      "original": {
+        "n": 60,
+        "AUTHOR": 0.36444444444444446,
+        "OTHER": 0.43939814814814815,
+        "EVERYBODY": 0.048379629629629634,
+        "NOBODY": 0.14777777777777779
+      },
+      "human": {
+        "n": 60,
+        "AUTHOR": 0.21165962687531356,
+        "OTHER": 0.6232892951377371,
+        "EVERYBODY": 0.05805126750764365,
+        "NOBODY": 0.10699981047930561
+      }
+    },
+    "paired_differences": {
+      "generic_minus_baseline": {
+        "AUTHOR": {
+          "n": 60,
+          "mean_generic": 0.2775925925925926,
+          "mean_baseline": 0.2846296296296296,
+          "mean_difference": -0.007037037037037033,
+          "generic_lower": 18,
+          "generic_higher": 12,
+          "tied": 30,
+          "paired_item_bootstrap_95_percent": [
+            -0.03925925925925926,
+            0.02574074074074075
+          ]
+        },
+        "OTHER": {
+          "n": 60,
+          "mean_generic": 0.5096560846560847,
+          "mean_baseline": 0.5562962962962963,
+          "mean_difference": -0.04664021164021164,
+          "generic_lower": 21,
+          "generic_higher": 13,
+          "tied": 26,
+          "paired_item_bootstrap_95_percent": [
+            -0.08034391534391534,
+            -0.014390873015873024
+          ]
+        },
+        "EVERYBODY": {
+          "n": 60,
+          "mean_generic": 0.025555555555555557,
+          "mean_baseline": 0.03740740740740741,
+          "mean_difference": -0.011851851851851853,
+          "generic_lower": 11,
+          "generic_higher": 6,
+          "tied": 43,
+          "paired_item_bootstrap_95_percent": [
+            -0.027592592592592592,
+            0.0033333333333333335
+          ]
+        },
+        "NOBODY": {
+          "n": 60,
+          "mean_generic": 0.1871957671957672,
+          "mean_baseline": 0.12166666666666666,
+          "mean_difference": 0.06552910052910053,
+          "generic_lower": 4,
+          "generic_higher": 24,
+          "tied": 32,
+          "paired_item_bootstrap_95_percent": [
+            0.034814153439153436,
+            0.0984398148148148
+          ]
+        }
+      },
+      "original_minus_generic": {
+        "AUTHOR": {
+          "n": 60,
+          "mean_original": 0.36444444444444446,
+          "mean_generic": 0.2775925925925926,
+          "mean_difference": 0.08685185185185185,
+          "original_lower": 13,
+          "original_higher": 34,
+          "tied": 13,
+          "paired_item_bootstrap_95_percent": [
+            0.045555555555555544,
+            0.13055555555555556
+          ]
+        },
+        "OTHER": {
+          "n": 60,
+          "mean_original": 0.43939814814814815,
+          "mean_generic": 0.5096560846560847,
+          "mean_difference": -0.0702579365079365,
+          "original_lower": 32,
+          "original_higher": 13,
+          "tied": 15,
+          "paired_item_bootstrap_95_percent": [
+            -0.11827414021164022,
+            -0.0200527447089947
+          ]
+        },
+        "EVERYBODY": {
+          "n": 60,
+          "mean_original": 0.048379629629629634,
+          "mean_generic": 0.025555555555555557,
+          "mean_difference": 0.022824074074074076,
+          "original_lower": 5,
+          "original_higher": 13,
+          "tied": 42,
+          "paired_item_bootstrap_95_percent": [
+            0.00337962962962963,
+            0.043333333333333335
+          ]
+        },
+        "NOBODY": {
+          "n": 60,
+          "mean_original": 0.14777777777777779,
+          "mean_generic": 0.1871957671957672,
+          "mean_difference": -0.039417989417989414,
+          "original_lower": 19,
+          "original_higher": 11,
+          "tied": 30,
+          "paired_item_bootstrap_95_percent": [
+            -0.08259656084656085,
+            0.0024087301587301445
+          ]
+        }
+      },
+      "baseline_minus_human": {
+        "AUTHOR": {
+          "n": 60,
+          "mean_baseline": 0.2846296296296296,
+          "mean_human": 0.21165962687531356,
+          "mean_difference": 0.07297000275431607,
+          "baseline_lower": 17,
+          "baseline_higher": 25,
+          "tied": 18,
+          "paired_item_bootstrap_95_percent": [
+            -0.006496310503722528,
+            0.1552262498164828
+          ]
+        },
+        "OTHER": {
+          "n": 60,
+          "mean_baseline": 0.5562962962962963,
+          "mean_human": 0.6232892951377371,
+          "mean_difference": -0.06699299884144089,
+          "baseline_lower": 29,
+          "baseline_higher": 25,
+          "tied": 6,
+          "paired_item_bootstrap_95_percent": [
+            -0.1731176143688535,
+            0.04078466840323243
+          ]
+        },
+        "EVERYBODY": {
+          "n": 60,
+          "mean_baseline": 0.03740740740740741,
+          "mean_human": 0.05805126750764365,
+          "mean_difference": -0.020643860100236243,
+          "baseline_lower": 21,
+          "baseline_higher": 8,
+          "tied": 31,
+          "paired_item_bootstrap_95_percent": [
+            -0.0478099170477076,
+            0.008469346961359748
+          ]
+        },
+        "NOBODY": {
+          "n": 60,
+          "mean_baseline": 0.12166666666666666,
+          "mean_human": 0.10699981047930561,
+          "mean_difference": 0.014666856187361051,
+          "baseline_lower": 21,
+          "baseline_higher": 21,
+          "tied": 18,
+          "paired_item_bootstrap_95_percent": [
+            -0.05654831105481983,
+            0.0853031229380207
+          ]
+        }
+      },
+      "generic_minus_human": {
+        "AUTHOR": {
+          "n": 60,
+          "mean_generic": 0.2775925925925926,
+          "mean_human": 0.21165962687531356,
+          "mean_difference": 0.06593296571727904,
+          "generic_lower": 19,
+          "generic_higher": 24,
+          "tied": 17,
+          "paired_item_bootstrap_95_percent": [
+            -0.022898040257001102,
+            0.15704307539602247
+          ]
+        },
+        "OTHER": {
+          "n": 60,
+          "mean_generic": 0.5096560846560847,
+          "mean_human": 0.6232892951377371,
+          "mean_difference": -0.11363321048165252,
+          "generic_lower": 33,
+          "generic_higher": 21,
+          "tied": 6,
+          "paired_item_bootstrap_95_percent": [
+            -0.22271402468665122,
+            -0.001985580822499031
+          ]
+        },
+        "EVERYBODY": {
+          "n": 60,
+          "mean_generic": 0.025555555555555557,
+          "mean_human": 0.05805126750764365,
+          "mean_difference": -0.03249571195208809,
+          "generic_lower": 19,
+          "generic_higher": 6,
+          "tied": 35,
+          "paired_item_bootstrap_95_percent": [
+            -0.06208660918975263,
+            -0.0015784293409666515
+          ]
+        },
+        "NOBODY": {
+          "n": 60,
+          "mean_generic": 0.1871957671957672,
+          "mean_human": 0.10699981047930561,
+          "mean_difference": 0.08019595671646158,
+          "generic_lower": 18,
+          "generic_higher": 25,
+          "tied": 17,
+          "paired_item_bootstrap_95_percent": [
+            0.00012159749556690854,
+            0.16148433832463266
+          ]
+        }
+      }
+    }
+  },
+  "modal_agreement": {
+    "note": "EXPLORATORY: defined after the primary results were seen, not pre-registered. Descriptive only; not a test of the pre-registered comparisons.",
+    "status": "EXPLORATORY",
+    "definition": "per item, 1 if the model modal set and the human modal set share a label, else 0. Human ties count as a match if the model mode is any tied label, as specified; model ties are handled the same way (match if any tied model label is a human modal label), which was not specified and is reported separately",
+    "human_tied_items": 1,
+    "model_tied_items": {
+      "baseline": 1,
+      "generic": 5,
+      "original": 3
+    },
+    "matches_relying_on_model_tie": {
+      "baseline": 1,
+      "generic": 4,
+      "original": 3
+    },
+    "agreement": {
+      "baseline": {
+        "n": 60,
+        "share": 0.65
+      },
+      "generic": {
+        "n": 60,
+        "share": 0.6166666666666667
+      },
+      "original": {
+        "n": 60,
+        "share": 0.5666666666666667
+      }
+    },
+    "paired_differences": {
+      "generic_minus_baseline": {
+        "n": 60,
+        "mean_generic": 0.6166666666666667,
+        "mean_baseline": 0.65,
+        "mean_difference": -0.03333333333333333,
+        "generic_lower": 4,
+        "generic_higher": 2,
+        "tied": 54,
+        "paired_item_bootstrap_95_percent": [
+          -0.11666666666666667,
+          0.05
+        ]
+      },
+      "original_minus_generic": {
+        "n": 60,
+        "mean_original": 0.5666666666666667,
+        "mean_generic": 0.6166666666666667,
+        "mean_difference": -0.05,
+        "original_lower": 5,
+        "original_higher": 2,
+        "tied": 53,
+        "paired_item_bootstrap_95_percent": [
+          -0.13333333333333333,
+          0.03333333333333333
+        ]
+      },
+      "original_minus_baseline": {
+        "n": 60,
+        "mean_original": 0.5666666666666667,
+        "mean_baseline": 0.65,
+        "mean_difference": -0.08333333333333333,
+        "original_lower": 6,
+        "original_higher": 1,
+        "tied": 53,
+        "paired_item_bootstrap_95_percent": [
+          -0.16666666666666666,
+          0.0
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "Cfio7u92CmLb229sEK6rtqdJjgOztZsi",
+      "human_non_info_votes": 8,
+      "entropy": {
+        "human": 1.4056390622295665,
+        "baseline": 0.9182958340544896,
+        "generic": 0.5032583347756457,
+        "original": 0.4689955935892812
+      },
+      "modal_share": {
+        "human": 0.5,
+        "baseline": 0.6666666666666666,
+        "generic": 0.8888888888888888,
+        "original": 0.9
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 9,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.1044564245733193,
+        "generic": 0.23663166064037808,
+        "original": 0.24783035532430311
+      },
+      "distribution": {
+        "human": [
+          0.125,
+          0.5,
+          0.0,
+          0.375
+        ],
+        "baseline": [
+          0.0,
+          0.3333333333333333,
+          0.0,
+          0.6666666666666666
+        ],
+        "generic": [
+          0.0,
+          0.1111111111111111,
+          0.0,
+          0.8888888888888888
+        ],
+        "original": [
+          0.0,
+          0.1,
+          0.0,
+          0.9
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "NOBODY"
+        ],
+        "generic": [
+          "NOBODY"
+        ],
+        "original": [
+          "NOBODY"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "iEio3lUIytCJemKXFZy9wUXrwLaL6CEL",
+      "human_non_info_votes": 95,
+      "entropy": {
+        "human": 1.4664642377617303,
+        "baseline": 0.5032583347756457,
+        "generic": 0.4689955935892812,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 0.6526315789473685,
+        "baseline": 0.8888888888888888,
+        "generic": 0.9,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.13989745448919605,
+        "generic": 0.11373998221574853,
+        "original": 0.20021577083916248
+      },
+      "distribution": {
+        "human": [
+          0.15789473684210525,
+          0.6526315789473685,
+          0.09473684210526316,
+          0.09473684210526316
+        ],
+        "baseline": [
+          0.0,
+          0.8888888888888888,
+          0.1111111111111111,
+          0.0
+        ],
+        "generic": [
+          0.1,
+          0.9,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.06782212001941319,
+      "panel_ceiling_js": 0.080575161040343,
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "aRo1FsZviZIqRdSbylDC3rSEFcBHrf5j",
+      "human_non_info_votes": 2,
+      "entropy": {
+        "human": -0.0,
+        "baseline": 0.5032583347756457,
+        "generic": 0.8812908992306927,
+        "original": 1.295461844238322
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 0.8888888888888888,
+        "generic": 0.7,
+        "original": 0.6
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.05791426176250229,
+        "generic": 0.16919485510105411,
+        "original": 0.49342260576014463
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          0.8888888888888888,
+          0.0,
+          0.1111111111111111
+        ],
+        "generic": [
+          0.0,
+          0.7,
+          0.0,
+          0.3
+        ],
+        "original": [
+          0.1,
+          0.3,
+          0.0,
+          0.6
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "NOBODY"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "y6WrlqqpSL0yVXxlILjWbrtDCxPorbM0",
+      "human_non_info_votes": 186,
+      "entropy": {
+        "human": 0.3387504381563244,
+        "baseline": 1.1567796494470395,
+        "generic": 0.9219280948873623,
+        "original": 1.5709505944546687
+      },
+      "modal_share": {
+        "human": 0.9516129032258065,
+        "baseline": 0.7,
+        "generic": 0.8,
+        "original": 0.6
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.6713979068233191,
+        "generic": 0.7129340146633266,
+        "original": 0.515857714633289
+      },
+      "distribution": {
+        "human": [
+          0.005376344086021506,
+          0.9516129032258065,
+          0.010752688172043012,
+          0.03225806451612903
+        ],
+        "baseline": [
+          0.7,
+          0.1,
+          0.0,
+          0.2
+        ],
+        "generic": [
+          0.8,
+          0.1,
+          0.1,
+          0.0
+        ],
+        "original": [
+          0.6,
+          0.2,
+          0.1,
+          0.1
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.02924257594211746,
+      "panel_ceiling_js": 0.034138136472235896,
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "shMVUKr9qnldSDkhMHigtZpqZyCFE7cS",
+      "human_non_info_votes": 4,
+      "entropy": {
+        "human": -0.0,
+        "baseline": 1.8954618442383218,
+        "generic": 1.224394445405986,
+        "original": 1.8464393446710154
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 0.3,
+        "generic": 0.6666666666666666,
+        "original": 0.4
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 9,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.49342260576014463,
+        "generic": 0.7394468924503992,
+        "original": 0.7582766571931676
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.3,
+          0.3,
+          0.1,
+          0.3
+        ],
+        "generic": [
+          0.2222222222222222,
+          0.1111111111111111,
+          0.0,
+          0.6666666666666666
+        ],
+        "original": [
+          0.4,
+          0.1,
+          0.2,
+          0.3
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "AUTHOR",
+          "NOBODY",
+          "OTHER"
+        ],
+        "generic": [
+          "NOBODY"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "CDhLo9FQGSVwEW7YsbDqbY6lfnh6kkz7",
+      "human_non_info_votes": 6,
+      "entropy": {
+        "human": -0.0,
+        "baseline": 1.3709505944546687,
+        "generic": 0.7219280948873623,
+        "original": 0.9864267287308425
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 0.6,
+        "generic": 0.8,
+        "original": 0.7777777777777778
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 9
+      },
+      "js": {
+        "baseline": 0.6099865470109875,
+        "generic": 0.6099865470109875,
+        "original": 0.7394468924503992
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.6,
+          0.2,
+          0.2,
+          0.0
+        ],
+        "generic": [
+          0.8,
+          0.2,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.7777777777777778,
+          0.1111111111111111,
+          0.1111111111111111,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "glZ41YcaxV0y1oZeZ2BJPkDBp8nAZz7F",
+      "human_non_info_votes": 16,
+      "entropy": {
+        "human": 1.4913146570363986,
+        "baseline": 0.8812908992306927,
+        "generic": 1.295461844238322,
+        "original": 1.3516441151533924
+      },
+      "modal_share": {
+        "human": 0.5625,
+        "baseline": 0.7,
+        "generic": 0.6,
+        "original": 0.5555555555555556
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 9
+      },
+      "js": {
+        "baseline": 0.06800392257600357,
+        "generic": 0.03492791546898254,
+        "original": 0.036483405045857245
+      },
+      "distribution": {
+        "human": [
+          0.3125,
+          0.5625,
+          0.0625,
+          0.0625
+        ],
+        "baseline": [
+          0.3,
+          0.7,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.3,
+          0.6,
+          0.0,
+          0.1
+        ],
+        "original": [
+          0.3333333333333333,
+          0.5555555555555556,
+          0.1111111111111111,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "WC8FG0NDNNbp8mJ4mkA038miW6wsliSJ",
+      "human_non_info_votes": 2,
+      "entropy": {
+        "human": -0.0,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": 1.0
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 0.5
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 9,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.31127812445913283
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.5,
+          0.5,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "AUTHOR",
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "4A9YknAy5LT9PhZzVQscK9Dqq5kWLoAE",
+      "human_non_info_votes": 3,
+      "entropy": {
+        "human": 0.9182958340544896,
+        "baseline": -0.0,
+        "generic": 0.4689955935892812,
+        "original": 0.9709505944546686
+      },
+      "modal_share": {
+        "human": 0.6666666666666666,
+        "baseline": 1.0,
+        "generic": 0.9,
+        "original": 0.6
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.4591479170272448,
+        "generic": 0.4808578163169355,
+        "original": 0.05216841772705744
+      },
+      "distribution": {
+        "human": [
+          0.6666666666666666,
+          0.3333333333333333,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          0.9,
+          0.1,
+          0.0
+        ],
+        "original": [
+          0.4,
+          0.6,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "8UYyBrLXqZqCczCHIMkolWbT8LJuJl6i",
+      "human_non_info_votes": 6,
+      "entropy": {
+        "human": -0.0,
+        "baseline": -0.0,
+        "generic": 0.7219280948873623,
+        "original": 1.360964047443681
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 1.0,
+        "generic": 0.8,
+        "original": 0.5
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 1.0,
+        "generic": 0.6099865470109875,
+        "original": 0.3958156020033583
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          0.8,
+          0.0,
+          0.2
+        ],
+        "original": [
+          0.1,
+          0.5,
+          0.0,
+          0.4
+        ]
+      },
+      "modal": {
+        "human": [
+          "NOBODY"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "WP69Ldg7JWT85DBvM5O3rnelDzDTLubs",
+      "human_non_info_votes": 26,
+      "entropy": {
+        "human": 1.1951184583080539,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": 0.4689955935892812
+      },
+      "modal_share": {
+        "human": 0.6538461538461539,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 0.9
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.1994022407833454,
+        "generic": 0.1994022407833454,
+        "original": 0.23720070095038626
+      },
+      "distribution": {
+        "human": [
+          0.6538461538461539,
+          0.0,
+          0.07692307692307693,
+          0.2692307692307692
+        ],
+        "baseline": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.9,
+          0.1,
+          0.0,
+          0.0
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.03211164105174754,
+      "panel_ceiling_js": 0.07868624384466404,
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "2WgAXhooga1a6kqcdxnUyhWtVSrmPtTU",
+      "human_non_info_votes": 5,
+      "entropy": {
+        "human": 0.9709505944546686,
+        "baseline": 1.295461844238322,
+        "generic": 0.7219280948873623,
+        "original": 1.1567796494470395
+      },
+      "modal_share": {
+        "human": 0.6,
+        "baseline": 0.6,
+        "generic": 0.8,
+        "original": 0.7
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.05517015238801205,
+        "generic": 0.31034030477602415,
+        "original": 0.07728840592845163
+      },
+      "distribution": {
+        "human": [
+          0.6,
+          0.4,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.6,
+          0.3,
+          0.1,
+          0.0
+        ],
+        "generic": [
+          0.8,
+          0.0,
+          0.0,
+          0.2
+        ],
+        "original": [
+          0.7,
+          0.2,
+          0.1,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "ejHTcCwJ2bKpU4jSd4t09kzH1UkmKnBX",
+      "human_non_info_votes": 25,
+      "entropy": {
+        "human": 1.8744444545796393,
+        "baseline": 1.3709505944546687,
+        "generic": 0.9709505944546686,
+        "original": 1.8464393446710154
+      },
+      "modal_share": {
+        "human": 0.4,
+        "baseline": 0.6,
+        "generic": 0.6,
+        "original": 0.4
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.079356201176389,
+        "generic": 0.18220264481308737,
+        "original": 0.019794974266178565
+      },
+      "distribution": {
+        "human": [
+          0.2,
+          0.4,
+          0.12,
+          0.28
+        ],
+        "baseline": [
+          0.2,
+          0.6,
+          0.0,
+          0.2
+        ],
+        "generic": [
+          0.0,
+          0.6,
+          0.0,
+          0.4
+        ],
+        "original": [
+          0.1,
+          0.4,
+          0.2,
+          0.3
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.046329956013135484,
+      "panel_ceiling_js": 0.10640505206273154,
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "s2XdliD8gjB3oKjNrrzx6o2kN0KX6DM8",
+      "human_non_info_votes": 8,
+      "entropy": {
+        "human": 0.8112781244591328,
+        "baseline": 1.295461844238322,
+        "generic": 1.1567796494470395,
+        "original": 1.4355205042826666
+      },
+      "modal_share": {
+        "human": 0.75,
+        "baseline": 0.6,
+        "generic": 0.7,
+        "original": 0.5555555555555556
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 9
+      },
+      "js": {
+        "baseline": 0.7779122658218002,
+        "generic": 0.7779122658218002,
+        "original": 0.35770622815711023
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.75,
+          0.25,
+          0.0
+        ],
+        "baseline": [
+          0.3,
+          0.1,
+          0.0,
+          0.6
+        ],
+        "generic": [
+          0.2,
+          0.1,
+          0.0,
+          0.7
+        ],
+        "original": [
+          0.2222222222222222,
+          0.5555555555555556,
+          0.0,
+          0.2222222222222222
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "NOBODY"
+        ],
+        "generic": [
+          "NOBODY"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "NrmbNzxaFPXAMtUGYF5FjSirDbAuoZB5",
+      "human_non_info_votes": 12,
+      "entropy": {
+        "human": 1.5510981710072647,
+        "baseline": -0.0,
+        "generic": 0.9864267287308425,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 0.5833333333333334,
+        "baseline": 1.0,
+        "generic": 0.7777777777777778,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 9,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.5487949406953986,
+        "generic": 0.3971151999700427,
+        "original": 0.5487949406953986
+      },
+      "distribution": {
+        "human": [
+          0.25,
+          0.5833333333333334,
+          0.08333333333333333,
+          0.08333333333333333
+        ],
+        "baseline": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.7777777777777778,
+          0.0,
+          0.1111111111111111,
+          0.1111111111111111
+        ],
+        "original": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "sXDn9fCAYPEL6baxJjnZtupEMcINfxip",
+      "human_non_info_votes": 11,
+      "entropy": {
+        "human": 0.4394969869215134,
+        "baseline": 1.5304930567574826,
+        "generic": 1.3921472236645345,
+        "original": 1.1567796494470395
+      },
+      "modal_share": {
+        "human": 0.9090909090909091,
+        "baseline": 0.4444444444444444,
+        "generic": 0.4444444444444444,
+        "original": 0.7
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 9,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.2229435230478391,
+        "generic": 0.20601187126031634,
+        "original": 0.10998346873554213
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.9090909090909091,
+          0.0,
+          0.09090909090909091
+        ],
+        "baseline": [
+          0.2222222222222222,
+          0.4444444444444444,
+          0.0,
+          0.3333333333333333
+        ],
+        "generic": [
+          0.1111111111111111,
+          0.4444444444444444,
+          0.0,
+          0.4444444444444444
+        ],
+        "original": [
+          0.2,
+          0.7,
+          0.0,
+          0.1
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "NOBODY",
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "biM5fjX9IdBWnmc8eFlTGWBerL6uoiOJ",
+      "human_non_info_votes": 9,
+      "entropy": {
+        "human": 0.5032583347756457,
+        "baseline": 0.4689955935892812,
+        "generic": 1.0,
+        "original": 0.8812908992306927
+      },
+      "modal_share": {
+        "human": 0.8888888888888888,
+        "baseline": 0.9,
+        "generic": 0.5,
+        "original": 0.7
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.00023590919231433402,
+        "generic": 0.13634715212731208,
+        "original": 0.2818331440867055
+      },
+      "distribution": {
+        "human": [
+          0.1111111111111111,
+          0.8888888888888888,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.1,
+          0.9,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.5,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.7,
+          0.3,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "AUTHOR",
+          "OTHER"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "v2gVS05BYjaHNP75sTYN8NaCxdXVZxQz",
+      "human_non_info_votes": 74,
+      "entropy": {
+        "human": 0.20628309395534852,
+        "baseline": 1.5709505944546684,
+        "generic": 1.5219280948873621,
+        "original": 1.5304930567574826
+      },
+      "modal_share": {
+        "human": 0.972972972972973,
+        "baseline": 0.4,
+        "generic": 0.4,
+        "original": 0.4444444444444444
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 9
+      },
+      "js": {
+        "baseline": 0.41548104072428327,
+        "generic": 0.5277165218451522,
+        "original": 0.5008024663265735
+      },
+      "distribution": {
+        "human": [
+          0.013513513513513514,
+          0.972972972972973,
+          0.0,
+          0.013513513513513514
+        ],
+        "baseline": [
+          0.4,
+          0.3,
+          0.0,
+          0.3
+        ],
+        "generic": [
+          0.4,
+          0.2,
+          0.0,
+          0.4
+        ],
+        "original": [
+          0.3333333333333333,
+          0.2222222222222222,
+          0.0,
+          0.4444444444444444
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.018628736414352143,
+      "panel_ceiling_js": 0.02746641168425277,
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR",
+          "NOBODY"
+        ],
+        "original": [
+          "NOBODY"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "8fLHflg0zD8sIqDOEeuej2e5mTmj8NFz",
+      "human_non_info_votes": 10,
+      "entropy": {
+        "human": 0.9219280948873623,
+        "baseline": 1.360964047443681,
+        "generic": 0.8812908992306927,
+        "original": 1.3709505944546687
+      },
+      "modal_share": {
+        "human": 0.8,
+        "baseline": 0.5,
+        "generic": 0.7,
+        "original": 0.6
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.19471418320829015,
+        "generic": 0.3176312075778214,
+        "original": 0.43195048005250436
+      },
+      "distribution": {
+        "human": [
+          0.1,
+          0.8,
+          0.1,
+          0.0
+        ],
+        "baseline": [
+          0.4,
+          0.5,
+          0.0,
+          0.1
+        ],
+        "generic": [
+          0.7,
+          0.3,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.6,
+          0.2,
+          0.0,
+          0.2
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "pKU8RWnmISHxGbNQoQXm7W6OaBTpPnyh",
+      "human_non_info_votes": 23,
+      "entropy": {
+        "human": 0.8404914014731815,
+        "baseline": 0.4689955935892812,
+        "generic": 0.4689955935892812,
+        "original": 1.224394445405986
+      },
+      "modal_share": {
+        "human": 0.8260869565217391,
+        "baseline": 0.9,
+        "generic": 0.9,
+        "original": 0.6666666666666666
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 9
+      },
+      "js": {
+        "baseline": 0.044948641205118496,
+        "generic": 0.044948641205118496,
+        "original": 0.1272695156111312
+      },
+      "distribution": {
+        "human": [
+          0.08695652173913043,
+          0.8260869565217391,
+          0.0,
+          0.08695652173913043
+        ],
+        "baseline": [
+          0.1,
+          0.9,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.1,
+          0.9,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.2222222222222222,
+          0.6666666666666666,
+          0.1111111111111111,
+          0.0
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.03530960924483723,
+      "panel_ceiling_js": 0.08910738818302513,
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "ds4hiBANHVIudKNOf8pNZWRMLeoyz2PA",
+      "human_non_info_votes": 46,
+      "entropy": {
+        "human": 0.6015071801547325,
+        "baseline": 0.9219280948873623,
+        "generic": 0.9709505944546686,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 0.8913043478260869,
+        "baseline": 0.8,
+        "generic": 0.6,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 9
+      },
+      "js": {
+        "baseline": 0.01269219679438465,
+        "generic": 0.26958203372950784,
+        "original": 0.056602152490485454
+      },
+      "distribution": {
+        "human": [
+          0.8913043478260869,
+          0.043478260869565216,
+          0.0,
+          0.06521739130434782
+        ],
+        "baseline": [
+          0.8,
+          0.1,
+          0.0,
+          0.1
+        ],
+        "generic": [
+          0.4,
+          0.0,
+          0.0,
+          0.6
+        ],
+        "original": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.03897002987704999,
+      "panel_ceiling_js": 0.05720181893935992,
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "NOBODY"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 0.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "tJhwwDS1jDbnBs3GrEk00DGZ0YRN2vWG",
+      "human_non_info_votes": 5,
+      "entropy": {
+        "human": -0.0,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "generic": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "original": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "NOBODY"
+        ],
+        "generic": [
+          "NOBODY"
+        ],
+        "original": [
+          "NOBODY"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "haZSRFk0hhesPC0uJksxJ8pConYRVnww",
+      "human_non_info_votes": 12,
+      "entropy": {
+        "human": 0.41381685030363374,
+        "baseline": 1.295461844238322,
+        "generic": 1.1567796494470395,
+        "original": 1.1567796494470395
+      },
+      "modal_share": {
+        "human": 0.9166666666666666,
+        "baseline": 0.6,
+        "generic": 0.7,
+        "original": 0.7
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.2656897669808179,
+        "generic": 0.2021714192367735,
+        "original": 0.2021714192367735
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.9166666666666666,
+          0.08333333333333333,
+          0.0
+        ],
+        "baseline": [
+          0.3,
+          0.6,
+          0.0,
+          0.1
+        ],
+        "generic": [
+          0.2,
+          0.7,
+          0.0,
+          0.1
+        ],
+        "original": [
+          0.2,
+          0.7,
+          0.0,
+          0.1
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "WIsWsQS4lNJxprJTxFILf90Z0UF2HGHr",
+      "human_non_info_votes": 11,
+      "entropy": {
+        "human": 0.6840384356390417,
+        "baseline": 0.8812908992306927,
+        "generic": -0.0,
+        "original": 0.7642045065086203
+      },
+      "modal_share": {
+        "human": 0.8181818181818182,
+        "baseline": 0.7,
+        "generic": 1.0,
+        "original": 0.7777777777777778
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 9,
+        "original": 9
+      },
+      "js": {
+        "baseline": 0.7696535624760302,
+        "generic": 1.0,
+        "original": 0.7994395042448872
+      },
+      "distribution": {
+        "human": [
+          0.8181818181818182,
+          0.18181818181818182,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          0.3,
+          0.0,
+          0.7
+        ],
+        "generic": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "original": [
+          0.0,
+          0.2222222222222222,
+          0.0,
+          0.7777777777777778
+        ]
+      },
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "NOBODY"
+        ],
+        "generic": [
+          "NOBODY"
+        ],
+        "original": [
+          "NOBODY"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "zPtOhnaE2C8FNiadezKOcUtjKLOD1CXZ",
+      "human_non_info_votes": 3,
+      "entropy": {
+        "human": 0.9182958340544896,
+        "baseline": 0.9709505944546686,
+        "generic": 0.7219280948873623,
+        "original": 1.1567796494470395
+      },
+      "modal_share": {
+        "human": 0.6666666666666666,
+        "baseline": 0.6,
+        "generic": 0.8,
+        "original": 0.7
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.003455029339326253,
+        "generic": 0.16702580990126037,
+        "original": 0.1935794239273375
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.6666666666666666,
+          0.0,
+          0.3333333333333333
+        ],
+        "baseline": [
+          0.0,
+          0.6,
+          0.0,
+          0.4
+        ],
+        "generic": [
+          0.0,
+          0.2,
+          0.0,
+          0.8
+        ],
+        "original": [
+          0.1,
+          0.2,
+          0.0,
+          0.7
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "NOBODY"
+        ],
+        "original": [
+          "NOBODY"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "NJXUJqhSe3N1igq4EhysVVAsIrhtY0JJ",
+      "human_non_info_votes": 11,
+      "entropy": {
+        "human": 0.8453509366224364,
+        "baseline": 0.9864267287308425,
+        "generic": 0.7642045065086203,
+        "original": 1.3709505944546687
+      },
+      "modal_share": {
+        "human": 0.7272727272727273,
+        "baseline": 0.7777777777777778,
+        "generic": 0.7777777777777778,
+        "original": 0.6
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 9,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.08149252040939124,
+        "generic": 0.0024733838145493993,
+        "original": 0.10846010003228966
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.7272727272727273,
+          0.2727272727272727,
+          0.0
+        ],
+        "baseline": [
+          0.1111111111111111,
+          0.7777777777777778,
+          0.1111111111111111,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          0.7777777777777778,
+          0.2222222222222222,
+          0.0
+        ],
+        "original": [
+          0.2,
+          0.6,
+          0.2,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "eCUzB0s3P4TNvtQa3AnQAXNNQJTLqvy0",
+      "human_non_info_votes": 23,
+      "entropy": {
+        "human": 1.1545676820893709,
+        "baseline": 0.4689955935892812,
+        "generic": 1.295461844238322,
+        "original": 0.7219280948873623
+      },
+      "modal_share": {
+        "human": 0.7391304347826086,
+        "baseline": 0.9,
+        "generic": 0.6,
+        "original": 0.8
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.12265184878878062,
+        "generic": 0.17805993261891115,
+        "original": 0.1488929339582368
+      },
+      "distribution": {
+        "human": [
+          0.7391304347826086,
+          0.17391304347826086,
+          0.043478260869565216,
+          0.043478260869565216
+        ],
+        "baseline": [
+          0.9,
+          0.0,
+          0.0,
+          0.1
+        ],
+        "generic": [
+          0.6,
+          0.0,
+          0.1,
+          0.3
+        ],
+        "original": [
+          0.8,
+          0.0,
+          0.0,
+          0.2
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.04824114631566126,
+      "panel_ceiling_js": 0.1253135199998419,
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "lqcQzBX7FYR63vHQppiVBwE8vj60az40",
+      "human_non_info_votes": 7,
+      "entropy": {
+        "human": 1.3787834934861753,
+        "baseline": 0.9864267287308425,
+        "generic": 1.1567796494470395,
+        "original": 0.4689955935892812
+      },
+      "modal_share": {
+        "human": 0.5714285714285714,
+        "baseline": 0.7777777777777778,
+        "generic": 0.7,
+        "original": 0.9
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.32492332894730014,
+        "generic": 0.28210607016615097,
+        "original": 0.540277193749028
+      },
+      "distribution": {
+        "human": [
+          0.5714285714285714,
+          0.14285714285714285,
+          0.0,
+          0.2857142857142857
+        ],
+        "baseline": [
+          0.1111111111111111,
+          0.7777777777777778,
+          0.0,
+          0.1111111111111111
+        ],
+        "generic": [
+          0.1,
+          0.7,
+          0.0,
+          0.2
+        ],
+        "original": [
+          0.0,
+          0.9,
+          0.0,
+          0.1
+        ]
+      },
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "bM6xY7PKff890DP2HHhksmpufANArI2b",
+      "human_non_info_votes": 17,
+      "entropy": {
+        "human": 1.3328204045850196,
+        "baseline": 0.4689955935892812,
+        "generic": 0.4689955935892812,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 0.5882352941176471,
+        "baseline": 0.9,
+        "generic": 0.9,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.5313765692236457,
+        "generic": 0.5313765692236457,
+        "original": 0.7287131042890485
+      },
+      "distribution": {
+        "human": [
+          0.11764705882352941,
+          0.29411764705882354,
+          0.0,
+          0.5882352941176471
+        ],
+        "baseline": [
+          0.9,
+          0.0,
+          0.0,
+          0.1
+        ],
+        "generic": [
+          0.9,
+          0.0,
+          0.0,
+          0.1
+        ],
+        "original": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "NOBODY"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "uVwcvcOyGQROsGXFMRjVSNYJMBVNOP8f",
+      "human_non_info_votes": 36,
+      "entropy": {
+        "human": 0.3095434291503252,
+        "baseline": 1.295461844238322,
+        "generic": 0.8812908992306927,
+        "original": 1.5219280948873621
+      },
+      "modal_share": {
+        "human": 0.9444444444444444,
+        "baseline": 0.6,
+        "generic": 0.7,
+        "original": 0.4
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.1445608256267495,
+        "generic": 0.07977427595536271,
+        "original": 0.31310801902493934
+      },
+      "distribution": {
+        "human": [
+          0.05555555555555555,
+          0.9444444444444444,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.3,
+          0.6,
+          0.0,
+          0.1
+        ],
+        "generic": [
+          0.3,
+          0.7,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.2,
+          0.4,
+          0.0,
+          0.4
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.019426174298926263,
+      "panel_ceiling_js": 0.03237216955089684,
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "NOBODY",
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "XW2ivGQmEJCuvoGUPKETiWwHg2H0Zrl1",
+      "human_non_info_votes": 3,
+      "entropy": {
+        "human": 0.9182958340544896,
+        "baseline": 1.7609640474436812,
+        "generic": 1.5219280948873621,
+        "original": 1.1567796494470395
+      },
+      "modal_share": {
+        "human": 0.6666666666666666,
+        "baseline": 0.5,
+        "generic": 0.4,
+        "original": 0.7
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.2577189894839846,
+        "generic": 0.1264907875651346,
+        "original": 0.3171564269305647
+      },
+      "distribution": {
+        "human": [
+          0.3333333333333333,
+          0.6666666666666666,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.5,
+          0.2,
+          0.1,
+          0.2
+        ],
+        "generic": [
+          0.4,
+          0.4,
+          0.0,
+          0.2
+        ],
+        "original": [
+          0.7,
+          0.1,
+          0.0,
+          0.2
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR",
+          "OTHER"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 1.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "r1NAjcu33bWHQi6IZskb6vsj4flRsYCS",
+      "human_non_info_votes": 3,
+      "entropy": {
+        "human": 1.584962500721156,
+        "baseline": 0.9219280948873623,
+        "generic": 0.9709505944546686,
+        "original": 1.6854752972273344
+      },
+      "modal_share": {
+        "human": 0.3333333333333333,
+        "baseline": 0.8,
+        "generic": 0.6,
+        "original": 0.5
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.16702580990126037,
+        "generic": 0.19672214174548802,
+        "original": 0.11054450767104153
+      },
+      "distribution": {
+        "human": [
+          0.3333333333333333,
+          0.3333333333333333,
+          0.0,
+          0.3333333333333333
+        ],
+        "baseline": [
+          0.1,
+          0.8,
+          0.0,
+          0.1
+        ],
+        "generic": [
+          0.0,
+          0.6,
+          0.0,
+          0.4
+        ],
+        "original": [
+          0.5,
+          0.1,
+          0.1,
+          0.3
+        ]
+      },
+      "modal": {
+        "human": [
+          "AUTHOR",
+          "NOBODY",
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "hfnJlfEzKacmLc8SADpqM3cAMTMWqrs7",
+      "human_non_info_votes": 129,
+      "entropy": {
+        "human": 1.4207134116760005,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 0.4883720930232558,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 9
+      },
+      "js": {
+        "baseline": 0.3205587247737695,
+        "generic": 0.3205587247737695,
+        "original": 0.3205587247737695
+      },
+      "distribution": {
+        "human": [
+          0.4883720930232558,
+          0.3798449612403101,
+          0.13178294573643412,
+          0.0
+        ],
+        "baseline": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.043455677828417826,
+      "panel_ceiling_js": 0.04912573619827983,
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "tJNrHQupnPegX9Uz8U1EbLaQL5IclTe6",
+      "human_non_info_votes": 117,
+      "entropy": {
+        "human": 0.2961883198174632,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": 0.7219280948873623
+      },
+      "modal_share": {
+        "human": 0.9572649572649573,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 0.8
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 9,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.021704085416708582,
+        "generic": 0.021704085416708582,
+        "original": 0.06882320431878484
+      },
+      "distribution": {
+        "human": [
+          0.02564102564102564,
+          0.9572649572649573,
+          0.0,
+          0.017094017094017096
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.2,
+          0.8,
+          0.0,
+          0.0
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.02688724472124865,
+      "panel_ceiling_js": 0.032022515037509684,
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "7gQKjDlAkkOc6ZHfuyQwpn4WNLdr1Flv",
+      "human_non_info_votes": 8,
+      "entropy": {
+        "human": 0.5435644431995964,
+        "baseline": 1.1567796494470395,
+        "generic": 0.9864267287308425,
+        "original": 1.1567796494470395
+      },
+      "modal_share": {
+        "human": 0.875,
+        "baseline": 0.7,
+        "generic": 0.7777777777777778,
+        "original": 0.7
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 9,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.6112267899506094,
+        "generic": 0.6317989333846343,
+        "original": 0.5159479575292453
+      },
+      "distribution": {
+        "human": [
+          0.125,
+          0.0,
+          0.0,
+          0.875
+        ],
+        "baseline": [
+          0.2,
+          0.7,
+          0.0,
+          0.1
+        ],
+        "generic": [
+          0.1111111111111111,
+          0.7777777777777778,
+          0.0,
+          0.1111111111111111
+        ],
+        "original": [
+          0.1,
+          0.7,
+          0.0,
+          0.2
+        ]
+      },
+      "modal": {
+        "human": [
+          "NOBODY"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "8pU4Hz8rd6xGh4yo9hNgCw7kcUJHxZh7",
+      "human_non_info_votes": 18,
+      "entropy": {
+        "human": 1.954685946946356,
+        "baseline": 0.9219280948873623,
+        "generic": 0.4689955935892812,
+        "original": 0.7219280948873623
+      },
+      "modal_share": {
+        "human": 0.3333333333333333,
+        "baseline": 0.8,
+        "generic": 0.9,
+        "original": 0.8
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.31780223510976713,
+        "generic": 0.4698924239070635,
+        "original": 0.3594034994663903
+      },
+      "distribution": {
+        "human": [
+          0.3333333333333333,
+          0.2222222222222222,
+          0.2777777777777778,
+          0.16666666666666666
+        ],
+        "baseline": [
+          0.1,
+          0.8,
+          0.0,
+          0.1
+        ],
+        "generic": [
+          0.0,
+          0.9,
+          0.0,
+          0.1
+        ],
+        "original": [
+          0.2,
+          0.8,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "HJVaBmVDXgkD7F2cPvKVOJj62vR6mnaX",
+      "human_non_info_votes": 10,
+      "entropy": {
+        "human": 0.4689955935892812,
+        "baseline": -0.0,
+        "generic": 1.1567796494470395,
+        "original": 0.4689955935892812
+      },
+      "modal_share": {
+        "human": 0.9,
+        "baseline": 1.0,
+        "generic": 0.7,
+        "original": 0.9
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.051899160321315516,
+        "generic": 0.10904047336920196,
+        "original": 0.0
+      },
+      "distribution": {
+        "human": [
+          0.1,
+          0.9,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.1,
+          0.7,
+          0.0,
+          0.2
+        ],
+        "original": [
+          0.1,
+          0.9,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "3uPvyokYTrCapwSUDUaPKz4bJfNc9d5S",
+      "human_non_info_votes": 10,
+      "entropy": {
+        "human": 1.5709505944546687,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": 0.7219280948873623
+      },
+      "modal_share": {
+        "human": 0.6,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 0.8
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.23645279766002797,
+        "generic": 0.23645279766002797,
+        "original": 0.1103403047760241
+      },
+      "distribution": {
+        "human": [
+          0.2,
+          0.6,
+          0.1,
+          0.1
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.2,
+          0.8,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "YA5qS6bqBq7ql6aW3om877Veu7lgH2Wj",
+      "human_non_info_votes": 3,
+      "entropy": {
+        "human": 0.9182958340544896,
+        "baseline": 1.4854752972273344,
+        "generic": 1.0,
+        "original": 0.9219280948873623
+      },
+      "modal_share": {
+        "human": 0.6666666666666666,
+        "baseline": 0.5,
+        "generic": 0.5,
+        "original": 0.8
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.3135915667538171,
+        "generic": 0.42528358731335336,
+        "original": 0.6169996087633719
+      },
+      "distribution": {
+        "human": [
+          0.3333333333333333,
+          0.6666666666666666,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.2,
+          0.3,
+          0.5,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          0.5,
+          0.5,
+          0.0
+        ],
+        "original": [
+          0.1,
+          0.1,
+          0.8,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "EVERYBODY"
+        ],
+        "generic": [
+          "EVERYBODY",
+          "OTHER"
+        ],
+        "original": [
+          "EVERYBODY"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 1.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "MJX0VhaS9MidR0D8RNa9btkhsVnFWcfH",
+      "human_non_info_votes": 36,
+      "entropy": {
+        "human": 0.4903415031415078,
+        "baseline": 1.3516441151533924,
+        "generic": 1.295461844238322,
+        "original": 1.5709505944546684
+      },
+      "modal_share": {
+        "human": 0.9166666666666666,
+        "baseline": 0.5555555555555556,
+        "generic": 0.6,
+        "original": 0.4
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.14899781129471368,
+        "generic": 0.12393870819231187,
+        "original": 0.3193360187991185
+      },
+      "distribution": {
+        "human": [
+          0.027777777777777776,
+          0.9166666666666666,
+          0.0,
+          0.05555555555555555
+        ],
+        "baseline": [
+          0.3333333333333333,
+          0.5555555555555556,
+          0.0,
+          0.1111111111111111
+        ],
+        "generic": [
+          0.3,
+          0.6,
+          0.0,
+          0.1
+        ],
+        "original": [
+          0.3,
+          0.3,
+          0.0,
+          0.4
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.034411858953050704,
+      "panel_ceiling_js": 0.06121809150159573,
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "NOBODY"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "A1EGT9OlNZ2kObgnk4vZyH4tPBCIDsF2",
+      "human_non_info_votes": 4,
+      "entropy": {
+        "human": -0.0,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "gJX0yCs1Ey4bxstdTQSw589Gea5XclDs",
+      "human_non_info_votes": 12,
+      "entropy": {
+        "human": -0.0,
+        "baseline": 0.5032583347756457,
+        "generic": 1.1567796494470395,
+        "original": 1.3921472236645345
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 0.8888888888888888,
+        "generic": 0.7,
+        "original": 0.4444444444444444
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 10,
+        "original": 9
+      },
+      "js": {
+        "baseline": 0.05791426176250229,
+        "generic": 0.16919485510105414,
+        "original": 0.35686714873036735
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          0.8888888888888888,
+          0.1111111111111111,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          0.7,
+          0.2,
+          0.1
+        ],
+        "original": [
+          0.0,
+          0.4444444444444444,
+          0.4444444444444444,
+          0.1111111111111111
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "EVERYBODY",
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "xIFh2zbUt6wFUkhcqpxBK0BhWLwFG6BU",
+      "human_non_info_votes": 6,
+      "entropy": {
+        "human": 1.4591479170272448,
+        "baseline": 0.7219280948873623,
+        "generic": 0.9709505944546686,
+        "original": 0.7642045065086203
+      },
+      "modal_share": {
+        "human": 0.5,
+        "baseline": 0.8,
+        "generic": 0.6,
+        "original": 0.7777777777777778
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 9
+      },
+      "js": {
+        "baseline": 0.19295733482602195,
+        "generic": 0.20565542005158918,
+        "original": 0.19149366611767266
+      },
+      "distribution": {
+        "human": [
+          0.16666666666666666,
+          0.5,
+          0.0,
+          0.3333333333333333
+        ],
+        "baseline": [
+          0.2,
+          0.8,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.4,
+          0.6,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.2222222222222222,
+          0.7777777777777778,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "NgTCexje75HtTifbSOQC7CWLOHxUKRdV",
+      "human_non_info_votes": 13,
+      "entropy": {
+        "human": 0.39124356362925566,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 0.9230769230769231,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.039571600004613725,
+        "generic": 0.039571600004613725,
+        "original": 0.039571600004613725
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.9230769230769231,
+          0.0,
+          0.07692307692307693
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "XRTxs9vGu2ztK5o4bqw7mnQec35aiLoP",
+      "human_non_info_votes": 8,
+      "entropy": {
+        "human": 0.5435644431995964,
+        "baseline": 0.4689955935892812,
+        "generic": -0.0,
+        "original": 0.5435644431995964
+      },
+      "modal_share": {
+        "human": 0.875,
+        "baseline": 0.9,
+        "generic": 1.0,
+        "original": 0.875
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 8
+      },
+      "js": {
+        "baseline": 0.0011309452702580741,
+        "generic": 0.06550784501721568,
+        "original": 0.0
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.875,
+          0.125,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          0.9,
+          0.1,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.0,
+          0.875,
+          0.125,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "JPGCch7qIINVb7dJPr9g97QnEghHGE61",
+      "human_non_info_votes": 8,
+      "entropy": {
+        "human": -0.0,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      },
+      "distribution": {
+        "human": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "ckGkggpTBOZcm9s16yVmVuUtdOUlhXf2",
+      "human_non_info_votes": 88,
+      "entropy": {
+        "human": 1.7272324894578261,
+        "baseline": 0.4689955935892812,
+        "generic": -0.0,
+        "original": 0.7219280948873623
+      },
+      "modal_share": {
+        "human": 0.48863636363636365,
+        "baseline": 0.9,
+        "generic": 1.0,
+        "original": 0.8
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.21457856010927445,
+        "generic": 0.3203463277890134,
+        "original": 0.18653832796642317
+      },
+      "distribution": {
+        "human": [
+          0.19318181818181818,
+          0.48863636363636365,
+          0.25,
+          0.06818181818181818
+        ],
+        "baseline": [
+          0.1,
+          0.9,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.2,
+          0.8,
+          0.0,
+          0.0
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.06205140324648605,
+      "panel_ceiling_js": 0.07738970773875554,
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "8ZsHbjWskTg43jdlp2L1TKYNUl9cxu2U",
+      "human_non_info_votes": 18,
+      "entropy": {
+        "human": 0.9444885341662053,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 0.7777777777777778,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.12115608152133563,
+        "generic": 0.12115608152133563,
+        "original": 0.12115608152133563
+      },
+      "distribution": {
+        "human": [
+          0.7777777777777778,
+          0.16666666666666666,
+          0.0,
+          0.05555555555555555
+        ],
+        "baseline": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "vsAlliMz9tedhSSeyNtHX27bFQ6qOD8w",
+      "human_non_info_votes": 4,
+      "entropy": {
+        "human": 0.8112781244591328,
+        "baseline": 0.4689955935892812,
+        "generic": 0.9182958340544896,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 0.75,
+        "baseline": 0.9,
+        "generic": 0.6666666666666666,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 9,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.17992507553151108,
+        "generic": 0.29343569632187677,
+        "original": 0.1379253809700299
+      },
+      "distribution": {
+        "human": [
+          0.75,
+          0.25,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.9,
+          0.0,
+          0.0,
+          0.1
+        ],
+        "generic": [
+          0.6666666666666666,
+          0.0,
+          0.0,
+          0.3333333333333333
+        ],
+        "original": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "jCjzXtcZMCXdoLyPTAM1qQDRxoum9JjR",
+      "human_non_info_votes": 11,
+      "entropy": {
+        "human": 0.4394969869215134,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": 0.4689955935892812
+      },
+      "modal_share": {
+        "human": 0.9090909090909091,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 0.9
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 9,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.04701649434226942,
+        "generic": 0.04701649434226942,
+        "original": 0.09547102216894404
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.9090909090909091,
+          0.09090909090909091,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.1,
+          0.9,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "HluVEVpChYqPVhNvVlAyGYR22ekjXpcu",
+      "human_non_info_votes": 7,
+      "entropy": {
+        "human": 1.3787834934861753,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": 0.4689955935892812
+      },
+      "modal_share": {
+        "human": 0.5714285714285714,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 0.9
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 9,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.2569811892423542,
+        "generic": 0.2569811892423542,
+        "original": 0.13174491764181823
+      },
+      "distribution": {
+        "human": [
+          0.2857142857142857,
+          0.5714285714285714,
+          0.0,
+          0.14285714285714285
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.1,
+          0.9,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "Wp3zsvhlAPf07rsmjNERNbE5LE4dGEi4",
+      "human_non_info_votes": 11,
+      "entropy": {
+        "human": -0.0,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": 0.8812908992306927
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 0.7
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.16919485510105411
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.3,
+          0.7,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "6hnTjaKhCr1M1dieN3DVO55OXAW1PtFp",
+      "human_non_info_votes": 7,
+      "entropy": {
+        "human": 1.3787834934861753,
+        "baseline": 0.9182958340544896,
+        "generic": 1.1567796494470395,
+        "original": 1.8464393446710154
+      },
+      "modal_share": {
+        "human": 0.5714285714285714,
+        "baseline": 0.6666666666666666,
+        "generic": 0.7,
+        "original": 0.4
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.15082366007178874,
+        "generic": 0.2534808880655175,
+        "original": 0.2269026026445672
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.5714285714285714,
+          0.14285714285714285,
+          0.2857142857142857
+        ],
+        "baseline": [
+          0.0,
+          0.3333333333333333,
+          0.0,
+          0.6666666666666666
+        ],
+        "generic": [
+          0.1,
+          0.2,
+          0.0,
+          0.7
+        ],
+        "original": [
+          0.3,
+          0.2,
+          0.1,
+          0.4
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "NOBODY"
+        ],
+        "generic": [
+          "NOBODY"
+        ],
+        "original": [
+          "NOBODY"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "kOpUHvuOLEIziWnarpAxyjTQLSk5AKKc",
+      "human_non_info_votes": 5,
+      "entropy": {
+        "human": 0.9709505944546686,
+        "baseline": 0.9709505944546686,
+        "generic": 0.7219280948873623,
+        "original": -0.0
+      },
+      "modal_share": {
+        "human": 0.6,
+        "baseline": 0.6,
+        "generic": 0.8,
+        "original": 1.0
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.5145247027726656,
+        "generic": 0.6754887502163468,
+        "original": 1.0
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.4,
+          0.6,
+          0.0
+        ],
+        "baseline": [
+          0.6,
+          0.0,
+          0.4,
+          0.0
+        ],
+        "generic": [
+          0.8,
+          0.0,
+          0.2,
+          0.0
+        ],
+        "original": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "EVERYBODY"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "QzWwRT2RIaWGmTfAX5BICCkD3k6e6kOK",
+      "human_non_info_votes": 18,
+      "entropy": {
+        "human": -0.0,
+        "baseline": -0.0,
+        "generic": -0.0,
+        "original": 0.4689955935892812
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 0.9
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.051899160321315516
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.1,
+          0.9,
+          0.0,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "d2DJE2VoyCFpowO2mccT0yiuI7D1Trt5",
+      "human_non_info_votes": 2,
+      "entropy": {
+        "human": -0.0,
+        "baseline": 0.8812908992306927,
+        "generic": 0.7219280948873623,
+        "original": 1.295461844238322
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 0.7,
+        "generic": 0.8,
+        "original": 0.6
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.49342260576014463,
+        "generic": 0.6099865470109875,
+        "original": 0.49342260576014463
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.7,
+          0.3,
+          0.0,
+          0.0
+        ],
+        "generic": [
+          0.8,
+          0.2,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.6,
+          0.3,
+          0.1,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "pOIMCjTbFv3N99NnfgyDvQgpm3eLCtCJ",
+      "human_non_info_votes": 32,
+      "entropy": {
+        "human": 1.510692411043098,
+        "baseline": 0.4689955935892812,
+        "generic": -0.0,
+        "original": 0.4689955935892812
+      },
+      "modal_share": {
+        "human": 0.625,
+        "baseline": 0.9,
+        "generic": 1.0,
+        "original": 0.9
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.5570429774231208,
+        "generic": 0.6696854054088387,
+        "original": 0.47086501175951906
+      },
+      "distribution": {
+        "human": [
+          0.625,
+          0.15625,
+          0.15625,
+          0.0625
+        ],
+        "baseline": [
+          0.0,
+          0.9,
+          0.1,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.1,
+          0.9,
+          0.0,
+          0.0
+        ]
+      },
+      "panel_overlapping_biased_low_js": 0.05585382351158121,
+      "panel_ceiling_js": 0.10208607805311447,
+      "modal": {
+        "human": [
+          "AUTHOR"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "bwP6jj0nESy3VqshIemlw02HvY5wHrce",
+      "human_non_info_votes": 7,
+      "entropy": {
+        "human": 1.3787834934861753,
+        "baseline": 0.5032583347756457,
+        "generic": -0.0,
+        "original": 0.9219280948873623
+      },
+      "modal_share": {
+        "human": 0.5714285714285714,
+        "baseline": 0.8888888888888888,
+        "generic": 1.0,
+        "original": 0.8
+      },
+      "valid_n": {
+        "baseline": 9,
+        "generic": 10,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.12520004338016377,
+        "generic": 0.2569811892423542,
+        "original": 0.16886202253732974
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          0.5714285714285714,
+          0.2857142857142857,
+          0.14285714285714285
+        ],
+        "baseline": [
+          0.0,
+          0.8888888888888888,
+          0.1111111111111111,
+          0.0
+        ],
+        "generic": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "original": [
+          0.1,
+          0.8,
+          0.1,
+          0.0
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    },
+    {
+      "id": "JFtiDhtxYn0HiKtYzAZCPRjZtj8GAUTn",
+      "human_non_info_votes": 8,
+      "entropy": {
+        "human": 1.061278124459133,
+        "baseline": 1.6854752972273344,
+        "generic": 0.9182958340544896,
+        "original": 1.3516441151533924
+      },
+      "modal_share": {
+        "human": 0.75,
+        "baseline": 0.5,
+        "generic": 0.6666666666666666,
+        "original": 0.5555555555555556
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 9,
+        "original": 9
+      },
+      "js": {
+        "baseline": 0.44081367943769945,
+        "generic": 0.7509221822236529,
+        "original": 0.283523045206318
+      },
+      "distribution": {
+        "human": [
+          0.125,
+          0.75,
+          0.125,
+          0.0
+        ],
+        "baseline": [
+          0.5,
+          0.1,
+          0.1,
+          0.3
+        ],
+        "generic": [
+          0.6666666666666666,
+          0.0,
+          0.0,
+          0.3333333333333333
+        ],
+        "original": [
+          0.5555555555555556,
+          0.3333333333333333,
+          0.0,
+          0.1111111111111111
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "AUTHOR"
+        ],
+        "generic": [
+          "AUTHOR"
+        ],
+        "original": [
+          "AUTHOR"
+        ]
+      },
+      "modal_match": {
+        "baseline": 0.0,
+        "generic": 0.0,
+        "original": 0.0
+      }
+    },
+    {
+      "id": "0aoHAaUFfu8zmpagCjk3ODZzmQfPuY9V",
+      "human_non_info_votes": 3,
+      "entropy": {
+        "human": -0.0,
+        "baseline": 0.9219280948873623,
+        "generic": 0.5916727785823275,
+        "original": 1.295461844238322
+      },
+      "modal_share": {
+        "human": 1.0,
+        "baseline": 0.8,
+        "generic": 0.8571428571428571,
+        "original": 0.6
+      },
+      "valid_n": {
+        "baseline": 10,
+        "generic": 7,
+        "original": 10
+      },
+      "js": {
+        "baseline": 0.10803154614560012,
+        "generic": 0.07539593734971191,
+        "original": 0.23645279766002797
+      },
+      "distribution": {
+        "human": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "baseline": [
+          0.0,
+          0.8,
+          0.1,
+          0.1
+        ],
+        "generic": [
+          0.0,
+          0.8571428571428571,
+          0.0,
+          0.14285714285714285
+        ],
+        "original": [
+          0.1,
+          0.6,
+          0.0,
+          0.3
+        ]
+      },
+      "modal": {
+        "human": [
+          "OTHER"
+        ],
+        "baseline": [
+          "OTHER"
+        ],
+        "generic": [
+          "OTHER"
+        ],
+        "original": [
+          "OTHER"
+        ]
+      },
+      "modal_match": {
+        "baseline": 1.0,
+        "generic": 1.0,
+        "original": 1.0
+      }
+    }
+  ]
+}
