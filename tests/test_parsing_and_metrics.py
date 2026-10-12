@@ -1,20 +1,26 @@
 """Offline tests for the metric, the strict parser, and the legacy/current split.
 
-No API calls and no data files. What is being pinned down here is mostly the
+No API calls. Only the configuration-hash tests read data files, and they are
+skipped when the corpus has not been downloaded. What is being pinned down here is mostly the
 parser's refusals: the cases where it declines to record a judgment are what keep
 the coverage figures honest, so they are tested at least as heavily as the cases
 where it succeeds.
 """
+import hashlib
+import json
 import sys
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+ROOT = Path(__file__).resolve().parent.parent
+sys.path[:0] = [str(ROOT), str(ROOT / 'scripts')]
+CORPUS = ROOT / 'data' / 'anecdotes.tar'
 
 from moral_judgment.legacy import extract_label
 from moral_judgment.metrics import LABELS, distribution, js
 from moral_judgment.parsing import classify_response, parse_label, parse_label_tolerant
-from moral_judgment.prompts import CONDITIONS, prompt
+from moral_judgment.prompts import (CONDITIONS, PERSONA_PROFILES, STUDY2_ARMS, persona_prompt, personas,
+                                    prompt)
 
 L = list(LABELS)
 
@@ -170,6 +176,82 @@ class PromptTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             prompt('x', 'not_a_condition', L)
         self.assertEqual(CONDITIONS, ('baseline', 'generic', 'original'))
+
+
+class PersonaPromptTests(unittest.TestCase):
+    def test_persona_block_is_the_only_difference_from_baseline(self):
+        # The persona arms must be the held-out baseline plus the inserted block
+        # and nothing else, including when the anecdote itself contains the
+        # delimiter.
+        for text in ['x', 'a <SITUATION>\nb']:
+            built = persona_prompt(text, 'P. Q. R.', L)
+            block = 'Judge as the following person would.\nPerson: P. Q. R.\n\n'
+            self.assertEqual(built.replace(block, '', 1), prompt(text, 'baseline', L))
+            self.assertIn('neither side.\n\n' + block + '<SITUATION>\n' + text, built)
+
+    def test_baseline_template_is_study1s(self):
+        template = prompt('{TEXT}', 'baseline', L)
+        self.assertTrue(hashlib.sha256(template.encode()).hexdigest().startswith('a331bfb7b0cc661d'))
+
+    def test_persona_design(self):
+        self.assertEqual(STUDY2_ARMS, ('trait_mixture', 'irrelevant_mixture'))
+        self.assertEqual(PERSONA_PROFILES[:8], ('HHH', 'HHL', 'HLH', 'HLL', 'LHH', 'LHL', 'LLH', 'LLL'))
+        self.assertEqual(PERSONA_PROFILES[8:], ('MMM', 'MMM'))
+        traits = personas('trait_mixture')
+        self.assertEqual(traits[0], "You habitually try to see a situation from every person's point of view. "
+                                    "You readily understand what other people are feeling and why. "
+                                    "It bothers you a great deal when someone is treated unfairly.")
+        self.assertEqual(traits[7], "You rarely stop to consider how a situation looks from other people's point "
+                                    "of view. You often find it hard to tell what other people are feeling. "
+                                    "You are rarely bothered by small unfairness between people.")
+        irrelevant = personas('irrelevant_mixture')
+        self.assertEqual(irrelevant[5], 'You prefer coffee to tea. You enjoy walking in the countryside. '
+                                        'You usually cook in the evenings.')
+        self.assertEqual(irrelevant[9], 'You like tea and coffee equally. You enjoy countryside walks and '
+                                        'museums equally. Your evenings vary between reading and cooking.')
+        for arm in STUDY2_ARMS:
+            ps = personas(arm)
+            self.assertEqual(len(ps), 10)
+            self.assertEqual(len(set(ps)), 9)
+            self.assertEqual(ps[8], ps[9])
+
+
+@unittest.skipUnless(CORPUS.exists(), 'Scruples corpus not downloaded')
+class ConfigHashTests(unittest.TestCase):
+    """Refactoring the runner must not move an existing run to a new hash."""
+
+    def test_study1_heldout_hash_reproduces(self):
+        import run_control_pilot as r
+        args = r.parse_args(['--data', str(CORPUS), '--split', 'test', '--items', '60', '--samples', '10',
+                             '--seed', '20261011', '--max-tokens', '16384', '--timeout', '600',
+                             '--provider', 'parasail', '--parser', 'final_marker_tolerant_v1'])
+        config, config_hash, _ = r.configure(args)
+        self.assertEqual(config_hash, '7edf899cb4bf44f43bfadcdacbe1ebcd387dd72ddeec2e0cbb998d65674c7bbd')
+        manifest = ROOT / 'results' / 'heldout' / '7edf899cb4bf44f4' / 'manifest.json'
+        self.assertEqual(config, json.loads(manifest.read_text()))
+
+    def test_development_hash_reproduces(self):
+        import run_control_pilot as r
+        args = r.parse_args(['--data', str(CORPUS), '--items', '20', '--samples', '10',
+                             '--max-tokens', '4096', '--provider', 'parasail'])
+        self.assertEqual(r.configure(args)[1], '32fa0ec867b00d0cd9dcb5a3d06417609284ea67021acab7258b5ac03b0856e8')
+
+    def test_study2_uses_study1_items_and_settings(self):
+        import run_study2 as s
+        items, cfg1 = s.study1_items(str(CORPUS))
+        cfg = s.build_config(items, cfg1)
+        self.assertEqual(list(cfg['human_scores']), list(cfg1['human_scores']))
+        self.assertEqual(cfg['human_scores'], cfg1['human_scores'])
+        for key in ('parser_version', 'extra_body', 'model', 'temperature', 'top_p', 'max_tokens',
+                    'request_timeout_seconds', 'labels', 'samples'):
+            self.assertEqual(cfg[key], cfg1[key], key)
+        for ident, arms in cfg['prompts'].items():
+            for arm in STUDY2_ARMS:
+                for k, built in enumerate(arms[arm]):
+                    self.assertEqual(built, persona_prompt(items[list(cfg['prompts']).index(ident)]['text'],
+                                                           personas(arm)[k], L))
+                    block = f'Judge as the following person would.\nPerson: {personas(arm)[k]}\n\n'
+                    self.assertEqual(built.replace(block, '', 1), cfg1['prompts'][ident]['baseline'])
 
 
 if __name__ == '__main__':

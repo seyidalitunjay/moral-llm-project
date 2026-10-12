@@ -52,3 +52,64 @@ def prompt(text, condition, labels):
     if condition != 'baseline':
         body += _LENGTH_CAP
     return start + body + _INTERFACE.format(labels=', '.join(labels))
+
+
+# Study 2 (docs/preregistration_study2.md). Each arm is a mixture of ten personas
+# placed in front of the unchanged baseline prompt; sample i is always judged by
+# persona i. The trait arm varies the three dispositions the `original` appraisal
+# asks the model to exercise. The irrelevant arm varies three preferences of the
+# same format and grain that bear on no verdict, so a mixture effect that is only
+# about being given *some* person to imitate shows up in both arms.
+STUDY2_ARMS = ('trait_mixture', 'irrelevant_mixture')
+
+# Per dimension: (high, low, moderate). For the irrelevant dimensions "high" and
+# "low" are only positions in the profile code, not more and less of anything.
+_PERSONA_DIMENSIONS = {
+    'trait_mixture': (
+        ("You habitually try to see a situation from every person's point of view.",
+         "You rarely stop to consider how a situation looks from other people's point of view.",
+         "You sometimes try to see a situation from every person's point of view."),
+        ('You readily understand what other people are feeling and why.',
+         'You often find it hard to tell what other people are feeling.',
+         'You usually understand what other people are feeling and why.'),
+        ('It bothers you a great deal when someone is treated unfairly.',
+         'You are rarely bothered by small unfairness between people.',
+         'It bothers you somewhat when someone is treated unfairly.'),
+    ),
+    'irrelevant_mixture': (
+        ('You prefer tea to coffee.',
+         'You prefer coffee to tea.',
+         'You like tea and coffee equally.'),
+        ('You enjoy walking in the countryside.',
+         'You enjoy visiting city museums.',
+         'You enjoy countryside walks and museums equally.'),
+        ('You usually read before bed.',
+         'You usually cook in the evenings.',
+         'Your evenings vary between reading and cooking.'),
+    ),
+}
+
+# Fixed persona order, shared by both arms: the eight high/low combinations with
+# the first dimension varying slowest, then two all-moderate profiles. The two
+# moderate profiles are deliberately identical, so each arm has nine distinct
+# prompts and the moderate one carries a fifth of the mixture.
+PERSONA_PROFILES = ('HHH', 'HHL', 'HLH', 'HLL', 'LHH', 'LHL', 'LLH', 'LLL', 'MMM', 'MMM')
+
+_PERSONA_BLOCK = 'Judge as the following person would.\nPerson: {sentences}\n\n'
+
+
+def personas(arm):
+    """The ten persona descriptions of one arm, in sample order."""
+    dims = _PERSONA_DIMENSIONS[arm]
+    return [' '.join(d['HLM'.index(level)] for d, level in zip(dims, code)) for code in PERSONA_PROFILES]
+
+
+def persona_prompt(text, sentences, labels):
+    """The baseline prompt with a persona block inserted immediately before <SITUATION>.
+
+    Built from the baseline prompt itself rather than reassembled, so the two can
+    only ever differ by the inserted block. Only the first occurrence is replaced,
+    which is always the template's own delimiter, since the anecdote follows it.
+    """
+    base = prompt(text, 'baseline', labels)
+    return base.replace('<SITUATION>\n', _PERSONA_BLOCK.format(sentences=sentences) + '<SITUATION>\n', 1)

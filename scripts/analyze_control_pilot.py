@@ -14,6 +14,7 @@ driving the result; disagreement is a reason to distrust it.
 import argparse
 import hashlib
 import json
+import math
 import sys
 from collections import Counter
 from pathlib import Path
@@ -33,10 +34,18 @@ PARSERS = {PARSER_VERSION: parse_label, TOLERANT_PARSER_VERSION: parse_label_tol
 # does anything a content-free appraisal of similar shape does not.
 COMPARISONS = (('original', 'baseline'), ('generic', 'baseline'), ('original', 'generic'))
 
+# Study 2 has one primary comparison, P3 in docs/preregistration_study2.md. Its
+# baseline comparisons are against another run and are computed separately, as
+# descriptives, by `study2_descriptives`.
+STUDY2_PROTOCOL = 'study2_persona_mixture_v1'
+STUDY2_COMPARISONS = (('trait_mixture', 'irrelevant_mixture'),)
+
 MISSINGNESS_NOTE = ('Exploratory development results; available-valid distributions may be '
                     'biased by missingness.')
 HELDOUT_NOTE = ('Held-out evaluation under docs/preregistration.md; available-valid distributions '
                 'may be biased by missingness.')
+STUDY2_NOTE = ('Study 2 under docs/preregistration_study2.md; available-valid distributions may be '
+               'biased by missingness. Comparisons with the Study 1 baseline are descriptive only.')
 
 
 def load_cells(root, cfg, reparse, parser=PARSER_VERSION):
@@ -94,9 +103,9 @@ def item_rows(cells, cfg):
     return rows
 
 
-def comparisons(items):
+def comparisons(items, pairs=COMPARISONS):
     report = {}
-    for left, right in COMPARISONS:
+    for left, right in pairs:
         for complete in (False, True):
             rows = []
             for r in items:
@@ -108,6 +117,62 @@ def comparisons(items):
                     rows.append({'baseline_js': b, 'intervention_js': i, 'difference': i - b})
             key = f'{left}_minus_{right}' + ('_complete_all_arms' if complete else '_available_pairs')
             report[key] = summarize(rows)
+    return report
+
+
+def valid_distribution(rows, cfg):
+    valid = [r['label'] for r in rows if r['status'] == 'valid' and r['label'] in cfg['labels']]
+    return distribution(Counter(valid), cfg['labels'])
+
+
+def entropy(p):
+    return -sum(x * math.log2(x) for x in p if x)
+
+
+def per_arm_descriptives(dists, labels):
+    """Verdict shares and entropy of one arm, each the mean over items.
+
+    Each item counts once, whatever its number of valid draws or human votes;
+    items with no distribution are left out and counted in `n`.
+    """
+    ds = [d for d in dists if d is not None]
+    return {'n': len(ds),
+            'verdict_shares': {k: sum(d[j] for d in ds) / len(ds) for j, k in enumerate(labels)},
+            'mean_entropy_bits': sum(entropy(d) for d in ds) / len(ds)}
+
+
+def study2_descriptives(cells, cfg, items, reparse, parser):
+    """Each arm against Study 1's baseline, and per-arm verdict shares and entropy.
+
+    Study 1's baseline was sampled at a different time, so its differences from
+    the Study 2 arms mix the persona effect with any provider drift between the
+    runs. The Study 1 run is loaded through `load_cells`, which revalidates its
+    hash, and reparsed with the same parser whenever this analysis is.
+    """
+    root = Path(__file__).resolve().parent.parent / cfg['items_source']['study1_run']
+    cfg1 = json.loads((root / 'manifest.json').read_text())
+    if hashlib.sha256(json.dumps(cfg1, sort_keys=True).encode()).hexdigest() != cfg['items_source']['study1_config_hash']:
+        raise ValueError('Study 1 manifest does not match the recorded hash')
+    if cfg1['human_scores'] != cfg['human_scores'] or cfg1['labels'] != cfg['labels']:
+        raise ValueError('Study 1 items, human scores or labels differ')
+    cells1 = load_cells(root, cfg1, reparse, parser)
+    baseline = {i: valid_distribution(cells1[(i, 'baseline')], cfg1) for i in cfg['human_scores']}
+    report = {'note': 'Descriptive only. Study 1 baseline from a different run time.',
+              'arm_minus_study1_baseline': {}, 'per_arm': {}}
+    for arm in cfg['conditions']:
+        rows = []
+        for r in items:
+            h = distribution(cfg['human_scores'][r['id']], cfg['labels'])
+            b = js(h, baseline[r['id']]) if h is not None and baseline[r['id']] is not None else None
+            if b is not None and r['js'][arm] is not None:
+                rows.append({'baseline_js': b, 'intervention_js': r['js'][arm], 'difference': r['js'][arm] - b})
+        report['arm_minus_study1_baseline'][f'{arm}_minus_study1_baseline_available_pairs'] = summarize(rows)
+    for arm in cfg['conditions']:
+        report['per_arm'][arm] = per_arm_descriptives(
+            [valid_distribution(cells[(i, arm)], cfg) for i in cfg['human_scores']], cfg['labels'])
+    report['per_arm']['study1_baseline'] = per_arm_descriptives(list(baseline.values()), cfg['labels'])
+    report['per_arm']['human'] = per_arm_descriptives(
+        [distribution(s, cfg['labels']) for s in cfg['human_scores'].values()], cfg['labels'])
     return report
 
 
@@ -124,11 +189,15 @@ def main():
     cfg = json.loads((root / 'manifest.json').read_text())
     cells = load_cells(root, cfg, args.reparse, args.parser)
 
-    note = HELDOUT_NOTE if cfg['protocol'].startswith('heldout') else MISSINGNESS_NOTE
+    study2 = cfg['protocol'] == STUDY2_PROTOCOL
+    note = (STUDY2_NOTE if study2 else
+            HELDOUT_NOTE if cfg['protocol'].startswith('heldout') else MISSINGNESS_NOTE)
     report = {'note': note, 'coverage': {}, 'comparisons': {}, 'items': []}
     report['coverage'] = coverage(cells, cfg)
     report['items'] = item_rows(cells, cfg)
-    report['comparisons'] = comparisons(report['items'])
+    report['comparisons'] = comparisons(report['items'], STUDY2_COMPARISONS if study2 else COMPARISONS)
+    if study2:
+        report['descriptive'] = study2_descriptives(cells, cfg, report['items'], args.reparse, args.parser)
     # Records which parser produced the labels being summarised, so a reparsed
     # analysis can never be mistaken for the run's original measurement.
     report['parser_used'] = args.parser if args.reparse else 'labels and statuses as recorded'

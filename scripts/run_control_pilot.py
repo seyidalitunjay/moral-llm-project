@@ -84,7 +84,7 @@ def ids_already_used(exclude):
     return used
 
 
-def parse_args():
+def parse_args(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--data', required=True, help='anecdotes.tar or dev JSONL')
     p.add_argument('--split', choices=['dev', 'test'], default='dev',
@@ -102,7 +102,7 @@ def parse_args():
     p.add_argument('--include-info', action='store_true')
     p.add_argument('--out')
     p.add_argument('--execute', action='store_true')
-    args = p.parse_args()
+    args = p.parse_args(argv)
     if args.out is None:
         args.out = 'pilot_v4' if args.split == 'dev' else str(RESULTS_ROOT / 'heldout')
     if args.split == 'dev' and not args.items <= POOL_SIZE:
@@ -189,7 +189,7 @@ def request_one(client, args, prompt_text, extra):
                                           extra_body=extra)
 
 
-def execute(args, config, config_hash, dest, jobs):
+def execute(args, config, config_hash, dest, jobs, prompt_of=None):
     key = os.environ.get('OPENROUTER_API_KEY')
     if not key:
         raise SystemExit('Set OPENROUTER_API_KEY locally; do not paste it into chat.')
@@ -200,7 +200,10 @@ def execute(args, config, config_hash, dest, jobs):
     client = OpenAI(base_url='https://openrouter.ai/api/v1', api_key=key, max_retries=0, timeout=args.timeout)
     parse = PARSERS[config['parser_version']]
 
-    prompts = config['prompts']
+    # A design whose prompt depends on more than (item, condition), such as a
+    # persona per sample, passes its own lookup; the default is the three-arm one.
+    if prompt_of is None:
+        prompt_of = lambda ident, c, k: config['prompts'][ident][c]
     extra = config['extra_body']
     import fcntl  # POSIX advisory lock; covers the macOS and Linux targets.
     with (dest / 'run.lock').open('w') as lock:
@@ -217,7 +220,7 @@ def execute(args, config, config_hash, dest, jobs):
                 r = {'config_hash': config_hash, 'id': ident, 'condition': c, 'sample': k,
                      'timestamp': datetime.now(timezone.utc).isoformat(), 'label': None}
                 try:
-                    response = request_one(client, args, prompts[ident][c], extra)
+                    response = request_one(client, args, prompt_of(ident, c, k), extra)
                     # The whole response is kept, not just the parsed label, so the
                     # parser can be revised later and rerun over the same records.
                     r['response'] = response.model_dump(mode='json')
@@ -242,8 +245,8 @@ def execute(args, config, config_hash, dest, jobs):
     print('Scheduled attempts completed. Analyze coverage before interpreting distributions.')
 
 
-def main():
-    args = parse_args()
+def configure(args):
+    """Draw the items and build the configuration and its hash, with no side effects."""
     pool, split_sha256 = load_items(args.data, args.split)
     if args.split == 'dev':
         pool = pool[:POOL_SIZE]
@@ -259,6 +262,12 @@ def main():
 
     config = build_config(args, chosen, labels, split_sha256, pool)
     config_hash = hashlib.sha256(json.dumps(config, sort_keys=True).encode()).hexdigest()
+    return config, config_hash, chosen
+
+
+def main():
+    args = parse_args()
+    config, config_hash, chosen = configure(args)
     dest = Path(args.out) / config_hash[:16]
     if args.split == 'test' and not (dest / 'responses.jsonl').exists():
         seen = {x['id'] for x in chosen} & ids_already_used(dest.resolve())
