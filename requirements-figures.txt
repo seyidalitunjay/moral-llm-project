@@ -1,0 +1,2 @@
+# Only scripts/make_figures.py needs this; the analysis paths stay standard-library only.
+matplotlib>=3.8
