@@ -1,7 +1,7 @@
 """Build the three poster figures from existing result files only.
 
 Every number drawn is read from an analysis.json, a manifest.json or the
-exploratory dispersion.json; nothing is retyped and no request is sent. Result
+exploratory dispersion.json, for the held-out run and for Study 2; nothing is retyped and no request is sent. Result
 files are only read. Output goes to figures/ as vector PDF and 300 dpi PNG at the
 physical size each figure occupies on the A1 poster, so the font sizes below are
 printed sizes.
@@ -33,6 +33,7 @@ from moral_judgment.metrics import LABELS, js
 
 DEV = ROOT / 'results' / 'pilot_v4' / '32fa0ec867b00d0c'
 HELDOUT = ROOT / 'results' / 'heldout' / '7edf899cb4bf44f4'
+STUDY2 = ROOT / 'results' / 'study2' / '2e2b551529945ff6'
 OUT = ROOT / 'figures'
 
 MM = 1 / 25.4
@@ -74,8 +75,10 @@ def load(path):
 
 
 def save(fig, name):
-    for ext in ('pdf', 'png'):
-        fig.savefig(OUT / f'{name}.{ext}', dpi=300)
+    # No creation date in the PDF, so rebuilding from unchanged results gives
+    # byte-identical files and git shows only real changes.
+    fig.savefig(OUT / f'{name}.pdf', dpi=300, metadata={'CreationDate': None})
+    fig.savefig(OUT / f'{name}.png', dpi=300)
     plt.close(fig)
 
 
@@ -86,6 +89,9 @@ def header(name, size):
 
 
 def signed(x, digits=3):
+    # A value that rounds to zero is shown unsigned rather than as −0.000.
+    if round(x, digits) == 0:
+        return f'{0:.{digits}f}'
     return f'{x:+.{digits}f}'.replace('-', '−')
 
 
@@ -260,6 +266,108 @@ def print_fig2(size, data, xlim, dev, heldout, d_manifest, h_manifest, reparsed)
           f'vs direct is descriptive. {s2_sentence}')
 
 
+def summary(s):
+    lo, hi = s['exploratory_paired_item_bootstrap_95_percent']
+    return {'mean': s['difference'], 'lo': lo, 'hi': hi, 'n': s['n'],
+            'closer': s['closer'], 'farther': s['farther'], 'tied': s['tied']}
+
+
+def fig4_study2(study2, reparsed, manifest, xlim):
+    """Study 2 on fig2's x-axis, so the two figures can be read against each other."""
+    size = (270, 110)
+    primary = summary(study2['comparisons']['trait_mixture_minus_irrelevant_mixture_available_pairs'])
+    complete = summary(study2['comparisons']['trait_mixture_minus_irrelevant_mixture_complete_all_arms'])
+    vs_base = study2['descriptive']['arm_minus_study1_baseline']
+    n_items = len(manifest['human_scores'])
+    groups = (('Pre-registered (P3)',
+               ((f'All {primary["n"]} items', primary, False),
+                (f'Complete cases ({complete["n"]} items, S1)', complete, True)), TEXT),
+              ('Descriptive vs Study 1 direct',
+               (('Trait mixture', summary(vs_base['trait_mixture_minus_study1_baseline_available_pairs']), False),
+                ('Irrelevant mixture',
+                 summary(vs_base['irrelevant_mixture_minus_study1_baseline_available_pairs']), False)), AXIS))
+    step = 0.05
+    xticks = [round(k * step, 2) for k in range(math.ceil(xlim[0] / step), math.floor(xlim[1] / step) + 1)]
+    for _, rows, _ in groups:
+        for label, c, _ in rows:
+            if not (xlim[0] <= c['lo'] and c['hi'] <= xlim[1]):
+                raise ValueError(f'{label} does not fit on the fig2 x-axis')
+
+    fig, ax = plt.subplots(figsize=(size[0] * MM, size[1] * MM), layout='constrained')
+    # Group headers at the figure's left edge, as in fig2.
+    left_edge = blended_transform_factory(fig.transFigure, ax.transData)
+    ticks, ticklabels = [], []
+    y = 0
+    for header_label, rows, colour in groups:
+        ax.text(0.004, y + 0.55, header_label, ha='left', va='bottom', fontsize=INPLOT_PT, color=TEXT,
+                transform=left_edge)
+        top, bottom = y + 0.45, y - len(rows) + 0.55
+        for t in xticks:
+            ax.plot([t, t], [bottom, top], color=AXIS if t == 0 else GRID,
+                    linewidth=1.5 if t == 0 else 1.0, zorder=1.5 if t == 0 else 0.5)
+        for label, c, hollow in rows:
+            ax.plot([c['lo'], c['hi']], [y, y], color=colour, linewidth=4, solid_capstyle='butt')
+            ax.plot(c['mean'], y, 'o', markersize=14, color=colour, markeredgewidth=2.5,
+                    markerfacecolor='white' if hollow else colour, zorder=3)
+            ax.text(c['hi'], y, '  ' + signed(c['mean']), ha='left', va='center',
+                    fontsize=INPLOT_PT, color=TEXT)
+            ticks.append(y)
+            ticklabels.append(label)
+            y -= 1
+        y -= 1.1
+    ax.set_yticks(ticks, ticklabels)
+    ax.tick_params(axis='y', length=0)
+    ax.spines['left'].set_visible(False)
+    ax.set_xlim(*xlim)
+    ax.set_xticks(xticks)
+    ax.set_ylim(y + 1.6, 1.3)
+    ax.set_xlabel('Δ JSD (negative = closer to humans)')
+    save(fig, 'fig4_study2')
+
+    header('fig4_study2', size)
+    print(f'Source: {STUDY2.relative_to(ROOT)}/analysis.json, protocol {manifest["protocol"]}, parser '
+          f'{manifest["parser_version"]} ({study2["parser_used"]})')
+    print(f'  x-axis limits: [{xlim[0]:.3f}, {xlim[1]:.3f}] (shared with fig2_results)')
+    print(f'  {"group / row":<52}{"n":>4}{"mean":>10}{"95% CI":>20}  closer/farther/tied')
+    for header_label, rows, _ in groups:
+        print(f'  {header_label}')
+        for label, c, _ in rows:
+            print(f'    {label:<50}{c["n"]:>4}{c["mean"]:>+10.5f}   [{c["lo"]:+.4f}, {c["hi"]:+.4f}]'
+                  f'  {c["closer"]}/{c["farther"]}/{c["tied"]}')
+    cov = study2['coverage']
+    print('  coverage: ' + '; '.join(f'{arm} {v["valid"]}/{v["planned"]} valid' for arm, v in cov.items()))
+
+    strict = summary(reparsed['comparisons']['trait_mixture_minus_irrelevant_mixture_available_pairs'])
+    same = conclusion(primary) == conclusion(strict) and (primary['mean'] > 0) == (strict['mean'] > 0)
+    print(f'\nS2 check, under {reparsed["parser_used"]} (analysis_reparsed.json): primary '
+          f'{primary["mean"]:+.5f} [{primary["lo"]:+.4f}, {primary["hi"]:+.4f}] {conclusion(primary)} | strict '
+          f'{strict["mean"]:+.5f} [{strict["lo"]:+.4f}, {strict["hi"]:+.4f}] {conclusion(strict)}'
+          f'  -> {"same" if same else "DISAGREES"}')
+    s2_sentence = ('Reparsing with the strict parser leaves the P3 conclusion unchanged (S2).' if same else
+                   'Reparsing with the strict parser changes the P3 conclusion (S2); see the S2 check above.')
+    if conclusion(primary) != 'not distinguished':
+        raise ValueError('Caption assumes P3 does not distinguish the arms')
+    # The pre-registered rule reports a sign or interval disagreement between P3
+    # and a sensitivity analysis as such, without choosing between them.
+    if (primary['mean'] > 0) != (complete['mean'] > 0) and conclusion(complete) == conclusion(primary):
+        s1_sentence = (' S1 differs in sign from P3; both intervals include zero, so the conclusion is '
+                       'unchanged (reported as a disagreement, as pre-registered).')
+    elif conclusion(complete) != conclusion(primary):
+        raise ValueError('S1 reaches a different conclusion from P3; the caption needs rewriting')
+    else:
+        s1_sentence = ''
+    print(f'\nCaption: Study 2. Each of an item\'s 10 samples was judged by a different persona, varied either '
+          f'on perspective-taking, cognitive empathy and justice sensitivity (trait mixture) or on morally '
+          f'irrelevant preferences (irrelevant mixture). Paired mean difference in Jensen-Shannon divergence '
+          f'from the human distribution over the same {n_items} held-out items as Figure 2, with 95% '
+          f'paired-item bootstrap intervals (10,000 resamples); negative values mean closer to humans. The '
+          f'pre-registered comparison (P3) does not distinguish the two mixtures '
+          f'({signed(primary["mean"], 4)}, 95% CI {signed(primary["lo"])} to {signed(primary["hi"])}). Hollow '
+          f'marker: the same comparison on the {complete["n"]} items with every response valid in both arms '
+          f'(S1).{s1_sentence} Grey: each mixture against the Study 1 direct-judgment arm, descriptive only, because that '
+          f'arm was sampled in a separate run at a different time. {s2_sentence}')
+
+
 def fig3_shift(dispersion):
     size = (270, 150)
     md = dispersion['verdict_shift']['mean_distribution']
@@ -324,7 +432,9 @@ def main():
     size, data, xlim = fig2_results(dev, heldout, d_manifest, h_manifest)
     print_fig2(size, data, xlim, dev, heldout, d_manifest, h_manifest, reparsed)
     fig3_shift(dispersion)
-    print(f'\nWrote 6 files to {OUT}')
+    fig4_study2(load(STUDY2 / 'analysis.json'), load(STUDY2 / 'analysis_reparsed.json'),
+                load(STUDY2 / 'manifest.json'), xlim)
+    print(f'\nWrote 8 files to {OUT}')
 
 
 if __name__ == '__main__':

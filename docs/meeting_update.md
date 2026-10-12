@@ -1,3 +1,5 @@
+> Historical record, left as written. Current results: [results.md](results.md).
+
 # Meeting update: completed technical control pilot
 
 A three-condition technical pilot was completed on five previously inspected Scruples dev anecdotes, with two independent API requests per anecdote and condition (30 requests total). Conditions were direct judgment without a requested written appraisal, generic factual appraisal, and the original perspective-taking/cognitive-empathy/justice-sensitivity content. All responses were returned by Parasail for openai/gpt-oss-20b, at temperature 0.8, top-p 1, and a 4,096-token output cap. All reported normal completion. The baseline did include provider-returned reasoning, so it must not be described as a model operating without reasoning.
