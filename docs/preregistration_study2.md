@@ -206,9 +206,10 @@ about 0.043. Effects much smaller than that are unlikely to be resolved.
 
 **Coverage and missing data.** As in Study 1. The coverage table (planned,
 recorded and valid, with every failure status) is reported per arm before any
-comparison. Failed slots are not retried or resampled. A failed slot drops that
-persona from that item's mixture, and this is not corrected. An item enters P3 when
-both of its cells have at least one valid label.
+comparison. Failed slots are not retried or resampled. A failed sample removes
+that sample's persona from the item's mixture, so missingness slightly changes the
+persona composition of that cell; S1 (complete-case) addresses this. An item enters
+P3 when both of its cells have at least one valid label.
 
 **Sensitivity analyses** are reported alongside the primary result and do not
 replace it:
