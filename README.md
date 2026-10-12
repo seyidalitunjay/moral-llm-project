@@ -24,6 +24,8 @@ the empathy content does anything that generic deliberation does not.
 
 ## Status and results
 
+Timeline. Work began in June 2026; the first model runs were made locally in August, and this repository was created on 24 September 2026 to consolidate them. Details in docs/provenance.md.
+
 - Study 1, pre-registered held-out evaluation: complete. Three prompts (direct
   judgment, generic appraisal, moral-cognitive appraisal) on 60 held-out anecdotes,
   10 samples each. Pre-registration: [docs/preregistration.md](docs/preregistration.md).

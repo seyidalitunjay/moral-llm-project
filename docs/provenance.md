@@ -1,5 +1,7 @@
 # Provenance of the legacy results files
 
+Work began in June 2026 with a literature review. The first model runs were made locally in August 2026; the earliest surviving output, results/legacy/results.jsonl, dates from 31 August. This repository was created on 24 September 2026, when the existing scripts and outputs were consolidated.
+
 This note records how `results/legacy/results.jsonl` and
 `results/legacy/results_v2.jsonl` came to hold what they hold. It exists because
 two throwaway scripts, `clean_results.py` and `clean_results2.py`, once rewrote
