@@ -24,6 +24,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.transforms import blended_transform_factory
+from PIL import Image
 
 # Lets the script run straight from a clone, with or without an editable install.
 ROOT = Path(__file__).resolve().parent.parent
@@ -44,14 +45,17 @@ NAMES = {'baseline': 'Direct judgment', 'generic': 'Generic appraisal',
 VERDICTS = {'AUTHOR': 'Author at fault', 'OTHER': 'Other party at fault',
             'EVERYBODY': 'Everybody', 'NOBODY': 'Nobody'}
 TICK_PT, LABEL_PT, INPLOT_PT = 20, 20, 22
+# fig2 and fig4 are printed scaled down to about 212 mm wide; 28 pt at full size
+# keeps every label at 22 pt or more after that reduction.
+INTERVAL_PT = 28
 
 # fig1 draws its example only from items with enough votes for the human
 # distribution to be more than a handful of individual opinions.
 FIG1_MIN_VOTES = 20
 
 # Left condition, right condition, group label, whether greyed as descriptive.
-GROUPS = (('original', 'generic', 'Moral-cognitive vs generic (P1)', False),
-          ('generic', 'baseline', 'Generic appraisal vs direct (P2)', False),
+GROUPS = (('original', 'generic', 'Moral-cognitive vs generic', False),
+          ('generic', 'baseline', 'Generic appraisal vs direct', False),
           ('original', 'baseline', 'Moral-cognitive vs direct (descriptive)', True))
 
 plt.rcParams.update({
@@ -74,12 +78,28 @@ def load(path):
     return json.loads(Path(path).read_text())
 
 
-def save(fig, name):
+def save(fig, name, flatten=False):
     # No creation date in the PDF, so rebuilding from unchanged results gives
     # byte-identical files and git shows only real changes.
     fig.savefig(OUT / f'{name}.pdf', dpi=300, metadata={'CreationDate': None})
     fig.savefig(OUT / f'{name}.png', dpi=300)
     plt.close(fig)
+    if flatten:
+        # RGB on white, with no alpha channel left for a layout tool to misread.
+        png = OUT / f'{name}.png'
+        with Image.open(png) as im:
+            im.load()
+            rgba = im.convert('RGBA')
+        flat = Image.new('RGB', rgba.size, 'white')
+        flat.paste(rgba, mask=rgba.getchannel('A'))
+        flat.save(png, dpi=(300, 300))
+
+
+def interval_xaxis(ax, xticks):
+    # At INTERVAL_PT a label on every 0.05 tick would collide, so labels go on
+    # every 0.10; ticks and grid lines stay at 0.05.
+    ax.set_xticks(xticks, [f'{t:.2f}'.replace('-', '−') if round(t * 100) % 10 == 0 else '' for t in xticks])
+    ax.set_xlabel('Δ JSD (negative = closer to humans)', fontsize=INTERVAL_PT, loc='right')
 
 
 def header(name, size):
@@ -178,10 +198,10 @@ def check_s2(heldout, reparsed):
 
 
 def fig2_results(dev, heldout, d_manifest, h_manifest):
-    size = (270, 170)
+    size = (270, 125)
     d_items, h_items = len(d_manifest['human_scores']), len(h_manifest['human_scores'])
-    rows = (('dev', dev, f'Development ({d_items} items)', True),
-            ('heldout', heldout, f'Held-out, pre-registered ({h_items} items)', False))
+    rows = (('dev', dev, f'Development ({d_items} stories)', True),
+            ('heldout', heldout, f'Held-out, pre-registered ({h_items} stories)', False))
     data = []
     for left, right, label, grey in GROUPS:
         colour = AXIS if grey else TEXT
@@ -199,10 +219,9 @@ def fig2_results(dev, heldout, d_manifest, h_manifest):
     # are not crossed by the grid or the zero line; those are drawn per group,
     # spanning only that group's two rows.
     left_edge = blended_transform_factory(fig.transFigure, ax.transData)
-    ticks, ticklabels = [], []
     y = 0
     for label, colour, rs in data:
-        ax.text(0.004, y + 0.55, label, ha='left', va='bottom', fontsize=INPLOT_PT, color=TEXT,
+        ax.text(0.004, y + 0.55, label, ha='left', va='bottom', fontsize=INTERVAL_PT, color=TEXT,
                 transform=left_edge)
         top, bottom = y + 0.45, y - len(rs) + 0.55
         for t in xticks:
@@ -213,19 +232,18 @@ def fig2_results(dev, heldout, d_manifest, h_manifest):
             ax.plot(c['mean'], y, 'o', markersize=14, color=colour, markeredgewidth=2.5,
                     markerfacecolor='white' if hollow else colour, zorder=3)
             ax.text(c['hi'], y, '  ' + signed(c['mean']), ha='left', va='center',
-                    fontsize=INPLOT_PT, color=TEXT)
-            ticks.append(y)
-            ticklabels.append(tick)
+                    fontsize=INTERVAL_PT, color=TEXT)
             y -= 1
         y -= 1.1
-    ax.set_yticks(ticks, ticklabels)
-    ax.tick_params(axis='y', length=0)
+    # Rows carry no labels: the poster caption says hollow is development and
+    # filled is held-out.
+    ax.set_yticks([])
+    ax.tick_params(labelsize=INTERVAL_PT)
     ax.spines['left'].set_visible(False)
     ax.set_xlim(*xlim)
-    ax.set_xticks(xticks)
+    interval_xaxis(ax, xticks)
     ax.set_ylim(y + 1.6, 1.3)
-    ax.set_xlabel('Δ JSD (negative = closer to humans)')
-    save(fig, 'fig2_results')
+    save(fig, 'fig2_results', flatten=True)
     return size, data, xlim
 
 
@@ -274,14 +292,14 @@ def summary(s):
 
 def fig4_study2(study2, reparsed, manifest, xlim):
     """Study 2 on fig2's x-axis, so the two figures can be read against each other."""
-    size = (270, 110)
+    size = (270, 150)
     primary = summary(study2['comparisons']['trait_mixture_minus_irrelevant_mixture_available_pairs'])
     complete = summary(study2['comparisons']['trait_mixture_minus_irrelevant_mixture_complete_all_arms'])
     vs_base = study2['descriptive']['arm_minus_study1_baseline']
     n_items = len(manifest['human_scores'])
-    groups = (('Pre-registered (P3)',
-               ((f'All {primary["n"]} items', primary, False),
-                (f'Complete cases ({complete["n"]} items, S1)', complete, True)), TEXT),
+    groups = (('Pre-registered',
+               ((f'All {primary["n"]} stories', primary, False),
+                (f'Complete cases ({complete["n"]} stories)', complete, True)), TEXT),
               ('Descriptive vs Study 1 direct',
                (('Trait mixture', summary(vs_base['trait_mixture_minus_study1_baseline_available_pairs']), False),
                 ('Irrelevant mixture',
@@ -299,7 +317,7 @@ def fig4_study2(study2, reparsed, manifest, xlim):
     ticks, ticklabels = [], []
     y = 0
     for header_label, rows, colour in groups:
-        ax.text(0.004, y + 0.55, header_label, ha='left', va='bottom', fontsize=INPLOT_PT, color=TEXT,
+        ax.text(0.004, y + 0.55, header_label, ha='left', va='bottom', fontsize=INTERVAL_PT, color=TEXT,
                 transform=left_edge)
         top, bottom = y + 0.45, y - len(rows) + 0.55
         for t in xticks:
@@ -310,19 +328,19 @@ def fig4_study2(study2, reparsed, manifest, xlim):
             ax.plot(c['mean'], y, 'o', markersize=14, color=colour, markeredgewidth=2.5,
                     markerfacecolor='white' if hollow else colour, zorder=3)
             ax.text(c['hi'], y, '  ' + signed(c['mean']), ha='left', va='center',
-                    fontsize=INPLOT_PT, color=TEXT)
+                    fontsize=INTERVAL_PT, color=TEXT)
             ticks.append(y)
             ticklabels.append(label)
             y -= 1
         y -= 1.1
     ax.set_yticks(ticks, ticklabels)
     ax.tick_params(axis='y', length=0)
+    ax.tick_params(labelsize=INTERVAL_PT)
     ax.spines['left'].set_visible(False)
     ax.set_xlim(*xlim)
-    ax.set_xticks(xticks)
+    interval_xaxis(ax, xticks)
     ax.set_ylim(y + 1.6, 1.3)
-    ax.set_xlabel('Δ JSD (negative = closer to humans)')
-    save(fig, 'fig4_study2')
+    save(fig, 'fig4_study2', flatten=True)
 
     header('fig4_study2', size)
     print(f'Source: {STUDY2.relative_to(ROOT)}/analysis.json, protocol {manifest["protocol"]}, parser '
