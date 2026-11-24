@@ -1,60 +1,35 @@
 # Moral judgment distributions in LLMs
 
-Code and data for an evaluation of how closely a language model's distribution of
-moral verdicts tracks the distribution of human verdicts on the same anecdote, and
-whether prompting the model to reason about perspective, empathy and fairness
-moves it closer.
+Code, data and pre-registrations for an evaluation of how closely a language model's distribution of moral verdicts tracks the distribution of human verdicts on the same anecdote, and whether prompting the model to reason about perspective, empathy and fairness moves it closer.
+
+**Paper:** Seyidali, T. (2026). *Do moral-psychology prompts make LLM verdicts more human-like? Two pre-registered studies of LLM verdicts versus human disagreement* [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24517373
 
 ## The question
 
-Scruples anecdotes do not come with a gold verdict. Each carries a spread of
-judgments from many annotators, and on a contested case that spread is the
-interesting object: annotators genuinely disagree. Sampling the model repeatedly
-gives a spread of its own, so each item yields two categorical distributions over
-the same four verdict labels, and the quantity reported throughout is the base-2
-Jensen-Shannon divergence between them. Lower means closer agreement with the
-shape of human opinion, not closer agreement with a majority vote.
+Scruples anecdotes do not come with a gold verdict. Each carries a spread of judgments from many annotators, and on a contested case that spread is the object of interest, because annotators genuinely disagree. Sampling the model repeatedly gives a spread of its own, so each item yields two categorical distributions over the same four verdict labels. The quantity reported throughout is the base-2 Jensen–Shannon divergence between them. Lower values mean closer agreement with the shape of human opinion, not closer agreement with a majority vote.
 
-The intervention under study asks the model to work through perspective-taking,
-cognitive empathy and justice sensitivity before judging. The obvious confound is
-that any such instruction also makes the model deliberate at length, so the
-current design runs a third arm: a generic factual appraisal of comparable
-structure and length with no moral-psychological content. The question is whether
-the empathy content does anything that generic deliberation does not.
+The intervention under study asks the model to work through perspective-taking, cognitive empathy and justice sensitivity before judging. The obvious confound is that any such instruction also makes the model deliberate at length, so the design includes a third arm, a generic factual appraisal of comparable structure with no moral-psychological content. The question is whether the moral-psychological content does anything that generic deliberation does not.
 
 ## Status and results
 
-Timeline. Work began in June 2026; the first model runs were made locally in August, and this repository was created on 24 September 2026 to consolidate them. Details in docs/provenance.md.
+Work began in June 2026. The first model runs were made locally in August, and this repository was created on 24 September 2026 to consolidate them. Details are in [docs/provenance.md](docs/provenance.md).
 
-- Study 1, pre-registered held-out evaluation: complete. Three prompts (direct
-  judgment, generic appraisal, moral-cognitive appraisal) on 60 held-out anecdotes,
-  10 samples each. Pre-registration: [docs/preregistration.md](docs/preregistration.md).
-- Study 2, pre-registered persona-mixture study: complete. Trait-varied vs
-  irrelevant-varied persona mixtures on the same 60 items. Pre-registration:
-  [docs/preregistration_study2.md](docs/preregistration_study2.md).
-- Exploratory analyses: complete, labelled throughout as post hoc and not
-  pre-registered. Log: [docs/exploratory_log.md](docs/exploratory_log.md).
-- Next steps, planned: replication across multiple models, and prompt paraphrases.
+- **Study 1, pre-registered held-out evaluation: complete.** Three prompts (direct judgment, generic appraisal, moral-cognitive appraisal) on 60 held-out anecdotes, with 10 samples each. Pre-registration: [docs/preregistration.md](docs/preregistration.md).
+- **Study 2, pre-registered persona-mixture study: complete.** Trait-varied and irrelevant-varied persona mixtures on the same 60 anecdotes. Pre-registration: [docs/preregistration_study2.md](docs/preregistration_study2.md).
+- **Exploratory analyses: complete.** These are labelled throughout as post hoc and were not pre-registered. Log: [docs/exploratory_log.md](docs/exploratory_log.md).
+- **Paper: published** as a preprint on Zenodo (link above).
+- **Planned next steps:** replication across several models, and prompt paraphrases.
 
-In Study 1 the moral-cognitive appraisal was not distinguished from the generic
-appraisal (P1: −0.0059 JSD, 95% CI −0.0494 to +0.0371), and the generic appraisal
-was farther from the human distribution than direct judgment (P2: +0.0441, 95% CI
-+0.0156 to +0.0717; the complete-case sensitivity analysis includes zero, which is
-reported as a pre-registered disagreement). In Study 2 the trait-varied mixture was
-not distinguished from the irrelevant-varied mixture (P3: −0.0001, 95% CI −0.0357
-to +0.0357).
+In Study 1, the moral-cognitive appraisal was not distinguished from the generic appraisal (P1: −0.0059 JSD, 95% CI −0.0494 to +0.0371), and the generic appraisal was further from the human distribution than direct judgment (P2: +0.0441, 95% CI +0.0156 to +0.0717). The complete-case sensitivity analysis for P2 includes zero, which is reported as a pre-registered disagreement. In Study 2, the trait-varied mixture was not distinguished from the irrelevant-varied mixture (P3: −0.0001, 95% CI −0.0357 to +0.0357).
 
-Every result, with coverage, sensitivity analyses and provenance, is in
-[docs/results.md](docs/results.md); figures are in [figures/](figures/). An earlier
-60-item legacy comparison, whose labels cannot be rechecked and are not poolable with
-the current runs, is documented in [docs/provenance.md](docs/provenance.md).
+Every result, with coverage, sensitivity analyses and provenance, is in [docs/results.md](docs/results.md), and the figures are in [figures/](figures/). An earlier 60-item legacy comparison, whose labels cannot be rechecked and which cannot be pooled with the current runs, is documented in [docs/provenance.md](docs/provenance.md).
 
-## Layout
+## Repository layout
 
 ```
-moral_judgment/     metric, prompts, parsers, IO. All shared logic lives here.
-scripts/            command-line entry points; no analysis logic of their own
-tests/              offline tests, no API calls; hash tests skip without the corpus
+moral_judgment/     metric, prompts, parsers and IO; all shared logic lives here
+scripts/            command-line entry points, with no analysis logic of their own
+tests/              offline tests with no API calls; hash tests skip without the corpus
 docs/               results, pre-registrations, exploratory log, protocol, provenance
 figures/            result figures, generated by scripts/make_figures.py
 data/               Scruples corpus, untracked; see data/README.md
@@ -67,11 +42,7 @@ results/
   reports/          generated audit and diagnostic reports
 ```
 
-Two parsers and two prompt families are kept deliberately apart.
-`moral_judgment/legacy.py` holds the permissive search and the original prompts
-that produced the legacy results; `parsing.py` and `prompts.py` hold the current
-versions. Merging them would change what the historical numbers mean, and
-the difference between them is itself one of the findings.
+Two parsers and two prompt families are deliberately kept apart. `moral_judgment/legacy.py` holds the permissive search and the original prompts that produced the legacy results, while `parsing.py` and `prompts.py` hold the current versions. Merging them would change what the historical numbers mean, and the difference between them is itself one of the findings.
 
 ## Setup
 
@@ -80,14 +51,11 @@ python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-The analysis scripts and the tests use only the standard library, so every
-reported figure can be recomputed without installing anything. `openai` is needed
-only to make new API calls. Place the corpus at `data/anecdotes.tar` first, as
-described in `data/README.md`.
+The analysis scripts and tests use only the Python standard library, so every reported figure can be recomputed without installing anything. The `openai` package is needed only to make new API calls. Place the corpus at `data/anecdotes.tar` first, as described in `data/README.md`.
 
-## Reproducing the reported figures
+## Reproducing the reported results
 
-None of these make network calls or modify their inputs.
+None of these commands make network calls or modify their inputs.
 
 ```bash
 # Legacy 60-item audit, cross-checked against the dev split
@@ -120,41 +88,44 @@ python3 scripts/make_results_doc.py
 python3 -m unittest discover -s tests -v
 ```
 
-`docs/verification.html` records the byte-level comparison establishing that the
-current code reproduces the outputs of the earlier, unrefactored scripts exactly.
-It is a standalone file; open it directly in a browser.
+`docs/verification.html` records the byte-level comparison showing that the current code reproduces the outputs of the earlier, unrefactored scripts exactly. It is a standalone file and can be opened directly in a browser.
 
 ## Making new measurements
 
-`run_control_pilot.py` is a dry run unless given `--execute`, and prints the exact
-number of calls it would make. Review that count and the manifest before spending
-anything.
+`run_control_pilot.py` performs a dry run unless given `--execute`, and prints the exact number of calls it would make. Review that count and the manifest before spending anything.
 
 ```bash
 export OPENROUTER_API_KEY=...        # see .env.example
 python3 scripts/run_control_pilot.py --data data/anecdotes.tar   # dry run
 ```
 
-`run_study2.py` works the same way for Study 2; its design is fixed by the
-pre-registration, so its only inputs are the corpus path and `--execute`.
+`run_study2.py` works the same way for Study 2. Its design is fixed by the pre-registration, so its only inputs are the corpus path and `--execute`.
 
-A run is identified by the SHA-256 of its configuration, prompts and item
-selection included, and writes to a directory named after that hash. Changing any
-of them produces a new directory rather than adding to an existing one, which is
-what stops two incompatible sets of responses from being pooled. Reruns resume the
-slots never attempted; failed attempts stay in the log rather than being retried.
+Each run is identified by the SHA-256 hash of its configuration, including the prompts and item selection, and writes to a directory named after that hash. Changing any of these produces a new directory instead of adding to an existing one, which prevents incompatible sets of responses from being pooled. Reruns resume only the slots never attempted, and failed attempts stay in the log instead of being retried.
 
-## How this was built
+## Citing this work
 
-AI assistance was only used for coding, building on my initial scripts and working to my specifications. The research questions, study design, pre-registrations, analysis decisions and interpretation of results are my own, and I reviewed the code and checked every reported number against the raw outputs.
+Seyidali, T. (2026). *Do moral-psychology prompts make LLM verdicts more human-like? Two pre-registered studies of LLM verdicts versus human disagreement* [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24517373
 
-## Licence
-
-The code and documents in this repository are released under the MIT licence; see
-[LICENSE](LICENSE). The Scruples dataset is not included in this repository or
-relicensed by it, and remains subject to its own terms.
+```bibtex
+@misc{seyidali2026moral,
+  author    = {Seyidali, Tunjay},
+  title     = {Do moral-psychology prompts make {LLM} verdicts more human-like? Two pre-registered studies of {LLM} verdicts versus human disagreement},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.24517373},
+  note      = {Preprint}
+}
+```
 
 ## Citing the data
 
-Lourie, N., Le Bras, R., and Choi, Y. *Scruples: A Corpus of Community Ethical
-Judgments on 32,000 Real-Life Anecdotes.* AAAI 2021.
+Lourie, N., Le Bras, R., & Choi, Y. (2021). Scruples: A corpus of community ethical judgments on 32,000 real-life anecdotes. *Proceedings of the AAAI Conference on Artificial Intelligence*, *35*(15), 13470–13479.
+
+## Licence
+
+The code and documents in this repository are released under the MIT licence; see [LICENSE](LICENSE). The Scruples dataset is not included in this repository or relicensed by it, and remains subject to its own terms.
+
+## Note on tools
+
+AI tools were used as a coding assistant in developing this repository.
