@@ -4,6 +4,8 @@ Code, data and pre-registrations for an evaluation of how closely a language mod
 
 **Paper:** Seyidali, T. (2026). *Do moral-psychology prompts make LLM verdicts more human-like? Two pre-registered studies of LLM verdicts versus human disagreement* [Preprint]. Zenodo. https://doi.org/10.5281/zenodo.24517373
 
+**Recognition:** This work received the King's Experience Research Award at King's College London.
+
 ## The question
 
 Scruples anecdotes do not come with a gold verdict. Each carries a spread of judgments from many annotators, and on a contested case that spread is the object of interest, because annotators genuinely disagree. Sampling the model repeatedly gives a spread of its own, so each item yields two categorical distributions over the same four verdict labels. The quantity reported throughout is the base-2 Jensen–Shannon divergence between them. Lower values mean closer agreement with the shape of human opinion, not closer agreement with a majority vote.
